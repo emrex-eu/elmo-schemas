@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	elementFormDefault="qualified">
+	
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+	<xs:include schemaLocation="types.xsd"/>
+	<xs:include schemaLocation="elmo_ELM.xsd"/>
+	
+	<xs:complexType name="DiplomaSupplement">
+		<xs:sequence>
+			   <xs:element ref="learner" minOccurs="1" maxOccurs="1"/> 
+			   <xs:element ref="issuer" minOccurs="1" maxOccurs="1"/>     
+			   <xs:element ref="learningOpportunitySpecification" minOccurs="1" maxOccurs="1"/>
+			   <xs:element ref="additionalInformation" minOccurs="0" maxOccurs="1"/>
+			   <xs:element ref="issueDate" minOccurs="1" maxOccurs="1"/>  
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	<xs:complexType name="Programme">
+		<xs:complexContent>
+			<xs:extension base="LearningOpportunitySpecification">
+				<xs:sequence>
+					<xs:element ref="degreeProgrammeAccessToFurtherStudies"/>
+					<xs:element ref="professionalStatus"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Transcript">
+		<xs:complexContent>
+			<xs:extension base="LearningOpportunitySpecification">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:element name="degreeProgrammeAccessToFurtherStudies" type="Description"/>
+	<xs:element name="professionalStatus" type="Description"/>
+	
+</xs:schema>
