@@ -18,7 +18,7 @@
 					<xs:element name="identifier" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>                
 					<xs:element name="subject" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>             
 					<xs:element name="title" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/> 
-					<xs:element name="type" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="type" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="url" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 
 			        
