@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	elementFormDefault="qualified">
+	
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+	<xs:include schemaLocation="types.xsd"/>
+
+	<!--classes-->
+	<xs:complexType name="LearningOpportunityObject" abstract="true">
+		        
+		<xs:sequence>
+		
+					<xs:element ref="contributor" minOccurs="0" maxOccurs="unbounded"/>	                   
+					<xs:element ref="date" minOccurs="0" maxOccurs="unbounded"/>	                   
+					<xs:element ref="description" minOccurs="0" maxOccurs="unbounded"/>                  
+					<xs:element ref="identifier" minOccurs="0" maxOccurs="unbounded"/>                
+					<xs:element ref="subject" minOccurs="0" maxOccurs="unbounded"/>             
+					<xs:element ref="title" minOccurs="0" maxOccurs="unbounded"/> 
+					<xs:element ref="type" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="url" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="hasPart" minOccurs="0" maxOccurs="unbounded"/>
+			        
+		</xs:sequence>
+		    
+	</xs:complexType>
+
+	    
+	<xs:complexType name="LearningOpportunityProvider">
+		        
+		<xs:complexContent>
+			            
+			<xs:extension base="LearningOpportunityObject">
+				                
+				<xs:sequence>
+					                    
+					<xs:element ref="location" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="offers" minOccurs="0" maxOccurs="unbounded"/>
+					                
+				</xs:sequence>
+				            
+			</xs:extension>
+			        
+		</xs:complexContent>
+		    
+	</xs:complexType>
+
+	    
+	<xs:complexType name="LearningOpportunitySpecification">
+		        
+		<xs:complexContent>
+			            
+			<xs:extension base="LearningOpportunityObject">
+				                
+				<xs:sequence>
+					                    
+					<xs:element ref="qualification" minOccurs="0" maxOccurs="1"/>    
+					<xs:element ref="credit" minOccurs="0" maxOccurs="unbounded"/>   
+					<xs:element ref="level" minOccurs="0" maxOccurs="unbounded"/>        
+					<xs:element ref="specifies" minOccurs="1" maxOccurs="unbounded"/>
+					                
+				</xs:sequence>
+				            
+			</xs:extension>
+			        
+		</xs:complexContent>
+		    
+	</xs:complexType>
+
+	    
+	<xs:complexType name="LearningOpportunityInstance">
+		        
+		<xs:complexContent>
+			            
+			<xs:extension base="LearningOpportunityObject">
+				                
+				<xs:sequence>
+					                  
+					                    
+					<xs:element ref="location" minOccurs="0" maxOccurs="unbounded"/>    
+					<xs:element ref="start" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="duration" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="cost" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="languageOfInstruction" minOccurs="0"  maxOccurs="unbounded"/>
+					<xs:element ref="prerequisite" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="places" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="engagement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="objective" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="offeredAt" minOccurs="0" maxOccurs="unbounded"/>
+					
+					<xs:element ref="result" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="gradingScheme" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="languageOfAssessment" minOccurs="0" maxOccurs="unbounded"/>
+					                
+				</xs:sequence>
+				            
+			</xs:extension>
+			        
+		</xs:complexContent>
+		    
+	</xs:complexType>
+	
+	<xs:complexType name="Qualification">
+			<xs:sequence>              
+				<xs:element ref="identifier" minOccurs="0" maxOccurs="unbounded"/>                          
+				<xs:element ref="title" minOccurs="0" maxOccurs="unbounded"/> 
+				<xs:element ref="educationLevel" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+	</xs:complexType>
+
+	    
+	<xs:element name="learningOpportunityProvider" type="LearningOpportunityProvider"/>
+	    
+	<xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification"/>
+	    
+	<xs:element name="learningOpportunityInstance" type="LearningOpportunityInstance"/>
+
+	    <!--associations-->
+
+	    
+	<xs:element name="offeredAt" type="Association"/>
+	    
+	<xs:element name="offers" type="Association"/>
+	    
+	<xs:element name="specifies" type="Association"/>
+	    
+	<xs:element name="hasPart" type="Association"/>
+	    
+	<xs:element name="isPartOf" type="Association"/>
+
+	    <!--properties-->
+	    
+	<xs:element name="contributor" type="SimpleLiteral"/>
+	    
+	<xs:element name="date" type="SimpleLiteral"/>
+	    
+	<xs:element name="description" type="Description"/>
+	    
+	<xs:element name="identifier" type="SimpleLiteral"/>
+	    
+	<xs:element name="subject" type="SimpleLiteral"/>
+	    
+	<xs:element name="title" type="SimpleLiteral"/>
+	    
+	<xs:element name="type" type="SimpleLiteral"/>
+	    
+	<xs:element name="url" type="SimpleLiteral"/>
+	    
+	<xs:element name="location" type="locationDType"/>
+	    
+	<xs:element name="qualification" type="Qualification"/>
+	    
+	<xs:element name="credit" type="creditDType"/>
+	    
+	<xs:element name="languageOfInstruction" type="SimpleLiteral"/>
+	    
+	<xs:element name="level" type="SimpleLiteral"/>
+	
+	<xs:element name="educationLevel" type="SimpleLiteral"/>
+	    
+	<xs:element name="start" type="DateAndTimeInformation"/>
+	    
+	<xs:element name="duration" type="Duration"/>
+	    
+	<xs:element name="cost" type="SimpleLiteral"/>
+	    
+	<xs:element name="prerequisite" type="Description"/>
+	    
+	<xs:element name="places" type="Description"/>
+	    
+	<xs:element name="engagement" type="Description"/>
+	    
+	<xs:element name="objective" type="Description"/>
+	    
+	<xs:element name="assessment" type="Description"/>
+	
+	<xs:element name="result" type="SimpleLiteral"/>
+	<xs:element name="gradingScheme" type="SimpleLiteral"/>
+	<xs:element name="languageOfAssessment" type="SimpleLiteral"/>
+
+	    
+	<xs:complexType name="locationDType"/>
+
+
+	<xs:complexType name="creditDType">
+		<xs:sequence>
+			<xs:element ref="scheme" maxOccurs="1" minOccurs="0"/>
+			<xs:element ref="level" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element ref="value" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="scheme" type="SimpleLiteral"/>
+	
+	<xs:element name="value" type="SimpleLiteral"/>
+
+
+</xs:schema>
