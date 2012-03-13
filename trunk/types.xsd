@@ -15,6 +15,14 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	
+	<xs:complexType name="TypedLiteral">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 
 	<xs:complexType name="Description" mixed="true">
 		<xs:attribute ref="xml:lang" use="optional" />
