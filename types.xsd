@@ -12,19 +12,7 @@
 		the schema that includes them -->
 
 	<xs:complexType name="SimpleLiteral">
-		<xs:annotation>
-			<xs:documentation xml:lang="en">
-				Permits text content only with optional xml:lang attribute.
-				Text is allowed because mixed="true", but sub-elements are disallowed because minOccurs="0" and maxOccurs="0" are on the xs:any tag.
-				This complexType allows for restriction or extension permitting child elements.
-			</xs:documentation>
-		</xs:annotation>
-
-		<xs:complexContent mixed="true">
-			<xs:extension base="xs:anyType">
-				<xs:attribute ref="xml:lang" use="optional" />
-			</xs:extension>
-		</xs:complexContent>
+		<xs:attribute ref="xml:lang" use="optional"/>
 	</xs:complexType>
 
 	<xs:complexType name="Description" mixed="true">
