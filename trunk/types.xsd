@@ -2,9 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	elementFormDefault="qualified">
-
-	<xs:import namespace="http://www.w3.org/1999/xhtml"
-		schemaLocation="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" />
+	
 	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
 		schemaLocation="http://www.w3.org/2001/xml.xsd" />
 
@@ -63,9 +61,6 @@
 	</xs:complexType>
 
 	<xs:complexType name="Description" mixed="true">
-		<xs:sequence>
-			<xs:element ref="xhtml:div" minOccurs="0" />
-		</xs:sequence>
 		<xs:attribute ref="xml:lang" use="optional" />
 		<xs:attribute name="href" type="xs:anyURI" use="optional" />
 	</xs:complexType>
