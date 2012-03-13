@@ -30,27 +30,19 @@
 	<xs:complexType name="Learner">
 		<xs:sequence>
 			   <xs:element name="identifier" type="SimpleLiteral"  minOccurs="1" maxOccurs="unbounded"/> 
-			   <xs:element ref="fullName" minOccurs="0" maxOccurs="1"/>     
-				<xs:element ref="givenNames" minOccurs="0" maxOccurs="1"/>   
-				<xs:element ref="familyName" minOccurs="0" maxOccurs="1"/> 
-				<xs:element ref="bday" minOccurs="0" maxOccurs="1"/>    
+			   <xs:element name="fullName" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/>     
+				<xs:element name="givenNames" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/>   
+				<xs:element name="familyName" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/> 
+				<xs:element name="bday" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>    
 				
 				<!--  The following come from the DS profile -->
-				<xs:element ref="placeOfBirth" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="countryOfBirth" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="placeOfBirth" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="countryOfBirth" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
 								 
 		</xs:sequence>
 	</xs:complexType>
 
 	<xs:element name="report" type="Report"/>
-
-	<xs:element name="fullName" type="SimpleLiteral"/>
-	<xs:element name="givenNames" type="SimpleLiteral"/>
-	<xs:element name="familyName" type="SimpleLiteral"/>
-	<xs:element name="bday" type="SimpleLiteral"/>
-	<xs:element name="placeOfBirth" type="SimpleLiteral"/>
-	<xs:element name="countryOfBirth" type="SimpleLiteral"/>
-			
 
 </xs:schema>
 
