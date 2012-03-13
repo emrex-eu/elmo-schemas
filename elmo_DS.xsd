@@ -23,8 +23,8 @@
 		<xs:complexContent>
 			<xs:extension base="LearningOpportunitySpecification">
 				<xs:sequence>
-					<xs:element ref="degreeProgrammeAccessToFurtherStudies"/>
-					<xs:element ref="professionalStatus"/>
+					<xs:element name="degreeProgrammeAccessToFurtherStudies" type="Description"/>
+					<xs:element name="professionalStatus" type="Description"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -36,8 +36,5 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	
-	<xs:element name="degreeProgrammeAccessToFurtherStudies" type="Description"/>
-	<xs:element name="professionalStatus" type="Description"/>
 	
 </xs:schema>
