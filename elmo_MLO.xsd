@@ -108,6 +108,9 @@
 				<xs:element ref="identifier" minOccurs="0" maxOccurs="unbounded"/>                          
 				<xs:element ref="title" minOccurs="0" maxOccurs="unbounded"/> 
 				<xs:element ref="educationLevel" minOccurs="0" maxOccurs="unbounded"/>
+				<!--  Added for the DS -->
+				<xs:element ref="qualificationHolderTitle" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="qualificationInfoSource" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 	</xs:complexType>
 	
@@ -121,79 +124,58 @@
 
 	    
 	<xs:element name="learningOpportunityProvider" type="LearningOpportunityProvider"/>
-	    
 	<xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification"/>
-	    
 	<xs:element name="learningOpportunityInstance" type="LearningOpportunityInstance"/>
 
 	    <!--associations-->
 
 	    
 	<xs:element name="offeredAt" type="Association"/>
-	    
-	<xs:element name="offers" type="Association"/>
-	    
-	<xs:element name="specifies" type="Association"/>
-	    
-	<xs:element name="hasPart" type="Association"/>
-	    
+	<xs:element name="offers" type="Association"/>    
+	<xs:element name="specifies" type="Association"/>    
+	<xs:element name="hasPart" type="Association"/>   
 	<xs:element name="isPartOf" type="Association"/>
 
 	    <!--properties-->
 	    
-	<xs:element name="contributor" type="SimpleLiteral"/>
-	    
-	<xs:element name="date" type="SimpleLiteral"/>
-	    
-	<xs:element name="description" type="Description"/>
-	    
+	<xs:element name="contributor" type="SimpleLiteral"/>  
+	<xs:element name="date" type="SimpleLiteral"/>  
+	<xs:element name="description" type="Description"/>  
 	<xs:element name="identifier" type="SimpleLiteral"/>
-	    
 	<xs:element name="subject" type="SimpleLiteral"/>
-	    
 	<xs:element name="title" type="SimpleLiteral"/>
-	    
 	<xs:element name="type" type="SimpleLiteral"/>
-	    
 	<xs:element name="url" type="SimpleLiteral"/>
-	    
 	<xs:element name="location" type="locationDType"/>
-	    
 	<xs:element name="qualification" type="Qualification"/>
-	    
 	<xs:element name="credit" type="creditDType"/>
-	    
 	<xs:element name="languageOfInstruction" type="SimpleLiteral"/>
-	    
 	<xs:element name="level" type="SimpleLiteral"/>
-	
 	<xs:element name="educationLevel" type="SimpleLiteral"/>
-	    
 	<xs:element name="start" type="DateAndTimeInformation"/>
-	    
 	<xs:element name="duration" type="Duration"/>
-	    
 	<xs:element name="cost" type="SimpleLiteral"/>
-	    
 	<xs:element name="prerequisite" type="Description"/>
-	    
 	<xs:element name="places" type="Description"/>
-	    
 	<xs:element name="engagement" type="Description"/>
-	    
 	<xs:element name="objective" type="Description"/>
-	    
 	<xs:element name="assessment" type="Description"/>
 	
+
+	<!-- FIXME -->    
+	<xs:complexType name="locationDType"/>
+	
+	<!--  ELM properties -->
 	<xs:element name="result" type="SimpleLiteral"/>
 	<xs:element name="gradingScheme" type="SimpleLiteral"/>
 	<xs:element name="languageOfAssessment" type="SimpleLiteral"/>
 
-	    
-	<xs:complexType name="locationDType"/>
+	<!-- DS properties -->
+	<xs:element name="qualificationHolderTitle" type="SimpleLiteral"/>
+	<xs:element name="qualificationInfoSource" type="SimpleLiteral"/>
 
+	<!--  Credit properties -->
 	<xs:element name="scheme" type="SimpleLiteral"/>
-	
 	<xs:element name="value" type="SimpleLiteral"/>
 
 
