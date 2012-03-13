@@ -12,7 +12,11 @@
 		the schema that includes them -->
 
 	<xs:complexType name="SimpleLiteral">
-		<xs:attribute ref="xml:lang" use="optional"/>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+					<xs:attribute ref="xml:lang" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
 
 	<xs:complexType name="Description" mixed="true">
