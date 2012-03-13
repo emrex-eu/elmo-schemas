@@ -37,6 +37,7 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<xs:element name="report" type="Report"/>
 	<xs:element name="issuer" type="Issuer"/>
 	<xs:element name="learner" type="Learner"/>
 
