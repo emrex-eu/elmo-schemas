@@ -64,7 +64,7 @@
 
 				<xs:sequence>
 
-					<xs:any namespace="mlo" processContents="strict" minOccurs="0"
+					<xs:any processContents="strict" minOccurs="0"
 						maxOccurs="unbounded" />
 
 				</xs:sequence>

@@ -89,6 +89,7 @@
 					<xs:element ref="objective" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element ref="offeredAt" minOccurs="0" maxOccurs="unbounded"/>
 					
+					<!-- These properties are added to Learning Opportunity Instance by ELM -->
 					<xs:element ref="result" minOccurs="0" maxOccurs="1"/>
 					<xs:element ref="gradingScheme" minOccurs="0" maxOccurs="1"/>
 					<xs:element ref="languageOfAssessment" minOccurs="0" maxOccurs="unbounded"/>
@@ -101,12 +102,21 @@
 		    
 	</xs:complexType>
 	
+	<!-- Properties of Qualification are specified by ELM -->
 	<xs:complexType name="Qualification">
 			<xs:sequence>              
 				<xs:element ref="identifier" minOccurs="0" maxOccurs="unbounded"/>                          
 				<xs:element ref="title" minOccurs="0" maxOccurs="unbounded"/> 
 				<xs:element ref="educationLevel" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="creditDType">
+		<xs:sequence>
+			<xs:element ref="scheme" maxOccurs="1" minOccurs="0"/>
+			<xs:element ref="level" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element ref="value" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 
 	    
@@ -181,15 +191,6 @@
 
 	    
 	<xs:complexType name="locationDType"/>
-
-
-	<xs:complexType name="creditDType">
-		<xs:sequence>
-			<xs:element ref="scheme" maxOccurs="1" minOccurs="0"/>
-			<xs:element ref="level" maxOccurs="unbounded" minOccurs="0"/>
-			<xs:element ref="value" maxOccurs="unbounded" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
 
 	<xs:element name="scheme" type="SimpleLiteral"/>
 	

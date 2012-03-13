@@ -47,7 +47,7 @@
 	<xs:element name="bday" type="SimpleLiteral"/>
 	
 	<xs:element name="additionalInformation" type="Description"/>
-	<xs:element name="issueDate" type="DateAndTimeInformation""/>
+	<xs:element name="issueDate" type="DateAndTimeInformation"/>
 </xs:schema>
 
 
