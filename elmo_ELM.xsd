@@ -28,7 +28,7 @@
 	
 	<xs:complexType name="Learner">
 		<xs:sequence>
-			   <xs:element name="identifier" type="SimpleLiteral"  minOccurs="1" maxOccurs="unbounded"/> 
+			   <xs:element name="identifier" type="TypedLiteral"  minOccurs="1" maxOccurs="unbounded"/> 
 			   <xs:element name="fullName" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/>     
 				<xs:element name="givenNames" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/>   
 				<xs:element name="familyName" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/> 
