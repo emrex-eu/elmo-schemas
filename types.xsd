@@ -25,6 +25,9 @@
 	</xs:complexType>
 
 	<xs:complexType name="Description" mixed="true">
+		<xs:sequence>
+			<xs:any minOccurs="0"/>
+		</xs:sequence>
 		<xs:attribute ref="xml:lang" use="optional" />
 		<xs:attribute name="href" type="xs:anyURI" use="optional" />
 	</xs:complexType>
