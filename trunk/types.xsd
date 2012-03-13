@@ -25,13 +25,6 @@
 	</xs:complexType>
 
 	<xs:complexType name="Description" mixed="true">
-		<xs:complexContent>
-			<xs:extension base="xs:string">
-				<xs:sequence>
-					<xs:any processContent="lax"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
 		<xs:attribute ref="xml:lang" use="optional" />
 		<xs:attribute name="href" type="xs:anyURI" use="optional" />
 	</xs:complexType>
