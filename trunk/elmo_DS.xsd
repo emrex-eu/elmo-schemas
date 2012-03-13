@@ -30,13 +30,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 	
-	<xs:complexType name="Transcript">
-		<xs:complexContent>
-			<xs:extension base="LearningOpportunitySpecification">
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	
 	<xs:element name="diplomaSupplement" type="DiplomaSupplement"/>
 	
 </xs:schema>
