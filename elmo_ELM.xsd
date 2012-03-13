@@ -12,11 +12,11 @@
 	
 	<xs:complexType name="Report">
 		<xs:sequence>
-			   <xs:element ref="learner" minOccurs="1" maxOccurs="1"/> 
-			   <xs:element ref="issuer" minOccurs="1" maxOccurs="1"/>     
-			   <xs:element ref="learningOpportunitySpecification" minOccurs="0" maxOccurs="unbounded"/>
-			   <xs:element ref="additionalInformation" minOccurs="0" maxOccurs="1"/>
-			   <xs:element ref="issueDate" minOccurs="1" maxOccurs="1"/>    
+			   <xs:element name="learner" type="Learner" minOccurs="1" maxOccurs="1"/> 
+			   <xs:element name="issuer" type="Issuer" minOccurs="1" maxOccurs="1"/>     
+			   <xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification" minOccurs="0" maxOccurs="unbounded"/>
+			   <xs:element name="additionalInformation" type="Description" minOccurs="0" maxOccurs="1"/>
+			   <xs:element name="issueDate" type="DateAndTimeInformation" minOccurs="1" maxOccurs="1"/>    
 		</xs:sequence>
 	</xs:complexType>
 	
@@ -29,7 +29,7 @@
 	
 	<xs:complexType name="Learner">
 		<xs:sequence>
-			   <xs:element ref="identifier" minOccurs="1" maxOccurs="unbounded"/> 
+			   <xs:element name="identifier" type="SimpleLiteral"  minOccurs="1" maxOccurs="unbounded"/> 
 			   <xs:element ref="fullName" minOccurs="0" maxOccurs="1"/>     
 				<xs:element ref="givenNames" minOccurs="0" maxOccurs="1"/>   
 				<xs:element ref="familyName" minOccurs="0" maxOccurs="1"/> 
@@ -43,8 +43,6 @@
 	</xs:complexType>
 
 	<xs:element name="report" type="Report"/>
-	<xs:element name="issuer" type="Issuer"/>
-	<xs:element name="learner" type="Learner"/>
 
 	<xs:element name="fullName" type="SimpleLiteral"/>
 	<xs:element name="givenNames" type="SimpleLiteral"/>
@@ -53,8 +51,7 @@
 	<xs:element name="placeOfBirth" type="SimpleLiteral"/>
 	<xs:element name="countryOfBirth" type="SimpleLiteral"/>
 			
-	<xs:element name="additionalInformation" type="Description"/>
-	<xs:element name="issueDate" type="DateAndTimeInformation"/>
+
 </xs:schema>
 
 
