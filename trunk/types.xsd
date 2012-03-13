@@ -10,35 +10,6 @@
 	<!-- Note this is a "chameleon" schema - the types will take on the NS of 
 		the schema that includes them -->
 
-	<xs:complexType name="Association">
-
-		<xs:annotation>
-
-			<xs:documentation xml:lang="en">
-
-				This type permits either inclusion of sub-elements (resources) or the use of a literal URI to associate the containing resource with a target.
-				Text is allowed because mixed="true"
-				    </xs:documentation>
-
-		</xs:annotation>
-
-		<xs:complexContent mixed="true">
-
-			<xs:restriction base="xs:anyType">
-
-				<xs:sequence>
-
-					<xs:any processContents="strict" minOccurs="0"
-						maxOccurs="unbounded" />
-
-				</xs:sequence>
-
-			</xs:restriction>
-
-		</xs:complexContent>
-
-	</xs:complexType>
-
 	<xs:complexType name="SimpleLiteral">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">
