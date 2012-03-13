@@ -86,6 +86,7 @@
 					<xs:element name="engagement" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="objective" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="offeredAt" type="OfferedAt" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="assessment" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 					
 					<!-- These properties are added to Learning Opportunity Instance by ELM -->
 					<xs:element name="result" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
