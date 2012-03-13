@@ -20,7 +20,7 @@
 					<xs:element name="title" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/> 
 					<xs:element name="type" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="url" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="hasPart" type="Association" minOccurs="0" maxOccurs="unbounded"/>
+
 			        
 		</xs:sequence>
 		    
@@ -59,7 +59,7 @@
 					<xs:element name="credit" type="Credit" minOccurs="0" maxOccurs="unbounded"/>   
 					<xs:element name="level" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>        
 					<xs:element name="specifies" type="Association" minOccurs="1" maxOccurs="unbounded"/>
-					                
+					<xs:element name="hasPart" type="HasPart" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				            
 			</xs:extension>
@@ -122,11 +122,17 @@
 			<xs:element name="value" type="SimpleLiteral" maxOccurs="unbounded" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-
-	    
-	<xs:element name="learningOpportunityProvider" type="LearningOpportunityProvider"/>
-	<xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification"/>
-	<xs:element name="learningOpportunityInstance" type="LearningOpportunityInstance"/>
+	
+	<xs:complexType  name="HasPart">
+		<xs:sequence>
+			<xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType  name="Specifices">
+		<xs:sequence>
+			<xs:element name="learningOpportunityInstance" type="LearningOpportunityInstance"/>
+		</xs:sequence>
+	</xs:complexType>
 
 
 	<!-- FIXME -->    
