@@ -21,9 +21,9 @@
 		</xs:annotation>
 
 		<xs:complexContent mixed="true">
-			<xs:restriction base="xs:anyType">
+			<xs:extension base="xs:anyType">
 				<xs:attribute ref="xml:lang" use="optional" />
-			</xs:restriction>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 
