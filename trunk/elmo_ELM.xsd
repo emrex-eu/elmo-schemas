@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	elementFormDefault="qualified">
+	
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+	<xs:include schemaLocation="types.xsd"/>
+	<xs:include schemaLocation="elmo_MLO.xsd"/>
+	
+	<!--  classes -->
+	
+	<xs:complexType name="Report">
+		<xs:sequence>
+			   <xs:element ref="learner" minOccurs="1" maxOccurs="1"/> 
+			   <xs:element ref="issuer" minOccurs="1" maxOccurs="1"/>     
+			   <xs:element ref="learningOpportunitySpecification" minOccurs="0" maxOccurs="unbounded"/>
+			   <xs:element ref="additionalInformation" minOccurs="0" maxOccurs="1"/>
+			   <xs:element ref="issueDate" minOccurs="1" maxOccurs="1"/>    
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Issuer">
+		<xs:complexContent>
+			<xs:extension base="LearningOpportunityProvider">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Learner">
+		<xs:sequence>
+			   <xs:element ref="identifier" minOccurs="1" maxOccurs="unbounded"/> 
+			   <xs:element ref="fullName" minOccurs="0" maxOccurs="1"/>     
+				<xs:element ref="givenNames" minOccurs="0" maxOccurs="1"/>   
+				<xs:element ref="familyNames" minOccurs="0" maxOccurs="1"/> 
+				<xs:element ref="bday" minOccurs="0" maxOccurs="1"/>     
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="issuer" type="Issuer"/>
+	<xs:element name="learner" type="Learner"/>
+
+	<xs:element name="fullName" type="SimpleLiteral"/>
+	<xs:element name="givenNames" type="SimpleLiteral"/>
+	<xs:element name="familyNames" type="SimpleLiteral"/>
+	<xs:element name="bday" type="SimpleLiteral"/>
+	
+	<xs:element name="additionalInformation" type="Description"/>
+	<xs:element name="issueDate" type="DateAndTimeInformation""/>
+</xs:schema>
+
+

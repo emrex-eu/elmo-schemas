@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	elementFormDefault="qualified">
+
+	<xs:import namespace="http://www.w3.org/1999/xhtml"
+		schemaLocation="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" />
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace"
+		schemaLocation="http://www.w3.org/2001/xml.xsd" />
+
+	<!-- This schema defines some common type definitions reused in other schemas -->
+	<!-- Note this is a "chameleon" schema - the types will take on the NS of 
+		the schema that includes them -->
+
+
+
+	<xs:complexType name="Resource">
+
+		<xs:annotation>
+
+			<xs:documentation xml:lang="en">
+
+				This type permits either
+				inclusion of
+				sub-elements (resources)
+				or literal text content
+
+			</xs:documentation>
+
+		</xs:annotation>
+
+		<xs:complexContent mixed="true">
+
+			<xs:restriction base="xs:anyType">
+
+				<xs:sequence>
+
+					<xs:any processContents="strict" minOccurs="0" maxOccurs="unbounded" />
+
+				</xs:sequence>
+
+			</xs:restriction>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+
+
+	<xs:complexType name="Association">
+
+		<xs:annotation>
+
+			<xs:documentation xml:lang="en">
+
+				This type permits either inclusion of sub-elements (resources) or the use of a literal URI to associate the containing resource with a target.
+				Text is allowed because mixed="true"
+				    </xs:documentation>
+
+		</xs:annotation>
+
+		<xs:complexContent mixed="true">
+
+			<xs:restriction base="xs:anyType">
+
+				<xs:sequence>
+
+					<xs:any namespace="mlo" processContents="strict" minOccurs="0"
+						maxOccurs="unbounded" />
+
+				</xs:sequence>
+
+			</xs:restriction>
+
+		</xs:complexContent>
+
+	</xs:complexType>
+
+	<xs:complexType name="SimpleLiteral">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				Permits text content only with optional xml:lang attribute.
+				Text is allowed because mixed="true", but sub-elements are disallowed because minOccurs="0" and maxOccurs="0" are on the xs:any tag.
+				This complexType allows for restriction or extension permitting child elements.
+			</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexContent mixed="true">
+			<xs:restriction base="xs:anyType">
+				<xs:sequence>
+					<!-- This isn't really correct as we don't want child elements, however 
+						maxOccurs=0 isn't allowed by parsers like XmlBeans -->
+					<xs:any processContents="lax" minOccurs="0" maxOccurs="1" />
+				</xs:sequence>
+				<xs:attribute ref="xml:lang" use="optional" />
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="Description" mixed="true">
+		<xs:sequence>
+			<xs:element ref="xhtml:div" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute ref="xml:lang" use="optional" />
+		<xs:attribute name="href" type="xs:anyURI" use="optional" />
+	</xs:complexType>
+	
+	<xs:complexType name="DateAndTimeInformation">
+		<xs:attribute name="dtf" use="optional"/>
+	</xs:complexType>
+	
+	<xs:complexType name="Duration">
+		<xs:attribute name="interval" use="optional"/>	
+	</xs:complexType>
+
+</xs:schema>
+  
