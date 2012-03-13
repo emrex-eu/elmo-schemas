@@ -4,7 +4,7 @@
 	xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	elementFormDefault="qualified">
 	
-	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+	<xs:import schemaLocation="http://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace"/>
 	<xs:include schemaLocation="types.xsd"/>
 
 	<!--classes-->
