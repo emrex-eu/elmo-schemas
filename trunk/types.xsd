@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:xml="http://www.w3.org/XML/1998/namespace"
-	targetNamespace="http://purl.org/net/elmo"
-	xmlns="http://purl.org/net/elmo"
-	elementFormDefault="qualified">
-	
-	<xs:import schemaLocation="http://www.w3.org/2001/03/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace"/>
+	xmlns:xml="http://www.w3.org/XML/1998/namespace" targetNamespace="http://purl.org/net/elmo"
+	xmlns="http://purl.org/net/elmo" elementFormDefault="qualified">
+
+	<xs:import schemaLocation="http://www.w3.org/2001/03/xml.xsd"
+		namespace="http://www.w3.org/XML/1998/namespace" />
 
 	<!-- This schema defines some common type definitions reused in other schemas -->
-	<!-- Note this is a "chameleon" schema - the types will take on the NS of 
-		the schema that includes them -->
 
 	<xs:complexType name="SimpleLiteral">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
-					<xs:attribute ref="xml:lang" use="optional"/>
+				<xs:attribute ref="xml:lang" use="optional" />
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -23,13 +20,21 @@
 		<xs:attribute ref="xml:lang" use="optional" />
 		<xs:attribute name="href" type="xs:anyURI" use="optional" />
 	</xs:complexType>
-	
+
 	<xs:complexType name="DateAndTimeInformation">
-		<xs:attribute name="dtf" use="optional"/>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="dtf" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
-	
+
 	<xs:complexType name="Duration">
-		<xs:attribute name="interval" use="optional"/>	
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="interval" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
 
 </xs:schema>
