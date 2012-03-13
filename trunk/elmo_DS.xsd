@@ -37,4 +37,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 	
+	<xs:element name="diplomaSupplement" type="DiplomaSupplement"/>
+	
 </xs:schema>
