@@ -111,6 +111,7 @@
 				<!--  Added for the DS -->
 				<xs:element ref="qualificationHolderTitle" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="qualificationInfoSource" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="qualificationMainStudyField" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 	</xs:complexType>
 	
@@ -173,6 +174,7 @@
 	<!-- DS properties -->
 	<xs:element name="qualificationHolderTitle" type="SimpleLiteral"/>
 	<xs:element name="qualificationInfoSource" type="SimpleLiteral"/>
+	<xs:element name="qualificationMainStudyField" type="SimpleLiteral"/>
 
 	<!--  Credit properties -->
 	<xs:element name="scheme" type="SimpleLiteral"/>
