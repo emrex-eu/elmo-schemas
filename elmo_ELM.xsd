@@ -32,7 +32,7 @@
 			   <xs:element ref="identifier" minOccurs="1" maxOccurs="unbounded"/> 
 			   <xs:element ref="fullName" minOccurs="0" maxOccurs="1"/>     
 				<xs:element ref="givenNames" minOccurs="0" maxOccurs="1"/>   
-				<xs:element ref="familyNames" minOccurs="0" maxOccurs="1"/> 
+				<xs:element ref="familyName" minOccurs="0" maxOccurs="1"/> 
 				<xs:element ref="bday" minOccurs="0" maxOccurs="1"/>     
 		</xs:sequence>
 	</xs:complexType>
