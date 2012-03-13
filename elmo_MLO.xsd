@@ -60,7 +60,7 @@
 					<xs:element name="level" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>        
 					<xs:element name="specifies" type="Specifies" minOccurs="1" maxOccurs="unbounded"/>
 					<xs:element name="hasPart" type="LearningOpportunitySpecificationAssociation" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="objective" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="objective" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="prerequisite" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				            
@@ -84,7 +84,7 @@
 					<xs:element name="prerequisite" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="places" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="engagement" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="objective" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="objective" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="offeredAt" type="OfferedAt" minOccurs="0" maxOccurs="unbounded"/>
 					
 					<!-- These properties are added to Learning Opportunity Instance by ELM -->
