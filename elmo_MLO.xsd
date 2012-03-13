@@ -36,7 +36,7 @@
 				<xs:sequence>
 					                    
 					<xs:element name="location" type="locationDType" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="offers" type="Association" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="offers" type="LearningOpportunitySpecificationAssociation" minOccurs="0" maxOccurs="unbounded"/>
 					                
 				</xs:sequence>
 				            
@@ -58,8 +58,8 @@
 					<xs:element name="qualification" type="Qualification" minOccurs="0" maxOccurs="1"/>    
 					<xs:element name="credit" type="Credit" minOccurs="0" maxOccurs="unbounded"/>   
 					<xs:element name="level" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>        
-					<xs:element name="specifies" type="Association" minOccurs="1" maxOccurs="unbounded"/>
-					<xs:element name="hasPart" type="HasPart" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="specifies" type="Specifies" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="hasPart" type="LearningOpportunitySpecificationAssociation" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				            
 			</xs:extension>
@@ -87,7 +87,7 @@
 					<xs:element name="places" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="engagement" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="objective" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="offeredAt" type="Association" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="offeredAt" type="OfferedAt" minOccurs="0" maxOccurs="unbounded"/>
 					
 					<!-- These properties are added to Learning Opportunity Instance by ELM -->
 					<xs:element name="result" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
@@ -123,17 +123,21 @@
 		</xs:sequence>
 	</xs:complexType>
 	
-	<xs:complexType  name="HasPart">
+	<xs:complexType  name="LearningOpportunitySpecificationAssociation">
 		<xs:sequence>
 			<xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType  name="Specifices">
+	<xs:complexType  name="Specifies">
 		<xs:sequence>
 			<xs:element name="learningOpportunityInstance" type="LearningOpportunityInstance"/>
 		</xs:sequence>
 	</xs:complexType>
-
+	<xs:complexType  name="OfferedAt">
+		<xs:sequence>
+			<xs:element name="learningOpportunityProvider" type="LearningOpportunityProvider"/>
+		</xs:sequence>
+	</xs:complexType>
 
 	<!-- FIXME -->    
 	<xs:complexType name="locationDType"/>
