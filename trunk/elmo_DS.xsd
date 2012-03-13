@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:xhtml="http://www.w3.org/1999/xhtml" 
 	xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	elementFormDefault="qualified">
 	
-	<xs:import schemaLocation="http://www.w3.org/2001/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace"/>
-	<xs:include schemaLocation="types.xsd"/>
 	<xs:include schemaLocation="elmo_ELM.xsd"/>
 	
 	<xs:complexType name="DiplomaSupplement">
