@@ -20,11 +20,6 @@
 
 		<xs:complexContent mixed="true">
 			<xs:restriction base="xs:anyType">
-				<xs:sequence>
-					<!-- This isn't really correct as we don't want child elements, however 
-						maxOccurs=0 isn't allowed by parsers like XmlBeans -->
-					<xs:any processContents="lax" minOccurs="0" maxOccurs="1" />
-				</xs:sequence>
 				<xs:attribute ref="xml:lang" use="optional" />
 			</xs:restriction>
 		</xs:complexContent>
