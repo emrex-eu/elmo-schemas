@@ -60,6 +60,8 @@
 					<xs:element name="level" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>        
 					<xs:element name="specifies" type="Specifies" minOccurs="1" maxOccurs="unbounded"/>
 					<xs:element name="hasPart" type="LearningOpportunitySpecificationAssociation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="objective" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="prerequisite" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				            
 			</xs:extension>
@@ -71,13 +73,9 @@
 	    
 	<xs:complexType name="LearningOpportunityInstance">
 		        
-		<xs:complexContent>
-			            
-			<xs:extension base="LearningOpportunityObject">
-				                
-				<xs:sequence>
-					                  
-					                    
+		<xs:complexContent>         
+			<xs:extension base="LearningOpportunityObject">                
+				<xs:sequence>               
 					<xs:element name="location" type="locationDType" minOccurs="0" maxOccurs="unbounded"/>    
 					<xs:element name="start" type="DateAndTimeInformation" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="duration" type="Duration" minOccurs="0" maxOccurs="unbounded"/>
