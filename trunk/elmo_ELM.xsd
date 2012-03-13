@@ -43,7 +43,7 @@
 
 	<xs:element name="fullName" type="SimpleLiteral"/>
 	<xs:element name="givenNames" type="SimpleLiteral"/>
-	<xs:element name="familyNames" type="SimpleLiteral"/>
+	<xs:element name="familyName" type="SimpleLiteral"/>
 	<xs:element name="bday" type="SimpleLiteral"/>
 	
 	<xs:element name="additionalInformation" type="Description"/>
