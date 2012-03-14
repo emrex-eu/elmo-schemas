@@ -19,7 +19,7 @@
 	<xs:complexType name="DisplayCategory">
 		<xs:complexContent>
 			<xs:extension base="SimpleLiteral">
-				<xs:attribute name="order" use="optional"/>
+				<xs:attribute name="priority" use="optional"/>
 			</xs:extension>
 		</xs:complexContent>
 	
