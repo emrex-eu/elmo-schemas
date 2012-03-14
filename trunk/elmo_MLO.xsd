@@ -118,6 +118,7 @@
 				<xs:element name="qualificationHolderTitle" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="qualificationInfoSource" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="qualificationMainStudyField" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="professionalStatus" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 	</xs:complexType>
 	
