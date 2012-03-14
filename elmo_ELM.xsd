@@ -12,18 +12,11 @@
 	<xs:complexType name="Report">
 		<xs:sequence>
 			   <xs:element name="learner" type="Learner" minOccurs="1" maxOccurs="1"/> 
-			   <xs:element name="issuer" type="Issuer" minOccurs="1" maxOccurs="1"/>     
+			   <xs:element name="issuer" type="LearningOpportunityProvider" minOccurs="1" maxOccurs="1"/>     
 			   <xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification" minOccurs="0" maxOccurs="unbounded"/>
 			   <xs:element name="additionalInformation" type="Description" minOccurs="0" maxOccurs="1"/>
 			   <xs:element name="issueDate" type="DateAndTimeInformation" minOccurs="1" maxOccurs="1"/>    
 		</xs:sequence>
-	</xs:complexType>
-	
-	<xs:complexType name="Issuer">
-		<xs:complexContent>
-			<xs:extension base="LearningOpportunityProvider">
-			</xs:extension>
-		</xs:complexContent>
 	</xs:complexType>
 	
 	<xs:complexType name="Learner">
@@ -32,7 +25,7 @@
 			   <xs:element name="fullName" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/>     
 				<xs:element name="givenNames" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/>   
 				<xs:element name="familyName" type="SimpleLiteral"  minOccurs="0" maxOccurs="1"/> 
-				<xs:element name="bday" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>    
+				<xs:element name="bday" type="DateAndTimeInformation" minOccurs="0" maxOccurs="1"/>    
 				
 				<!--  The following come from the DS profile -->
 				<xs:element name="placeOfBirth" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
