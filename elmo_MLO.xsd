@@ -89,7 +89,7 @@
 					<xs:element name="assessment" type="Description" minOccurs="0" maxOccurs="unbounded"/>
 					
 					<!-- These properties are added to Learning Opportunity Instance by ELM -->
-					<xs:element name="result" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="result" type="Result" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="gradingScheme" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="languageOfAssessment" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					                
@@ -98,7 +98,14 @@
 			</xs:extension>
 			        
 		</xs:complexContent>
-		    
+	
+	</xs:complexType>
+	
+	<!-- Defined as a separate type to allow extension -->
+	<xs:complexType name="Result">
+		<xs:complexContent>
+			<xs:extension base="SimpleLiteral"/>
+		</xs:complexContent>
 	</xs:complexType>
 	
 	<!-- Properties of Qualification are specified by ELM -->
