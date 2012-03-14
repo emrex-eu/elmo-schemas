@@ -23,7 +23,6 @@
 			<xs:extension base="LearningOpportunitySpecification">
 				<xs:sequence>
 					<xs:element name="degreeProgrammeAccessToFurtherStudies" type="Description"/>
-					<xs:element name="professionalStatus" type="Description"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
