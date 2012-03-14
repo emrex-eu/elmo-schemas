@@ -10,7 +10,7 @@
 	<xs:complexType name="DiplomaSupplement">
 		<xs:sequence>
 			   <xs:element name="learner" type="Learner" minOccurs="1" maxOccurs="1"/> 
-			   <xs:element name="issuer" type="Issuer" minOccurs="1" maxOccurs="1"/>     
+			   <xs:element name="issuer" type="LearningOpportunityProvider" minOccurs="1" maxOccurs="1"/>     
 			   <xs:element name="programme" type="Programme" minOccurs="1" maxOccurs="1"/>
 			   <xs:element name="additionalInformation" type="Description" minOccurs="0" maxOccurs="1"/>
 			   <xs:element name="issueDate" type="DateAndTimeInformation" minOccurs="1" maxOccurs="1"/>  
