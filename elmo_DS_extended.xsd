@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+ xmlns="http://purl.org/net/elmo"
+ xmlns:xml="http://www.w3.org/XML/1998/namespace"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://purl.org/net/elmo"
+
+ elementFormDefault="qualified">
+ 
+ 	<xs:redefine schemaLocation="elmo_DS.xsd">
+ 		<xs:complexType name="LearningOpportunityInstance">
+ 			<xs:sequence>
+					<xs:element name="engagementHours" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>   
+					<xs:element name="diplayCategory" type="DisplayCategory" minOccurs="0" maxOccurs="unbounded"/> 			
+ 			</xs:sequence>
+ 		</xs:complexType>
+	</xs:redefine>
+	
+	<xs:complexType name="DisplayCategory">
+		<xs:complexContent>
+			<xs:extension base="SimpleLiteral">
+				<xs:attribute name="order" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	
+	</xs:complexType>
+	
+</xs:schema>
