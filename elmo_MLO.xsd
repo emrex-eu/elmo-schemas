@@ -6,6 +6,7 @@
 	elementFormDefault="qualified">
 	
 	<xs:include schemaLocation="types.xsd"/>
+    <xs:include schemaLocation="elmo_result.xsd"/>
 
 	<!--classes-->
 	<xs:complexType name="LearningOpportunityObject" abstract="true">
@@ -94,7 +95,8 @@
 					<xs:element name="languageOfAssessment" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					
 					<!-- ELMO Extension -->
-					<xs:element name="engagementHours" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>                
+					<xs:element name="engagementHours" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>  
+					<xs:element name="resultDistribution" type="ResultDistribution" minOccurs="0" maxOccurs="1"/>              
 				</xs:sequence>
 				            
 			</xs:extension>

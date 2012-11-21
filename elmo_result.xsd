@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	targetNamespace="http://purl.org/net/elmo"
+	xmlns="http://purl.org/net/elmo"
+	elementFormDefault="qualified">
+	
+	<xs:include schemaLocation="types.xsd"/>
+	
+	
+	<xs:complexType name="ResultDistribution">
+	   <xs:sequence>
+	       <xs:element name="interval" type="Interval"  minOccurs="0" maxOccurs="unbounded"/>
+	       <xs:element name="context" type="Description" minOccurs="0" maxOccurs="1"/>
+	   </xs:sequence>
+	   <xs:attribute name="sampleSize" use="optional"/>
+	</xs:complexType>
+	
+	
+	
+	<xs:complexType name="Interval">
+	   <xs:attribute name="label" use="required"/>
+	   <xs:attribute name="value" use="required"/>
+	</xs:complexType>
+	
+	
+</xs:schema>
