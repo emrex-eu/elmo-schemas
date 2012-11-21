@@ -78,7 +78,7 @@
 				<xs:sequence>               
 					<xs:element name="location" type="locationDType" minOccurs="0" maxOccurs="unbounded"/>    
 					<xs:element name="start" type="DateAndTimeInformation" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="duration" type="Duration" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="duration" type="elmoDuration" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="cost" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="languageOfInstruction" type="SimpleLiteral" minOccurs="0"  maxOccurs="unbounded"/>
 					<xs:element name="prerequisite" type="Description" minOccurs="0" maxOccurs="unbounded"/>
@@ -151,6 +151,9 @@
 
 	<!-- FIXME -->    
 	<xs:complexType name="locationDType"/>
+	
+	<xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification"/>
+
 	
 
 </xs:schema>

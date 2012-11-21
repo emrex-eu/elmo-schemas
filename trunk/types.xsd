@@ -48,5 +48,13 @@
 		</xs:simpleContent>
 	</xs:complexType>
 
+	<xs:complexType name="elmoDuration">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="duration" use="optional" type="xs:duration" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
 </xs:schema>
   
