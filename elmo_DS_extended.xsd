@@ -7,21 +7,26 @@
 
  elementFormDefault="qualified">
  
- 	<xs:redefine schemaLocation="elmo_DS.xsd">
- 		<xs:complexType name="LearningOpportunityInstance">
- 			<xs:sequence>
-					<xs:element name="engagementHours" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>   
-					<xs:element name="diplayCategory" type="DisplayCategory" minOccurs="0" maxOccurs="unbounded"/> 			
- 			</xs:sequence>
+ 	<!-- FIXME -->
+ 	<xs:redefine schemaLocation="elmo_MLO.xsd">
+ 		 <xs:complexType name="LearningOpportunityInstance">
+ 		     <xs:complexContent>
+ 		         <xs:extension base="LearningOpportunityInstance">
+ 			        <xs:sequence>
+					   <xs:element name="engagementHours" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>   
+					   <xs:element name="displayCategory" type="DisplayCategory" minOccurs="0" maxOccurs="unbounded"/> 			
+ 			        </xs:sequence>
+ 			    </xs:extension>
+ 			</xs:complexContent>
  		</xs:complexType>
 	</xs:redefine>
 	
 	<xs:complexType name="DisplayCategory">
-		<xs:complexContent>
+		<xs:simpleContent>
 			<xs:extension base="SimpleLiteral">
 				<xs:attribute name="priority" use="optional"/>
 			</xs:extension>
-		</xs:complexContent>
+		</xs:simpleContent>
 	
 	</xs:complexType>
 	
