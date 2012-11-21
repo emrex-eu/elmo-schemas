@@ -7,6 +7,14 @@
 	
 	<xs:include schemaLocation="types.xsd"/>
 	
+    <!-- Defined as a separate type to allow extension -->
+	<xs:complexType name="Result">
+		<xs:simpleContent>
+			<xs:extension base="SimpleLiteral">
+				<xs:attribute name="scheme" use="optional"/>
+            </xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	
 	<xs:complexType name="ResultDistribution">
 	   <xs:sequence>
