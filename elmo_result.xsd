@@ -18,10 +18,7 @@
 	
 	<xs:complexType name="ResultDistribution">
 	   <xs:sequence>
-	       <xs:choice>
-	           <xs:element name="interval" type="Section"  minOccurs="0" maxOccurs="unbounded"/>
-	           <xs:element name="category" type="Section"  minOccurs="0" maxOccurs="unbounded"/>
-	       </xs:choice>
+	       <xs:element name="category" type="Section"  minOccurs="0" maxOccurs="unbounded"/>
 	       <xs:element name="description" type="Description" minOccurs="0" maxOccurs="1"/>
 	   </xs:sequence>
 	</xs:complexType>
