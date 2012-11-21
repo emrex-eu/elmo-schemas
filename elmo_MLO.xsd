@@ -105,13 +105,6 @@
 	
 	</xs:complexType>
 	
-	<!-- Defined as a separate type to allow extension -->
-	<xs:complexType name="Result">
-		<xs:simpleContent>
-			<xs:extension base="SimpleLiteral"/>
-		</xs:simpleContent>
-	</xs:complexType>
-	
 	<!-- Properties of Qualification are specified by ELM -->
 	<xs:complexType name="Qualification">
 			<xs:sequence>              
