@@ -32,6 +32,7 @@
 				<xs:element name="countryOfBirth" type="SimpleLiteral" minOccurs="0" maxOccurs="1"/>
 								 
 		</xs:sequence>
+        <xs:attribute name="idref" use="optional"/>
 	</xs:complexType>
 
 	<xs:element name="report" type="Report"/>
