@@ -24,7 +24,7 @@
 	</xs:complexType>
 	
 	
-	
+	<!-- potential to add in a link here to LOC info for an interval -->
 	<xs:complexType name="Interval">
 	   <xs:attribute name="label" use="required"/>
 	   <xs:attribute name="count" use="required"/>
