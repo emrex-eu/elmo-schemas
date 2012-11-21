@@ -28,7 +28,7 @@
 	
 	<xs:complexType name="Interval">
 	   <xs:attribute name="label" use="required"/>
-	   <xs:attribute name="value" use="required"/>
+	   <xs:attribute name="count" use="required"/>
 	</xs:complexType>
 	
 	
