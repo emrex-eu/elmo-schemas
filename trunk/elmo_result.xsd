@@ -21,7 +21,6 @@
 	       <xs:element name="interval" type="Interval"  minOccurs="0" maxOccurs="unbounded"/>
 	       <xs:element name="context" type="Description" minOccurs="0" maxOccurs="1"/>
 	   </xs:sequence>
-	   <xs:attribute name="sampleSize" use="optional"/>
 	</xs:complexType>
 	
 	
