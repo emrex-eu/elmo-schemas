@@ -56,5 +56,14 @@
 		</xs:simpleContent>
 	</xs:complexType>
 
+	<xs:complexType name="LearningOutcome">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute ref="xml:lang"/>
+				<xs:attribute name="href" type="xs:anyURI" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
 </xs:schema>
   
