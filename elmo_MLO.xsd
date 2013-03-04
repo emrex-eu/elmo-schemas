@@ -59,6 +59,7 @@
 					<xs:element name="qualification" type="Qualification" minOccurs="0" maxOccurs="1"/>    
 					<xs:element name="credit" type="Credit" minOccurs="0" maxOccurs="unbounded"/>   
 					<xs:element name="level" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>        
+					<xs:element name="learningOutcome" type="LearningOutcome" minOccurs="0" maxOccurs="unbounded"/> <!-- cf. BS 8581 -->
 					<xs:element name="specifies" type="Specifies" minOccurs="1" maxOccurs="unbounded"/>
 					<xs:element name="hasPart" type="LearningOpportunitySpecificationAssociation" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="objective" type="Description" minOccurs="0" maxOccurs="unbounded"/>
