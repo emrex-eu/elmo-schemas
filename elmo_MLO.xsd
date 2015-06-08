@@ -58,7 +58,7 @@
 					                    
 					<xs:element name="qualification" type="Qualification" minOccurs="0" maxOccurs="1"/>    
 					<xs:element name="credit" type="Credit" minOccurs="0" maxOccurs="unbounded"/>   
-					<xs:element name="level" type="SimpleLiteral" minOccurs="0" maxOccurs="unbounded"/>        
+					<xs:element name="level" type="Level" minOccurs="0" maxOccurs="unbounded"/>        
 					<xs:element name="learningOutcome" type="LearningOutcome" minOccurs="0" maxOccurs="unbounded"/> <!-- cf. BS 8581 -->
 					<xs:element name="specifies" type="Specifies" minOccurs="1" maxOccurs="unbounded"/>
 					<xs:element name="hasPart" type="LearningOpportunitySpecificationAssociation" minOccurs="0" maxOccurs="unbounded"/>
@@ -98,6 +98,7 @@
 					<!-- ELMO Extension -->
 					<xs:element name="engagementHours" type="TypedLiteral" minOccurs="0" maxOccurs="unbounded"/>  
 					<xs:element name="resultDistribution" type="ResultDistribution" minOccurs="0" maxOccurs="1"/>              
+					<xs:element name="shortenedGradingTable" type="ShortenedGradingTable" minOccurs="0" maxOccurs="1"/>              
 				</xs:sequence>
 				            
 			</xs:extension>
@@ -123,7 +124,7 @@
 	<xs:complexType name="Credit">
 		<xs:sequence>
 			<xs:element name="scheme" type="SimpleLiteral" maxOccurs="1" minOccurs="0"/>
-			<xs:element name="level" type="SimpleLiteral" maxOccurs="unbounded" minOccurs="0"/>
+			<xs:element name="level" type="Level" maxOccurs="unbounded" minOccurs="0"/>
 			<xs:element name="value" type="SimpleLiteral" maxOccurs="unbounded" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
