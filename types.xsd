@@ -65,5 +65,80 @@
 		</xs:simpleContent>
 	</xs:complexType>
 	
+	<xs:complexType name="Attachment">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="desc" type="xs:string" use="optional" />
+				<xs:attribute name="name" type="xs:string" use="optional" />
+				<xs:attribute name="contentType" type="xs:string" use="optional" />
+				<xs:attribute name="ref" type="xs:string" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Gender">
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:annotation>
+				 <xs:documentation>Human sex, conforms to ISO/IEC 5218:2004.</xsd:documentation>
+			   </xs:annotation>
+			   <xs:restriction base="xs:integer">
+				 <xs:enumeration value="0">
+				   <xs:annotation>
+					 <xs:documentation>Not known</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+				 <xs:enumeration value="1">
+				   <xs:annotation>
+					 <xs:documentation>Male</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+				 <xs:enumeration value="2">
+				   <xs:annotation>
+					 <xs:documentation>Female</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+				 <xs:enumeration value="9">
+				   <xs:annotation>
+					 <xs:documentation>Not specified</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+			   </xs:restriction>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="Level">
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:annotation>
+				 <xs:documentation>Study levels</xsd:documentation>
+			   </xs:annotation>
+			   <xs:restriction base="xs:integer">
+				 <xs:enumeration value="1">
+				   <xs:annotation>
+					 <xs:documentation>Bachelor student</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+				 <xs:enumeration value="2">
+				   <xs:annotation>
+					 <xs:documentation>Master student</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+				 <xs:enumeration value="3">
+				   <xs:annotation>
+					 <xs:documentation>Ph.D. student</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+				 <xs:enumeration value="4">
+				   <xs:annotation>
+					 <xs:documentation>Any level</xsd:documentation>
+				   </xs:annotation>
+				 </xs:enumeration>
+			   </xs:restriction>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
 </xs:schema>
   

@@ -32,5 +32,12 @@
 		<xs:attribute name="count" use="required"/>
 	</xs:complexType>
 	
+	<xs:complexType name="ShortenedGradingTable">
+		<xs:sequence>
+			   <xs:element name="percentageLower" type="xs:decimal" minOccurs="1" maxOccurs="1"/> 
+			   <xs:element name="percentageEqual" type="xs:decimal" minOccurs="1" maxOccurs="1"/>     
+			   <xs:element name="percentageHigher" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
 	
 </xs:schema>
