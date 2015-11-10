@@ -1,0 +1,103 @@
+<!-- 
+You MUST NOT build your implementation based solely on the example here. You
+MUST consult the official documentation and/or XSD.
+ -->
+<emrex-ncp-elmo-response
+    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/1.0"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/1.0 schema.xsd"
+>
+    <generatedDate>2015-10-31T12:00:00+02:00</generatedDate>
+    <learner>
+        <citizenship>PL</citizenship>
+        <identifier type="nationalIdentifier">83041200000</identifier>
+        <identifier type="someOtherCustomIdentifierType">ABC000000</identifier>
+        <givenNames>Wojciech Łukasz</givenNames>
+        <familyName>Rygielski</familyName>
+        <bday>1983-04-12</bday>
+    </learner>
+    <report>
+        <issuer>
+            <country>PL</country>
+            <identifier type="pic">999572294</identifier>
+            <identifier type="erasmus">PL WARSZAW01</identifier>
+            <identifier type="schac">uw.edu.pl</identifier>
+            <title xml:lang="pl">Uniwersytet Warszawski</title>
+            <title xml:lang="en">University of Warsaw</title>
+            <url>http://www.uw.edu.pl</url>
+        </issuer>
+        <learningOpportunitySpecification>
+            <identifier type="local">1000-217bMRJ</identifier>
+            <title xml:lang="pl">Budowa kompilatorów</title>
+            <title xml:lang="en">Compiler construction</title>
+            <type>Course</type>
+            <subjectArea>11304</subjectArea>
+            <iscedCode>0612</iscedCode>
+            <url>http://example.com/</url>
+            <specifies>
+                <learningOpportunityInstance>
+                    <start>2014-10-01</start>
+                    <date>2015-03-17</date>
+                    <resultLabel>4</resultLabel>
+                    <shortenedGrading>
+                        <percentageLower>62.3</percentageLower>
+                        <percentageEqual>21.8</percentageEqual>
+                        <percentageHigher>15.9</percentageHigher>
+                    </shortenedGrading>
+                    <credit>
+                        <scheme>ects</scheme>
+                        <value>6</value>
+                    </credit>
+                    <languageOfInstruction>pl</languageOfInstruction>
+                </learningOpportunityInstance>
+            </specifies>
+            <hasPart>
+                <learningOpportunitySpecification>
+                    <identifier type="local">2829051</identifier>
+                    <title xml:lang="pl">Wykład</title>
+                    <title xml:lang="en">Lecture</title>
+                    <type>Class</type>
+                    <specifies>
+                        <learningOpportunityInstance>
+                            <engagementHours>30</engagementHours>
+                        </learningOpportunityInstance>
+                    </specifies>
+                </learningOpportunitySpecification>
+            </hasPart>
+            <hasPart>
+                <learningOpportunitySpecification>
+                    <identifier type="local">2829515</identifier>
+                    <title xml:lang="pl">Laboratorium</title>
+                    <title xml:lang="en">Lab classes</title>
+                    <type>Class</type>
+                    <specifies>
+                        <learningOpportunityInstance>
+                            <engagementHours>30</engagementHours>
+                        </learningOpportunityInstance>
+                    </specifies>
+                </learningOpportunitySpecification>
+            </hasPart>
+        </learningOpportunitySpecification>
+        <learningOpportunitySpecification>
+            <!--
+            An example of queer (but perfectly valid) XML markup that clients
+            should be able to parse.
+            -->
+            <title>The importance of &lt;b<![CDATA[r> in HTML]]></title>
+            <specifies>
+                <learningOpportunityInstance>
+                </learningOpportunityInstance>
+            </specifies>
+        </learningOpportunitySpecification>
+        <issueDate>2015-10-31T07:00:00+02:00</issueDate>
+    </report>
+    <attachment>
+        <title xml:lang="en">Transcript of records</title>
+        <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+    </attachment>
+    <attachment>
+        <title xml:lang="en">Another transcript of records</title>
+        <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+    </attachment>
+</emrex-ncp-elmo-response>
