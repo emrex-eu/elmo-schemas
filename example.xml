@@ -1,12 +1,12 @@
-<!-- 
+<!--
 You MUST NOT build your implementation based solely on the example here. You
-MUST consult the official documentation and/or XSD.
- -->
-<emrex-ncp-elmo-response
-    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/1.0"
+MUST consult the official documentation and the schema.xsd file.
+-->
+<elmo
+    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/1.0 schema.xsd"
+    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd"
 >
     <generatedDate>2015-10-31T12:00:00+02:00</generatedDate>
     <learner>
@@ -35,18 +35,43 @@ MUST consult the official documentation and/or XSD.
             <subjectArea>11304</subjectArea>
             <iscedCode>0612</iscedCode>
             <url>http://example.com/</url>
+            <description xml:lang="en">This can contain a multiline description.
+
+This element is of the PlaintextMultilineStringWithOptionalLang type. All description elements are of this type. And this means that EMREX Clients are required to respect its multiline formatting.
+
+NCP implementers can add line breaks (or double line breaks) within this element, and such line breaks should be displayed properly by all the EMREX Clients. However, HTML is not allowed here.
+</description>
             <specifies>
                 <learningOpportunityInstance>
                     <start>2014-10-01</start>
                     <date>2015-03-17</date>
-                    <resultLabel>4</resultLabel>
+                    <academicTerm>
+                        <title xml:lang="en">Winter Semester of 2014</title>
+                        <start>2014-10-01</start>
+                        <end>2015-02-15</end>
+                    </academicTerm>
+                    <resultLabel>4510 points</resultLabel>
                     <shortenedGrading>
                         <percentageLower>62.3</percentageLower>
                         <percentageEqual>21.8</percentageEqual>
                         <percentageHigher>15.9</percentageHigher>
                     </shortenedGrading>
+                    <resultDistribution>
+                        <!--
+                        Artificial grading scheme was used in order to highlight the possibility of
+                        enormous variety of different grading schemes which might be used throughout
+                        different countries and HEIs.
+                        -->
+                        <category count="43" label="1990 and less"/>
+                        <category count="193" label="2000-3999"/>
+                        <category count="198" label="4000-5999"/>
+                        <category count="35" label="6000-7999"/>
+                        <category count="7" label="8000-10000"/>
+                        <description>Some extra information about the description, might include links etc.</description>
+                    </resultDistribution>
                     <credit>
                         <scheme>ects</scheme>
+                        <level>Bachelor</level> <!-- level is optional! -->
                         <value>6</value>
                     </credit>
                     <languageOfInstruction>pl</languageOfInstruction>
@@ -74,6 +99,12 @@ MUST consult the official documentation and/or XSD.
                     <specifies>
                         <learningOpportunityInstance>
                             <engagementHours>30</engagementHours>
+                            <extension>
+                                <!--  This may contain anything you want. But try to avoid it. -->
+                                <element xmlns="http://example.com/schemas/my-elmo-extension">
+                                    ...
+                                </element>
+                            </extension>
                         </learningOpportunityInstance>
                     </specifies>
                 </learningOpportunitySpecification>
@@ -82,7 +113,9 @@ MUST consult the official documentation and/or XSD.
         <learningOpportunitySpecification>
             <!--
             An example of queer (but perfectly valid) XML markup that clients
-            should be able to parse.
+            should be able to parse. Such title MUST be displayed properly (as
+            plaintext, with no line break nor the "CDATA" string) inside the
+            Clients GUIs.
             -->
             <title>The importance of &lt;b<![CDATA[r> in HTML]]></title>
             <specifies>
@@ -91,13 +124,55 @@ MUST consult the official documentation and/or XSD.
             </specifies>
         </learningOpportunitySpecification>
         <issueDate>2015-10-31T07:00:00+02:00</issueDate>
+        <attachment>
+            <title xml:lang="en">Transcript of records</title>
+            <type>Transcript of Records</type>
+            <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        </attachment>
     </report>
     <attachment>
-        <title xml:lang="en">Transcript of records</title>
+        <title xml:lang="en">Some other attachment</title>
+        <type>Certificate of Training</type>
+        <description xml:lang="en">Additional multiline description...</description>
         <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
     </attachment>
     <attachment>
-        <title xml:lang="en">Another transcript of records</title>
+        <title xml:lang="en">Or even more of them</title>
+        <type>Transcript of Records</type>
         <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
     </attachment>
-</emrex-ncp-elmo-response>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <Reference URI="">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                <DigestValue>vKIjYDBEhQxFnLC233qn0rrZ0+I=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>
+            oekgEiYwLKbtEZri6zo5CKgmK/umAS2aNfUsyPQspkGBdP9H0XE+ITOrD7PKVBgZQ5Y56KghaziF
+            48a27hHFcPrvHizPXINlVXo6hwgje1SPM9QzjmdyQrhftUWJvpgaGmC4/r8o1yaPGqnkNoylEVUo
+            wJTWJHaSPcYjNB7eDVY=
+        </SignatureValue>
+        <KeyInfo>
+            <X509Data>
+                <X509SubjectName>O=UiO,L=Oslo,ST=Some-State,C=NO</X509SubjectName>
+                <X509Certificate>
+                    MIIB9TCCAV4CCQDzcL/uks2ttjANBgkqhkiG9w0BAQUFADA/MQswCQYDVQQGEwJOTzETMBEGA1UE
+                    CAwKU29tZS1TdGF0ZTENMAsGA1UEBwwET3NsbzEMMAoGA1UECgwDVWlPMB4XDTE1MDIwNTEzNDE1
+                    MloXDTE4MDUyMDEzNDE1MlowPzELMAkGA1UEBhMCTk8xEzARBgNVBAgMClNvbWUtU3RhdGUxDTAL
+                    BgNVBAcMBE9zbG8xDDAKBgNVBAoMA1VpTzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAsnI3
+                    V1JKOl6Ghgzu5AOSsUFcJfefKP3y4lkVzW18T8AXkLKjNWQxJpW7h7kqeEYpcijAIV/xRMu8vEeb
+                    roadh9joOOD+ePL95VnAxcMxy3SdrGxRJ5RZwNf1l5UBxm416acIR78frlFX2kKz8kz0gmOmqFFe
+                    y3zZm7ZdiKw9fTsCAwEAATANBgkqhkiG9w0BAQUFAAOBgQBn6MlnleclAG/BVF4irljHag7OOopx
+                    TlQzb1V/mR0kYtsr6PZzCTJdwwU5YYWPG2hdqYRzyydlEGid5OPeCVtNQNQG8yKDCYeCS571jSbQ
+                    7Q0n0IR4mv7SeLq537mVBaaftV3HdnyoSLcXQpDep/akUOa8TpPwVg/+2U7TWNGJeQ==
+                </X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+</elmo>

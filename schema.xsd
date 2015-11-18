@@ -2,16 +2,33 @@
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-    targetNamespace="https://github.com/emrex-eu/elmo-schemas/tree/1.0"
-    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/1.0"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:europass="http://europass.cedefop.europa.eu/Europass/V2.0"
     elementFormDefault="qualified"
+
+    targetNamespace="https://github.com/emrex-eu/elmo-schemas/tree/v1"
+    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
+    version="1.0"
 >
-    <xs:import schemaLocation="http://www.w3.org/2001/03/xml.xsd" namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:import
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"
+        namespace="http://www.w3.org/XML/1998/namespace"
+    />
+
+    <xs:import
+        schemaLocation="references/xmldsig-core-schema.xsd"
+        namespace="http://www.w3.org/2000/09/xmldsig#"
+    />
+
+    <xs:import
+        schemaLocation="references/EUROPASS_ISOCountries_V1.1.xsd"
+        namespace="http://europass.cedefop.europa.eu/Europass/V2.0"
+    />
 
     <xs:annotation>
         <xs:documentation>
             This schema describes the XML content returned in EMREX NCP responses. For more
-            information of EMREX, please visit http://emrex.eu/.
+            information on EMREX, please visit http://emrex.eu/.
 
             Status of this document
             =======================
@@ -106,18 +123,21 @@
 
             Please note that the targetNamespace of this schema contains an URL which
             resolves to a GitHub webpage with the content of the XSD file. The URL contains
-            a Git branch name - the version of the schema. The version consists of two
-            numbers, e.g. "1.0".
+            a Git branch name - the *major* version of the schema. Additionally, the
+            schema's version attribute MAY contain a more detailed version string (e.g.
+            "1.7").
 
             If a documentation is being clarified (in a insignificant way), the XSD can be
-            altered without modifying its version number. That is, the URL will not change,
-            but the documentation will.
+            altered without modifying its version number. That is, the neither the namespace
+            nor the version number will change, but the documentation might.
 
             If the schema is changed in a significant way, for example a new element is
-            added, but the change does not break backward compatibility, then the SECOND
-            number of the version string should be incremented.
+            added, but we judge that the change does not break backward compatibility, then
+            the SECOND number of the version string should be incremented. The namespace
+            itself stays the same.
 
-            The FIRST number of the version string will be increased only when backward
+            The FIRST number of the version string (along with the number within the target
+            XML namespace of the schema) will be increased only when major backward
             incompatible changes occur. This MAY happen during the EMREX field trial. After
             the field trial ends, we expect the FIRST number of the version string to stay
             constant.
@@ -130,10 +150,12 @@
         </xs:documentation>
     </xs:annotation>
 
-    <xs:element name="emrex-ncp-elmo-response">
+    <!-- The root element -->
+
+    <xs:element name="elmo">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="generatedDate" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+                <xs:element name="generatedDate" type="xs:dateTime">
                     <xs:annotation>
                         <xs:documentation>
                             The datetime when the file was generated. It SHOULD contain the timezone
@@ -141,7 +163,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="learner" minOccurs="1" maxOccurs="1">
+                <xs:element name="learner">
                     <xs:annotation>
                         <xs:documentation>
                             This describes the student whose achievements we will be describing. One EMREX
@@ -151,7 +173,7 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="citizenship" type="xs:token" minOccurs="0" maxOccurs="1">
+                            <xs:element name="citizenship" type="europass:countryCode" minOccurs="0">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The ISO 3166-1-alpha-2 code of the country the student is a citizen of.
@@ -196,7 +218,7 @@
                                     </xs:simpleContent>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="givenNames" type="xs:token" minOccurs="1" maxOccurs="1">
+                            <xs:element name="givenNames" type="xs:token">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The given names of the student. All NCPs MUST provide it (if it is impossible
@@ -204,7 +226,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="familyName" type="xs:token" minOccurs="1" maxOccurs="1">
+                            <xs:element name="familyName" type="xs:token">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The family name of the student. All NCPs MUST provide it (if it is impossible
@@ -212,7 +234,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="bday" type="xs:date" minOccurs="0" maxOccurs="1">
+                            <xs:element name="bday" type="xs:date" minOccurs="0">
                                 <xs:annotation>
                                     <xs:documentation>
                                         For NCP implementers: The birth date is vital to EMREX and SHOULD be provided.
@@ -232,11 +254,10 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="report" minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="report" minOccurs="1" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
-                            Responses SHOULD contain at least one report. Responses without at least one
-                            report will most probably be discarded by most EMREX Clients.
+                            Responses MUST contain at least one report.
 
                             Please note, that one response may contain multiple reports, issued by
                             different institutions. All of those reports MUST be issued for the same
@@ -252,7 +273,7 @@
                             </xs:documentation>
                         </xs:annotation>
                         <xs:sequence>
-                            <xs:element name="issuer" minOccurs="1" maxOccurs="1">
+                            <xs:element name="issuer">
                                 <xs:annotation>
                                     <xs:documentation>
                                         This element identifies the host institution - the institution at which the
@@ -264,7 +285,7 @@
                                 </xs:annotation>
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="country" type="xs:token" minOccurs="0" maxOccurs="1">
+                                        <xs:element name="country" type="europass:countryCode" minOccurs="0">
                                             <xs:annotation>
                                                 <xs:documentation>
                                                     An ISO 3166-1-alpha-2 code of the country in which the institution is
@@ -324,7 +345,7 @@
                                                 </xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
-                                        <xs:element name="url" type="xs:token" minOccurs="1" maxOccurs="1">
+                                        <xs:element name="url" type="xs:token">
                                             <xs:annotation>
                                                 <xs:documentation>
                                                     The URL of the intitution's web page. It is a required element, because it
@@ -352,7 +373,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="issueDate" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+                            <xs:element name="issueDate" type="xs:dateTime">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The datetime when the report has been issued. It SHOULD contain the timezone
@@ -362,87 +383,55 @@
                                         these reports may be different. This may happen if the NCP does not posses the
                                         most recent data from all the institutions and is responding with cached data.
                                         For most NCP implementations though, all issueDates will be the same as the
-                                        generatedDate included the file header.
+                                        generatedDate included in the file header.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="attachment" type="Attachment" minOccurs="0" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Please note that attachments can be included in multiple places. This is the
+                                        place for those attachments which are related to a *single institution*.
+
+                                        Read the description of the Attachment type for further information.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="attachment" minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="attachment" type="Attachment" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>
-                            Notes for NCP implementers:
+                            Please note that attachments can be included in multiple places. This is the
+                            place for those attachments which are *either unrelated to any institution, or
+                            are related to multiple institutions*.
 
-                            The attachements MUST contain a human-readable version of all the crucial data
-                            contained within the reports. This also includes all the data which may help to
-                            prove the identity of the student (such as birth date). You MAY include all
-                            this data in a single file, or you MAY split it into several ones (e.g. one PDF
-                            per report) - we're leaving this decision to individual NCP implementers.
-
-                            If is recommended for the attachments to be in PDF format. It is also
-                            recommended for the PDF files to be signed (with a software certificate).
-
-                            If you wonder why attachements are required, then you should remember, that
-                            some EMREX Clients MAY ignore all learningOpportunitySpecification elements
-                            (even if they are 100% valid) and simply choose to forward the attached
-                            transcript of records to a staff member for manual processing (this is also a
-                            valid EMREX use case and all NCPs need to support it).
-
-                            Try to order your attachments by importance (we'll leave it for the implementer
-                            to decide which attachments are more important).
-
-                            Also, try to keep them lightweight - some EMREX Clients will need to store your
-                            NCP responses for some time. Take their storage space into account when you
-                            think about embedding logos or fonts inside your PDFs!
-
-                            Notes for EMREX Client implementers:
-
-                            You will probably need these attachments in case when something goes wrong, and
-                            you want this response to be imported or verified manually.
-
-                            You MAY also use the attachment to show a human-readable "preview" of the ELMO
-                            data for the student.
+                            Read the description of the Attachment type for further information.
                         </xs:documentation>
                     </xs:annotation>
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="title" type="TokenWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        Title of the attachment, e.g. "Transcript of records". May be provided in
-                                        multiple languages. This is not required, but recommended - it might be used
-                                        by EMREX Clients for example when displaying a list of attachments.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                            <xs:element name="content" minOccurs="1" maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        The content of the attachment encoded using a data URI scheme. E.g.
-                                        "data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2..."
-
-                                        Notes for EMREX Client implementers:
-
-                                        For security reasons, you may consider checking the content type of the file
-                                        before displaying it in the browser (there's a possibility of XSS attacks if
-                                        NCP was compromised). It might be safer to force the browser to save all
-                                        non-PDF attachments instead of displaying them.
-
-                                        If you want to allow the users to download the attachment, then you might need
-                                        to dynamically generate the name for the file - the extension can be determined
-                                        from the content type use in the data URI.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
-                        </xs:sequence>
-                    </xs:complexType>
+                </xs:element>
+                <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
+                <xs:element ref="ds:Signature" minOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Every NCP response MUST be signed.
+                        </xs:documentation>
+                    </xs:annotation>
                 </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <!-- Common types with simple content. -->
+
     <xs:complexType name="TokenWithOptionalLang">
+        <xs:annotation>
+            <xs:documentation>
+                A xs:token value with at optional xml:lang attribute. It is used in places
+                where NCP developers may provide the name of an entity in multiple languages.
+            </xs:documentation>
+        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:token">
                 <xs:attribute ref="xml:lang" use="optional" />
@@ -450,10 +439,151 @@
         </xs:simpleContent>
     </xs:complexType>
 
+    <xs:complexType name="PlaintextMultilineStringWithOptionalLang">
+        <xs:annotation>
+            <xs:documentation>
+                This is very similar to TokenWithOptionalLang, but it inherits from xs:string
+                (instead of xs:token), and it MAY contain basic whitespace formatting, such
+                us line breaks and double line breaks (for spliting paragraphs). The values
+                still must be in plain text though (no HTML is allowed).
+
+                A note for EMREX Client implementers:
+
+                Whenever you want to display the values read from a field of this type, you
+                SHOULD make sure that the end user will see the line breaks in the right
+                places. E.g. use your equivalent of the well known `nl2br` function.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="optional" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- Common types with complex content. -->
+
+    <xs:complexType name="CustomExtensionsContainer">
+        <xs:annotation>
+            <xs:documentation>
+                This is the type of "extension" elements. Extension elements may contain any
+                elements, as long as they are from a different namespace. NCP implementers may
+                use them to include additional metadata in various places of the XML document.
+                The content of such extensions is not documented within this schema.
+
+                Please note that it *might* be possible to extend the "official" EMREX NCP
+                response schema. If you're an NCP implementer and you find the namespace lacking
+                some data which you think might be useful for EMREX Clients, then please try to
+                contact EMREX representative and/or the current owner of the
+                https://github.com/emrex-eu/elmo-schemas/ repository.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+        </xs:sequence>
+        <xs:anyAttribute/>
+    </xs:complexType>
+
+    <xs:complexType name="Attachment">
+        <xs:annotation>
+            <xs:documentation>
+                Notes for NCP implementers:
+
+                The attachements MUST contain a human-readable version of all the crucial data
+                contained within the reports. This also includes all the data which may help to
+                prove the identity of the student (such as birth date). You MAY include all
+                this data in a single file, or you MAY split it into several ones (e.g. one PDF
+                per report) - we're leaving this decision to individual NCP implementers.
+
+                If is recommended for the attachments to be in PDF format. It is also
+                recommended for the PDF files to be signed (with a software certificate).
+
+                If you wonder why attachements are required, then you should remember, that
+                some EMREX Clients MAY ignore all learningOpportunitySpecification elements
+                (even if they are 100% valid) and simply choose to forward the attached
+                transcript of records to a staff member for manual processing (this is also a
+                valid EMREX use case and all NCPs need to support it).
+
+                Try to order your attachments by importance (we'll leave it for the implementer
+                to decide which attachments are more important).
+
+                Also, try to keep them lightweight - some EMREX Clients will need to store your
+                NCP responses for some time. Take their storage space into account when you
+                think about embedding logos or fonts inside your PDFs!
+
+                Notes for EMREX Client implementers:
+
+                You will probably need these attachments in case when something goes wrong, and
+                you want this response to be imported or verified manually.
+
+                You MAY also use the attachment to show a human-readable "preview" of the ELMO
+                data for the student.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="title" type="TokenWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Title of the attachment, e.g. "Transcript of records". May be provided in
+                        multiple languages. This is not required, but recommended - it might be used
+                        by EMREX Clients for example when displaying a list of attachments.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="type" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        Type of the attachment. SHOULD be included if any type from the enclosed
+                        enumaration applies to the content of the attachment. If the none of the
+                        predefined values apply then this element SHOULD be skipped.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="Diploma Supplement"></xs:enumeration>
+                        <xs:enumeration value="Transcript of Records"></xs:enumeration>
+                        <xs:enumeration value="Letter of Nomination"></xs:enumeration>
+                        <xs:enumeration value="Certificate of Training"></xs:enumeration>
+                        <xs:enumeration value="Learning Agreement"></xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        An optional detailed description of the attachment. Avoid redundancy - you
+                        SHOULD NOT include the description if its value is already included in the
+                        title element.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="content">
+                <xs:annotation>
+                    <xs:documentation>
+                        The content of the attachment encoded using a data URI scheme. E.g.
+                        "data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2..."
+
+                        Notes for EMREX Client implementers:
+
+                        For security reasons, you may consider checking the content type of the file
+                        before displaying it in the browser (there's a possibility of XSS attacks if
+                        NCP was compromised). It might be safer to force the browser to save all
+                        non-PDF attachments instead of displaying them.
+
+                        If you want to allow the users to download the attachment, then you might need
+                        to dynamically generate the name for the file - the extension can be determined
+                        from the content type use in the data URI.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="LearningOpportunitySpecification">
         <xs:annotation>
             <xs:documentation>
-                This describes a single "branch in the learning tree": One "parent" node along
+                This describes a single "branch" of the "LOS tree": One "parent" node along
                 with all its descendants (via the hasPart elements).
 
                 Each report element contains a set of such trees (a forest). For example, a
@@ -542,7 +672,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="type" minOccurs="0" maxOccurs="1">
+            <xs:element name="type" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         The type of the node.
@@ -555,7 +685,7 @@
                         their types.
 
                         You SHOULD NOT include the type if the type of your entity does not seem to
-                        be match any of the types described in the enumeration below. You might also
+                        match any of the types described in the enumeration below. You might also
                         want to contact us so we may include such new types in the next schema version.
 
                         Make sure that the proper structure is followed. All types can be put on the
@@ -616,21 +746,21 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="subjectArea" type="xs:token" minOccurs="0" maxOccurs="1">
+            <xs:element name="subjectArea" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         The Erasmus subject area code of the course.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="iscedCode" type="xs:token" minOccurs="0" maxOccurs="1">
+            <xs:element name="iscedCode" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         The ISCED code of the course or degree.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="url" type="xs:token" minOccurs="0" maxOccurs="1">
+            <xs:element name="url" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         The URL of the entity's web page (with the description of the course or
@@ -638,7 +768,14 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="specifies" minOccurs="1" maxOccurs="1">
+            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        An optional description of the degree/course/class.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="specifies">
                 <xs:annotation>
                     <xs:documentation>
                         Just a wrapper for learningOpportunityInstance (we're trying to be
@@ -657,31 +794,66 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="start" type="xs:date" minOccurs="0" maxOccurs="1">
+                                    <xs:element name="start" type="xs:date" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
                                                 The date on which the student started studying this course/degree/class
                                                 (may contain a time zone).
 
-                                                A note for NCP implementers: If the exact date cannot be determined, please
-                                                try to include an approximate date. Some EMREX Clients may be unable to
-                                                import the data automatically if this is missing.
+                                                A note for NCP implementers: Usually this will match the beginning of one of
+                                                the academic terms.
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="date" type="xs:date" minOccurs="0" maxOccurs="1">
+                                    <xs:element name="date" type="xs:date" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                The date on which the student finished studying (prefferably, the date when
-                                                the ECTS credits were awarded).
+                                                The date on which the student finished studying (may contain a time zone). It
+                                                doesn't necessarilly need to match the end of the academic term. Prefferably,
+                                                this should be the date when the student has passed his final exam.
 
                                                 A note for NCP implementers: If the exact date cannot be determined, please
-                                                try to include an approximate date. Some EMREX Clients may be unable to
-                                                import the data automatically if this is missing.
+                                                try to include an approximate date, e.g. the last day of the academic term.
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="resultLabel" type="xs:token" minOccurs="0" maxOccurs="1">
+                                    <xs:element name="academicTerm" minOccurs="0">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                Optional (since degrees span across many academic terms), but *strongly
+                                                recommended* in case of courses.
+
+                                                Describes the academic term in which the course took place.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="title" type="TokenWithOptionalLang" maxOccurs="unbounded">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            The displayed name of the academic term, in multiple languages. NCPs SHOULD
+                                                            provide at least the name in English.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                                <xs:element name="start" type="xs:date">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            SHOULD match the first day of the academic term (may contain a time zone).
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                                <xs:element name="end" type="xs:date">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            SHOULD match the last day of the academic term (may contain a time zone).
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="resultLabel" type="xs:token" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
                                                 The label of the final grade awarded for the student. This SHOULD contain the
@@ -695,7 +867,7 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="shortenedGrading" minOccurs="0" maxOccurs="1">
+                                    <xs:element name="shortenedGrading" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
                                                 Optional. Might be provided by some NCPs.
@@ -736,6 +908,59 @@
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
+                                    <xs:element name="resultDistribution" minOccurs="0">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                Optional. Might be provided by some NCPs.
+
+                                                At first, this element might seem similar to the shortenedGrading element, but
+                                                it serves a different purpose. It describes a histogram of results achieved by
+                                                all the students of this course instance. However, since the ranges of the
+                                                histogram are artificial labels only, and they may contain ranges (e.g.
+                                                "10-20"), the EMREX Client cannot easily determine in which category the result
+                                                of the learner comes into.
+
+                                                If provided, then it should contain the distribution of results of all the
+                                                students (including the ones that have failed the course).
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="category" maxOccurs="unbounded">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            This describes a single range within the histogram.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                        <xs:attribute name="label" type="xs:token" use="required">
+                                                            <xs:annotation>
+                                                                <xs:documentation>
+                                                                    The label of the histogram range. Should correspond to the grading scheme
+                                                                    which have been used. E.g. "C", or "20-30". If possible, the label should
+                                                                    be understandable in any language. If not, you should try to use English.
+                                                                </xs:documentation>
+                                                            </xs:annotation>
+                                                        </xs:attribute>
+                                                        <xs:attribute name="count" type="xs:nonNegativeInteger" use="required">
+                                                            <xs:annotation>
+                                                                <xs:documentation>
+                                                                    The number of students whose grades fall within that category.
+                                                                </xs:documentation>
+                                                            </xs:annotation>
+                                                        </xs:attribute>
+                                                    </xs:complexType>
+                                                </xs:element>
+                                                <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Optional additional description of the histogram.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
                                     <xs:element name="credit" minOccurs="0" maxOccurs="unbounded">
                                         <xs:annotation>
                                             <xs:documentation>
@@ -765,13 +990,15 @@
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
-                                                <!--
                                                 <xs:element name="level" minOccurs="0">
-                                                    WRTODO - is this still needed after the credit element was moved?
-                                                    Can someone provide the docs for this? I'm not sure how to do this properly.
-                                                    Bachelor, Master, Ph.D, Any
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:token">
+                                                            <xs:enumeration value="Bachelor"/>
+                                                            <xs:enumeration value="Master"/>
+                                                            <xs:enumeration value="PhD"/>
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
                                                 </xs:element>
-                                                -->
                                                 <xs:element name="value" type="xs:decimal" minOccurs="0">
                                                     <xs:annotation>
                                                         <xs:documentation>
@@ -798,13 +1025,14 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
+                                    <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>
+                        <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-
             <xs:element name="hasPart" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
@@ -826,6 +1054,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
