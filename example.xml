@@ -50,7 +50,7 @@ NCP implementers can add line breaks (or double line breaks) within this element
                         <start>2014-10-01</start>
                         <end>2015-02-15</end>
                     </academicTerm>
-                    <resultLabel>4510 points</resultLabel>
+                    <resultLabel>45.1</resultLabel>
                     <shortenedGrading>
                         <percentageLower>62.3</percentageLower>
                         <percentageEqual>21.8</percentageEqual>
@@ -58,15 +58,15 @@ NCP implementers can add line breaks (or double line breaks) within this element
                     </shortenedGrading>
                     <resultDistribution>
                         <!--
-                        Artificial grading scheme was used in order to highlight the possibility of
-                        enormous variety of different grading schemes which might be used throughout
-                        different countries and HEIs.
+                        Artificial (and exaggeratedly complex) grading scheme was used in this example
+                        in order to highlight the possibility of the enormous variety of different
+                        grading schemes which might be used throughout different countries and HEIs.
                         -->
-                        <category count="43" label="1990 and less"/>
-                        <category count="193" label="2000-3999"/>
-                        <category count="198" label="4000-5999"/>
-                        <category count="35" label="6000-7999"/>
-                        <category count="7" label="8000-10000"/>
+                        <category count="43" label="Less than 20"/>
+                        <category count="193" label="20-39.9"/>
+                        <category count="198" label="40-59.9"/>
+                        <category count="35" label="60-79.9"/>
+                        <category count="7" label="80-100"/>
                         <description>Some extra information about the description, might include links etc.</description>
                     </resultDistribution>
                     <credit>
@@ -120,6 +120,15 @@ NCP implementers can add line breaks (or double line breaks) within this element
             <title>The importance of &lt;b<![CDATA[r> in HTML]]></title>
             <specifies>
                 <learningOpportunityInstance>
+                    <resultLabel>C</resultLabel>
+                    <resultDistribution>
+                        <category count="3" label="F"/>
+                        <category count="92" label="E"/>
+                        <category count="98" label="D"/>
+                        <category count="135" label="C"/>
+                        <category count="37" label="B"/>
+                        <category count="7" label="A"/>
+                    </resultDistribution>
                 </learningOpportunityInstance>
             </specifies>
         </learningOpportunitySpecification>
