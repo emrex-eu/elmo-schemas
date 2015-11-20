@@ -587,25 +587,26 @@
                 with all its descendants (via the hasPart elements).
 
                 Each report element contains a set of such trees (a forest). For example, a
-                report may contain a set of degrees, and each of the degrees may contain a
-                set of courses. But it is also valid for the report to contain only the courses
-                (without the degrees), or a mixture of some degrees and some courses unbound to
-                any degree.
+                report may contain a set of degree programmes, and each of these programme may
+                contain a set of courses. But it is also valid for the report to contain only
+                the courses (without the degree programmes), or a mixture of some programmes
+                alongside some seperate courses (unbound to any degree programme).
 
                 In theory the depth of such tree is unlimited, but in practice no more than
                 4 levels are usually reached. Each level has an OPTIONAL type, and these types
                 (if given) SHOULD follow a logical structure - in order of their depth, these
-                would be: "Degree", "Module", "Course" and "Class". That is, it is valid to
-                include a "Course" with a "Degree" parent, but it would be invalid to include
-                them the other way around.
+                would be: "Degree programme", "Module", "Course" and "Class". That is, it is
+                valid to include a "Course" with a "Degree programme" parent, but it would be
+                invalid to include them the other way around.
 
 
                 Notes for NCP implementers
                 ==========================
 
-                The NCP implementations SHOULD allow the student to select a subset of degrees
-                or courses before generating the response. (The EMREX Clients won't be able to
-                know if the student has exported all of his courses, or only a couple of them.)
+                The NCP implementations SHOULD allow the student to select a subset of degree
+                programmes or courses before generating the response. (The EMREX Clients won't
+                be able to know if the student has exported all of his courses, or only a
+                couple of them.)
 
                 The report MUST contain only the completed courses - the ones which the student
                 has passed. You MUST NOT include failed courses in the NCP response.
@@ -661,7 +662,8 @@
             <xs:element name="title" type="TokenWithOptionalLang" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
-                        The name(s) of the node (the title of a degree title, or the name of a course).
+                        The name(s) of the node (the title of a degree programme, or the name of a
+                        course, etc.).
 
                         Note for NCP implementers:
 
@@ -703,42 +705,51 @@
                 </xs:annotation>
                 <xs:simpleType>
                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="Degree">
+                        <xs:enumeration value="Degree Programme">
                             <xs:annotation>
                                 <xs:documentation>
-                                    If given then it means that this node describes a degree (a study programme).
-                                    Degrees should not have a parent and should contain only Modules or Courses
-                                    as their descendants. (We believe that in some cases, it is possible that
-                                    they MAY also contain other Degrees.)
+                                    A study programme. Finalizing a study programme ends with a degree (e.g.
+                                    Bachelor degree, Master degree, etc.).
+
+                                    "Degree programme"s should not have a parent and should contain only "Module"s
+                                    or "Course"s as their descendants. (However, we have some reason to believe
+                                    that in some rare cases, it is possible that they MAY also contain other
+                                    "Degree programme"s.)
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="Module">
                             <xs:annotation>
                                 <xs:documentation>
-                                    If given then it means that this node describes a module (a set of courses).
-                                    Module may have a Degree parent, and should contain Courses only.
+                                    A group or collection of courses.
+
+                                    "Module"s may have a "Degree programme" parent, and should contain "Course"s
+                                    only.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="Course">
                             <xs:annotation>
                                 <xs:documentation>
-                                    If given then it means that this node describes a course. Course may have a
-                                    Degree or a Module parent, and may contain Classes.
+                                    In EMREX we define "Course" as the *smallest* entity for the students to be
+                                    able to gain ECTS credits from.
+
+                                    A "Course" may have a "Degree programme" or a "Module" as a parent, and should
+                                    contain "Class"es.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="Class">
                             <xs:annotation>
                                 <xs:documentation>
-                                    If given then it means that this node describes a class. Classes should have a
-                                    Course parent, and - if they contain any children - then these children should
-                                    NOT have a type.
+                                    A single education element a course consists of (like lecture, classes etc.).
+
+                                    "Classe"s should have a "Course" ancestor, and - if they contain any children -
+                                    then these children should not have any type.
 
                                     If there are many "types of classes" in the NCP system, then such types MAY be
-                                    further described in the node title (e.g. "Lecture classes" or "Laboratory
-                                    classes"). The NCP response format does not currently provide any enumeration
+                                    further described in the node title (e.g. "Lecture class" or "Laboratory
+                                    class"). The NCP response format does not currently provide any enumeration
                                     for such subtypes though.
                                 </xs:documentation>
                             </xs:annotation>
@@ -756,7 +767,7 @@
             <xs:element name="iscedCode" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
-                        The ISCED code of the course or degree.
+                        The ISCED code of the course or programme.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -764,14 +775,14 @@
                 <xs:annotation>
                     <xs:documentation>
                         The URL of the entity's web page (with the description of the course or
-                        degree).
+                        degree programme).
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
-                        An optional description of the degree/course/class.
+                        An optional description of the programme/course/class.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -787,9 +798,10 @@
                         <xs:element name="learningOpportunityInstance">
                             <xs:annotation>
                                 <xs:documentation>
-                                    Whereas the "learningOpportunitySpecification" element describes a Degree or
-                                    Course by itself, this element tells us more of the relation between the Degree
-                                    or Course and our "learner" (e.g. the grades and credits achieved).
+                                    While the "learningOpportunitySpecification" element describes a "Degree
+                                    programme" (or a "Course", etc.) by itself, this element tells us more of the
+                                    relation between such programme (or course, etc.) and our "learner" (which
+                                    includes student's grades, credits, and other achievements).
                                 </xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
@@ -797,7 +809,7 @@
                                     <xs:element name="start" type="xs:date" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                The date on which the student started studying this course/degree/class
+                                                The date on which the student started studying this learning opportunity
                                                 (may contain a time zone).
 
                                                 A note for NCP implementers: Usually this will match the beginning of one of
@@ -820,10 +832,13 @@
                                     <xs:element name="academicTerm" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                Optional (since degrees span across many academic terms), but *strongly
-                                                recommended* in case of courses.
-
                                                 Describes the academic term in which the course took place.
+
+                                                A note for NCP implementers: You SHOULD include this element for "Course"-type
+                                                learning opportunities (EMREX's "Course" entities *always* span over a single
+                                                academic term). You SHOULD NOT include the academicTerm element for "Degree
+                                                Programme"s, or any other learning opportunities which span over multiple
+                                                terms.
                                             </xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
@@ -856,8 +871,8 @@
                                     <xs:element name="resultLabel" type="xs:token" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                The label of the final grade awarded for the student. This SHOULD contain the
-                                                same value as the one printed in the official documents in the NCP country.
+                                                The final grade awarded for the student. This SHOULD contain the same value as
+                                                the one printed in the official documents in the NCP country.
 
                                                 A note for EMREX Client implementers: You MUST be prepared for the resultLabel
                                                 to NOT be present. Some NCP servers may not actually keep the grades, so they
@@ -971,8 +986,8 @@
 
                                                 If this tree node contains ECTS credits earned, then all of its descendants
                                                 and ancestors MUST NOT. E.g. if the student has been given credits for
-                                                completing a course, he/she should not be given the same credits *again* for
-                                                completing the degree which this course has been a part of.
+                                                completing a course, he/she should not be given the same credits "again" for
+                                                completing the degree programme which this course has been a part of.
                                             </xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
