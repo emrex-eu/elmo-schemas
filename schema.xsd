@@ -33,10 +33,20 @@
             Status of this document
             =======================
 
-            This is a DRAFT. Please check the Git tags below to find out if any official
-            version of the schema has already been released:
+            This schema has been ACCEPTED by all the partners. It has been agreed that:
+
+            * All EMREX NCP servers MUST respond with a file conforming to this schema.
+            * All future versions of this schema MUST be backward-compatible with the 1.0
+              version. (See the versioning and backward-compatibility sections below.)
+
+            The list of all the officially released schema versions can be found here:
 
             https://github.com/emrex-eu/elmo-schemas/releases
+
+            Usually you should be using the latest version of the schema (which MUST be
+            backward compatible with the 1.0 version). It can be found here:
+
+            https://github.com/emrex-eu/elmo-schemas/tree/v1
 
 
             Relationship with the ELMO schema
@@ -63,11 +73,7 @@
             (NCP implementers - the developers who *generate* the EMREX NCP response file.)
 
             Before you start implementing, be sure that you are reading the most recent
-            version of the schema - please see the versioning note below.
-
-            When upgrading your NCP server to a newer version of the schema, you MUST use
-            the newer XML namespace (all EMREX Clients are required to support such changes
-            in namespaces).
+            version of the schema! See status and versioning sections.
 
             Most of the elements described in this schema are marked as optional, but they
             are *strongly recommended*. Even for the vital elements, we allow them to be
@@ -101,21 +107,24 @@
             processing. The PDF attachments (documented below) should be of use in such
             cases.
 
-            You MUST be prepared to receive a newer version of the NCP response than you
-            were originally programming against. If you are implementing your client using
-            the Nth version of the schema, you MUST be prepared to receive the N+1st
-            version at any time. Compatibility can be easily achieved if both EMREX Client
-            implementers and the designers of the N+1st schema format follow some basic
-            rules:
 
-            - EMREX Client implementers MUST ignore all unknown elements and attributes,
-              and they MUST be prepared for XML namespace to be changed. More rules will
-              apply in regard to particular schema elements (described below).
+            Backward-compatibility policy
+            =============================
+
+            If you are implementing your client using the Nth version of the schema, you
+            MUST be prepared to receive the N+1st version at any time. The newer version of
+            the schema WILL be backward-compatible, but both sides MUST adhere to the
+            following rules:
+
+            - EMREX Client implementers MUST ignore all unknown elements and attributes.
 
             - Schema designers must change the existing elements in a backward-compatible
               manner. If it it impossible to upgrade an element without breaking backward
               compatibility, then a new element should be added (while preserving the old
               one - for the sake of older Clients).
+
+            - More backward-compatibility rules may apply in regard to particular schema
+              elements. You MUST read all the annotations for each of the elements.
 
 
             A general note on schema versioning
@@ -127,25 +136,29 @@
             schema's version attribute MAY contain a more detailed version string (e.g.
             "1.7").
 
-            If a documentation is being clarified (in a insignificant way), the XSD can be
-            altered without modifying its version number. That is, the neither the namespace
-            nor the version number will change, but the documentation might.
+            * If a documentation is being clarified (in a insignificant way), the XSD can
+              be altered without modifying its version number.
 
-            If the schema is changed in a significant way, for example a new element is
-            added, but we judge that the change does not break backward compatibility, then
-            the SECOND number of the version string should be incremented. The namespace
-            itself stays the same.
+            * If the schema is changed in a significant way, for example a new element is
+              added, but the change does not break backward compatibility, then the SECOND
+              number of the version string MUST be incremented. (The namespace itself is
+              not changed.)
 
-            The FIRST number of the version string (along with the number within the target
-            XML namespace of the schema) will be increased only when major backward
-            incompatible changes occur. This MAY happen during the EMREX field trial. After
-            the field trial ends, we expect the FIRST number of the version string to stay
-            constant.
+            * The FIRST number of the version string (along with the number within the
+              target XML namespace of the schema) will be increased ONLY if major backward
+              incompatible changes occur. This SHOULD NOT EVER HAPPEN (especially after
+              the EMREX trial is finished).
+
+            In other words, we expect the major version of the schema to stay "1" forever,
+            and we do not expect any backward-incompatible changes to occur after 1.0
+            schema version is released.
 
             Also note, that some future versions of the schema may also use a different
             GitHub project name in their namespace. As one EU project ends, and it is being
             continued by some other EU project, the ownership of the GitHub project MAY
-            change. Older links WILL still redirect to the same Git commits though:
+            change. However, the namespace itself WILL NOT change. GitHub's redirect
+            features can be used in such cases:
+
             https://github.com/blog/1508-repository-redirects-are-here
         </xs:documentation>
     </xs:annotation>
@@ -1036,10 +1049,10 @@
                                                 Recommended, especially for courses and/or classes. An ISO 639-1 code of the
                                                 language which has been used as the primary language for teaching the learner
                                                 during the classes. E.g. "pl" if the course was instructed/conducted in Polish.
-                                                
+
                                                 A note for NCP implementers: This MUST be a single language. If multiple
                                                 languages were used, attempt to select the primary one. If you cannot select a
-                                                single primary language, then you MUST NOT include this element at all. 
+                                                single primary language, then you MUST NOT include this element at all.
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
