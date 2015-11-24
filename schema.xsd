@@ -412,10 +412,16 @@
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
-                <xs:element ref="ds:Signature" minOccurs="1">
+                <xs:element ref="ds:Signature">
                     <xs:annotation>
                         <xs:documentation>
-                            Every NCP response MUST be signed.
+                            Every NCP response MUST be signed with xmldsig-core2 enveloped signature. The
+                            ds:SignedInfo element MUST contain a single ds:Reference with an empty URI. The
+                            key used by the NCP for signing MUST match the key which has been previously
+                            published in EMREG (for this particular NCP). The ds:Signature element SHOULD
+                            contain the copy of the its certficate in the ds:KeyInfo element.
+
+                            All NCP responses which do not conform to the "MUSTs" above SHOULD be discarded.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -495,8 +501,8 @@
                 this data in a single file, or you MAY split it into several ones (e.g. one PDF
                 per report) - we're leaving this decision to individual NCP implementers.
 
-                If is recommended for the attachments to be in PDF format. It is also
-                recommended for the PDF files to be signed (with a software certificate).
+                The attachments SHOULD be in PDF format. All other types of attachments MAY
+                be ignored by the EMREX Clients.
 
                 If you wonder why attachements are required, then you should remember, that
                 some EMREX Clients MAY ignore all learningOpportunitySpecification elements
@@ -516,7 +522,7 @@
                 You will probably need these attachments in case when something goes wrong, and
                 you want this response to be imported or verified manually.
 
-                You MAY also use the attachment to show a human-readable "preview" of the ELMO
+                You MAY also use the attachment to view a human-readable "preview" of the ELMO
                 data for the student.
             </xs:documentation>
         </xs:annotation>
@@ -744,7 +750,7 @@
                                 <xs:documentation>
                                     A single education element a course consists of (like lecture, classes etc.).
 
-                                    "Classe"s should have a "Course" ancestor, and - if they contain any children -
+                                    "Class"es should have a "Course" ancestor, and - if they contain any children -
                                     then these children should not have any type.
 
                                     If there are many "types of classes" in the NCP system, then such types MAY be
@@ -1027,15 +1033,20 @@
                                     <xs:element name="languageOfInstruction" type="xs:token" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                Recommended. For courses or classes. An ISO 639-1 code of the language which
-                                                has been used during the classes. E.g. "pl".
+                                                Recommended, especially for courses and/or classes. An ISO 639-1 code of the
+                                                language which has been used as the primary language for teaching the learner
+                                                during the classes. E.g. "pl" if the course was instructed/conducted in Polish.
+                                                
+                                                A note for NCP implementers: This MUST be a single language. If multiple
+                                                languages were used, attempt to select the primary one. If you cannot select a
+                                                single primary language, then you MUST NOT include this element at all. 
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                     <xs:element name="engagementHours" type="xs:decimal" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                Recommended. For courses or classes. The number of hours the student has spent
+                                                Recommended. For courses or classes. The number of hours the student had spent
                                                 on attending the classes.
                                             </xs:documentation>
                                         </xs:annotation>
