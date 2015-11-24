@@ -8,7 +8,6 @@
 
     targetNamespace="https://github.com/emrex-eu/elmo-schemas/tree/v1"
     xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
-    version="1.0"
 >
     <xs:import
         schemaLocation="http://www.w3.org/2001/03/xml.xsd"
@@ -130,14 +129,23 @@
             A general note on schema versioning
             ===================================
 
+            We follow the "Semantic Versioning Specification" in our releases:
+            
+            http://semver.org/
+            
             Please note that the targetNamespace of this schema contains an URL which
             resolves to a GitHub webpage with the content of the XSD file. The URL contains
-            a Git branch name - the *major* version of the schema. Additionally, the
-            schema's version attribute MAY contain a more detailed version string (e.g.
-            "1.7").
+            a Git branch name - the *major* version of the schema:
+            
+            https://github.com/emrex-eu/elmo-schemas/tree/v1
+            
+            Additionally, we release new versions of the schema as Git tags. Every
+            version number consists of three parts (X.Y.Z) which conform to the Semantic
+            Versioning Specification. In particular:
 
             * If a documentation is being clarified (in a insignificant way), the XSD can
-              be altered without modifying its version number.
+              be altered in the master branch. Periodically, such changes are merged to
+              the v1 branch and the THIRD number of the version string is then incremented.
 
             * If the schema is changed in a significant way, for example a new element is
               added, but the change does not break backward compatibility, then the SECOND
@@ -150,7 +158,7 @@
               the EMREX trial is finished).
 
             In other words, we expect the major version of the schema to stay "1" forever,
-            and we do not expect any backward-incompatible changes to occur after 1.0
+            and we do not expect any backward-incompatible changes to occur after 1.0.0
             schema version is released.
 
             Also note, that some future versions of the schema may also use a different
