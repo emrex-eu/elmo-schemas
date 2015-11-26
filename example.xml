@@ -1,13 +1,26 @@
 <!--
-You MUST NOT build your implementation based solely on the example here. You
-MUST consult the official documentation and the schema.xsd file.
+
+Important notes:
+
+1. You MUST NOT build your implementation based solely on the example here. You
+   MUST consult the official documentation and the schema.xsd file.
+
+2. In order for this file to pass automatic validation you need to:
+
+   - Keep the proper schema.xsd in the same directory,
+   
+   OR:
+   
+   - Change "schema.xsd" in the "xsi:schemaLocation" below to:
+     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd"
+
 -->
 <elmo
     xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        https://github.com/emrex-eu/elmo-schemas/tree/v1 https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd
+        https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd
     "
 >
     <generatedDate>2015-10-31T12:00:00+02:00</generatedDate>
