@@ -47,8 +47,8 @@ Important notes:
             <title xml:lang="pl">Budowa kompilatorów</title>
             <title xml:lang="en">Compiler construction</title>
             <type>Course</type>
-            <subjectArea>11304</subjectArea>
-            <iscedCode>0612</iscedCode>
+            <classification type="subjectArea">11304</classification>
+            <classification type="isced-f">0612</classification>
             <url>http://example.com/</url>
             <description xml:lang="en">This can contain a multiline description.
 

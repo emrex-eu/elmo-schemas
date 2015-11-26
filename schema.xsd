@@ -783,16 +783,55 @@
             <xs:element name="subjectArea" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
-                        The Erasmus subject area code of the course.
+                        DEPRECATED in 1.1.0, will be removed in version 2.0.0. See here for details:
+                        https://github.com/emrex-eu/elmo-schemas/issues/3
+
+                        This element was used for Erasmus subject area code of the course.
+                        However, it has been deprecated in favor of the new `classification` element.
+                        Please use the `classification` element instead.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="iscedCode" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
-                        The ISCED code of the course or programme.
+                        DEPRECATED in 1.1.0, will be removed in version 2.0.0. See here for details:
+                        https://github.com/emrex-eu/elmo-schemas/issues/3
+
+                        This element was used for ISCED code of the course. However, it was unclear
+                        which ISCED *type* this would be, and it has been deprecated in favor of the new
+                        `classification` element. Please use the `classification` element instead.
                     </xs:documentation>
                 </xs:annotation>
+            </xs:element>
+            <xs:element name="classification" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Learning opportunities may be classified using various classification
+                        identifiers (like ISCED). This element lets NCP developers define all such
+                        classifications.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:token">
+                            <xs:attribute name="type" type="xs:token" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        If applicable, you SHOULD use one of the following predefined type identifiers:
+
+                                        "subjectArea" - when you use this type, the value should contain the Erasmus
+                                            subject area code of the course.
+
+                                        WRTODO - more codes? which of them apply to courses and which to degree programmes?
+
+                                        You can also have any number of custom types.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
             </xs:element>
             <xs:element name="url" type="xs:token" minOccurs="0">
                 <xs:annotation>
