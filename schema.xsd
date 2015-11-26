@@ -783,16 +783,59 @@
             <xs:element name="subjectArea" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
-                        The Erasmus subject area code of the course.
+                        DEPRECATED in 1.1.0, will be removed in version 2.0.0. See here for details:
+                        https://github.com/emrex-eu/elmo-schemas/issues/3
+
+                        This element was used for Erasmus subject area code of the course.
+                        However, it has been deprecated in favor of the new `classification` element.
+                        Please use the `classification` element instead.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="iscedCode" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
-                        The ISCED code of the course or programme.
+                        DEPRECATED in 1.1.0, will be removed in version 2.0.0. See here for details:
+                        https://github.com/emrex-eu/elmo-schemas/issues/3
+
+                        This element was used for ISCED code of the course. However, it was unclear
+                        which ISCED *type* this would be, and it has been deprecated in favor of the new
+                        `classification` element. Please use the `classification` element instead.
                     </xs:documentation>
                 </xs:annotation>
+            </xs:element>
+            <xs:element name="classification" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        Learning opportunities may be classified using various classification
+                        identifiers (like ISCED). This element lets NCP developers define all such
+                        classifications.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:token">
+                            <xs:attribute name="type" type="xs:token" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        If applicable, one of the following predefined type identifiers SHOULD be used:
+
+                                        "erasmusSubjectArea" - when this type is used, the value MUST contain the
+                                            Erasmus subject area code for this LOS. Codes MAY contain the dot separator or
+                                            not (when parsing, clients SHOULD ignore non-digit characters).
+
+                                        "isced-f" - when this type is used, the value MUST contain the ISCED-F code for
+                                            this LOS. ISCED-F codes define fields of education and training at the
+                                            secondary, post-secondary and tertiary levels of education. Details:
+                                            http://www.uis.unesco.org/Education/Documents/isced-fields-of-education-training-2013.pdf
+
+                                        You can also have any number of custom types.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
             </xs:element>
             <xs:element name="url" type="xs:token" minOccurs="0">
                 <xs:annotation>
