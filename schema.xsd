@@ -818,12 +818,16 @@
                             <xs:attribute name="type" type="xs:token" use="required">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        If applicable, you SHOULD use one of the following predefined type identifiers:
+                                        If applicable, one of the following predefined type identifiers SHOULD be used:
 
-                                        "subjectArea" - when you use this type, the value should contain the Erasmus
-                                            subject area code of the course.
+                                        "erasmusSubjectArea" - when this type is used, the value MUST contain the
+                                            Erasmus subject area code for this LOS. Codes MAY contain the dot separator or
+                                            not (when parsing, clients SHOULD ignore non-digit characters).
 
-                                        WRTODO - more codes? which of them apply to courses and which to degree programmes?
+                                        "isced-f" - when this type is used, the value MUST contain the ISCED-F code for
+                                            this LOS. ISCED-F codes define fields of education and training at the
+                                            secondary, post-secondary and tertiary levels of education. Details:
+                                            http://www.uis.unesco.org/Education/Documents/isced-fields-of-education-training-2013.pdf
 
                                         You can also have any number of custom types.
                                     </xs:documentation>
