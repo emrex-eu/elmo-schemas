@@ -11,7 +11,3 @@ Version 1.0.0
 -------------
 
 Initial release of the schema.
-
-There were some schemas in use before the `1.0.0` version, but this is the
-first version which all the partners had agreed upon to be the common
-**backward-compatible** component of all the future versions of the schema.

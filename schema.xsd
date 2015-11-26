@@ -32,20 +32,19 @@
             Status of this document
             =======================
 
-            This schema has been ACCEPTED by all the partners. It has been agreed that:
+            This schema has been PRELIMINARY ACCEPTED by all the partners. It has been
+            agreed that schema designers SHOULD attempt to keep all future schema releases
+            backward-compatible with the 1.0.0 version. However, some backward-incompatible
+            changes MAY arise during EMREX field trial test.
 
-            * All EMREX NCP servers MUST respond with a file conforming to this schema.
-            * All future versions of this schema MUST be backward-compatible with the 1.0
-              version. (See the versioning and backward-compatibility sections below.)
+            Also see the versioning and backward-compatibility sections below.
 
             The list of all the officially released schema versions can be found here:
 
             https://github.com/emrex-eu/elmo-schemas/releases
 
-            Usually you should be using the latest version of the schema (which MUST be
-            backward compatible with the 1.0 version). It can be found here:
-
-            https://github.com/emrex-eu/elmo-schemas/tree/v1
+            Usually you should be using the latest release of the schema (for implementing
+            both - NCP and EMREX Client - applications).
 
 
             Relationship with the ELMO schema
@@ -110,10 +109,11 @@
             Backward-compatibility policy
             =============================
 
-            If you are implementing your client using the Nth version of the schema, you
-            MUST be prepared to receive the N+1st version at any time. The newer version of
-            the schema WILL be backward-compatible, but both sides MUST adhere to the
-            following rules:
+            If you are implementing your client using the `X.Y.Z`th version of the schema,
+            you MUST be prepared to receive the `X.Y+1.Z`th version at any time. Once the
+            field trail finished (and EMREX is released to be used by everyone), all newer
+            versions of the schema MUST be backward-compatible, so both sides MUST adhere to
+            the following rules:
 
             - EMREX Client implementers MUST ignore all unknown elements and attributes.
 
@@ -130,15 +130,15 @@
             ===================================
 
             We follow the "Semantic Versioning Specification" in our releases:
-            
+
             http://semver.org/
-            
+
             Please note that the targetNamespace of this schema contains an URL which
             resolves to a GitHub webpage with the content of the XSD file. The URL contains
             a Git branch name - the *major* version of the schema:
-            
+
             https://github.com/emrex-eu/elmo-schemas/tree/v1
-            
+
             Additionally, we release new versions of the schema as Git tags. Every
             version number consists of three parts (X.Y.Z) which conform to the Semantic
             Versioning Specification. In particular:
@@ -154,17 +154,13 @@
 
             * The FIRST number of the version string (along with the number within the
               target XML namespace of the schema) will be increased ONLY if major backward
-              incompatible changes occur. This SHOULD NOT EVER HAPPEN (especially after
-              the EMREX trial is finished).
+              incompatible changes occur. And backward-incompompatible changes MUST be
+              avoided (especially after the EMREX trial is finished!).
 
-            In other words, we expect the major version of the schema to stay "1" forever,
-            and we do not expect any backward-incompatible changes to occur after 1.0.0
-            schema version is released.
-
-            Also note, that some future versions of the schema may also use a different
-            GitHub project name in their namespace. As one EU project ends, and it is being
-            continued by some other EU project, the ownership of the GitHub project MAY
-            change. However, the namespace itself WILL NOT change. GitHub's redirect
+            Also note, that some future versions of the schema MAY be hosted in elsewhere.
+            As one EU project ends, and it is being continued by some other EU project, the
+            ownership of the GitHub project MAY change. However, the XML namespace itself
+            SHOULD NOT change in order to stay backward-compatible. GitHub's redirect
             features can be used in such cases:
 
             https://github.com/blog/1508-repository-redirects-are-here

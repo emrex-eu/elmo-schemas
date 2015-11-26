@@ -6,7 +6,9 @@ MUST consult the official documentation and the schema.xsd file.
     xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd"
+    xsi:schemaLocation="
+        https://github.com/emrex-eu/elmo-schemas/tree/v1 https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd
+    "
 >
     <generatedDate>2015-10-31T12:00:00+02:00</generatedDate>
     <learner>
