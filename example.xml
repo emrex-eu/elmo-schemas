@@ -1,6 +1,19 @@
 <!--
-You MUST NOT build your implementation based solely on the example here. You
-MUST consult the official documentation and the schema.xsd file.
+
+Important notes:
+
+1. You MUST NOT build your implementation based solely on the example here. You
+   MUST consult the official documentation and the schema.xsd file.
+
+2. In order for this file to pass automatic validation might need to:
+
+   - Keep the proper schema.xsd in the same directory,
+
+   OR:
+
+   - Change "schema.xsd" in the "xsi:schemaLocation" below to:
+     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd"
+
 -->
 <elmo
     xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
@@ -41,6 +54,8 @@ This element is of the PlaintextMultilineStringWithOptionalLang type. All descri
 
 NCP implementers can add line breaks (or double line breaks) within this element, and such line breaks should be displayed properly by all the EMREX Clients. However, HTML is not allowed here.
 </description>
+            <description xml:lang="pl">(more descriptions in different languages)</description>
+            <description xml:lang="no">(more descriptions in different languages)</description>
             <specifies>
                 <learningOpportunityInstance>
                     <start>2014-10-01</start>
@@ -138,16 +153,16 @@ NCP implementers can add line breaks (or double line breaks) within this element
             <type>Transcript of Records</type>
             <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         </attachment>
+        <attachment>
+            <title xml:lang="en">Some other attachment</title>
+            <type>Certificate of Training</type>
+            <description xml:lang="en">Additional multiline description...</description>
+            <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        </attachment>
     </report>
     <attachment>
-        <title xml:lang="en">Some other attachment</title>
-        <type>Certificate of Training</type>
-        <description xml:lang="en">Additional multiline description...</description>
-        <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
-    </attachment>
-    <attachment>
-        <title xml:lang="en">Or even more of them</title>
-        <type>Transcript of Records</type>
+        <title xml:lang="en">"Global" attachment</title>
+        <type>EMREX transcript</type>
         <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
     </attachment>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
