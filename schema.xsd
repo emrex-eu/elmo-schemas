@@ -802,7 +802,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
                         An optional description of the programme/course/class.

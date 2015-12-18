@@ -56,6 +56,8 @@ This element is of the PlaintextMultilineStringWithOptionalLang type. All descri
 
 NCP implementers can add line breaks (or double line breaks) within this element, and such line breaks should be displayed properly by all the EMREX Clients. However, HTML is not allowed here.
 </description>
+            <description xml:lang="pl">(more descriptions in different languages)</description>
+            <description xml:lang="no">(more descriptions in different languages)</description>
             <specifies>
                 <learningOpportunityInstance>
                     <start>2014-10-01</start>
