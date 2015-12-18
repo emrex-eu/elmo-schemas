@@ -32,10 +32,11 @@
             Status of this document
             =======================
 
-            This schema has been PRELIMINARY ACCEPTED by all the partners. It has been
-            agreed that schema designers SHOULD attempt to keep all future schema releases
-            backward-compatible with the 1.0.0 version. However, some backward-incompatible
-            changes MAY arise during EMREX field trial test.
+            This schema has been ACCEPTED by all the partners. It has been agreed that
+            schema designers SHOULD attempt to keep all future schema releases
+            backward-compatible with the 1.0.0 version. However, at the same time, it was
+            noted that some backward-incompatible changes MAY arise during EMREX field trial
+            test, and a `v2` major version of the schema MAY be released.
 
             Also see the versioning and backward-compatibility sections below.
 

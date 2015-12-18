@@ -29,6 +29,12 @@ Next version (unreleased yet)
   element. The description of the element has been made more explicit to clear
   the matter.
 
+* Updated the `example.xml` file to better reflect the changes.
+
+* Minor changes to the "Status of this document", "Backward-compatibility
+  policy" and "Schema versioning" sections of the XSD documentation. They don't
+  change the overall meaning of the previously accepted contents.
+
 
 Version 1.0.0
 -------------
