@@ -2,9 +2,29 @@ Release notes
 =============
 
 This file describes all the important changes introduced to the schema after
-its initial `1.0` release.
+its initial `1.0.0` release.
 
 Please note, that all changes in the `v1` branch will be backward-compatible.
+
+
+Next version (unreleased yet)
+-----------------------------
+
+* We have found a bug in version `1.0.0` of the schema - it allowed for only
+  a single `<description>` element to be present. This version allows for an
+  unbounded number of elements.
+  
+  We have chosen to treat this change as backward-compatible, and not increase
+  the the major version of the schema yet.
+
+* The previous version of the schema required for all ELMO files to include
+  additional XSDs whenever the `<extension>` element was used. This limitation
+  was dropped - all `<extension>` elements will now pass the validation (they
+  still need to have an appropriate `xmlns` attribute though!).
+
+* It was unclear which ISCED *type* should be used in the `<iscedCode>`
+  element. The description of the element has been made more explicit to clear
+  the matter.
 
 
 Version 1.0.0
