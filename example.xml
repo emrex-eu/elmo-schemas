@@ -153,16 +153,16 @@ NCP implementers can add line breaks (or double line breaks) within this element
             <type>Transcript of Records</type>
             <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         </attachment>
+        <attachment>
+            <title xml:lang="en">Some other attachment</title>
+            <type>Certificate of Training</type>
+            <description xml:lang="en">Additional multiline description...</description>
+            <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        </attachment>
     </report>
     <attachment>
-        <title xml:lang="en">Some other attachment</title>
-        <type>Certificate of Training</type>
-        <description xml:lang="en">Additional multiline description...</description>
-        <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
-    </attachment>
-    <attachment>
-        <title xml:lang="en">Or even more of them</title>
-        <type>Transcript of Records</type>
+        <title xml:lang="en">"Global" attachment</title>
+        <type>EMREX transcript</type>
         <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
     </attachment>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">

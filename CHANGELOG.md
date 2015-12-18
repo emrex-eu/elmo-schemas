@@ -13,9 +13,12 @@ Next version (unreleased yet)
 * We have found a bug in version `1.0.0` of the schema - it allowed for only
   a single `<description>` element to be present. This version allows for an
   unbounded number of elements.
-  
+
   We have chosen to treat this change as backward-compatible, and not increase
   the the major version of the schema yet.
+
+* Added a new value to the attachment type enumeration: `EMREX transcript`.
+  See the XSD for the description of this new value.
 
 * The previous version of the schema required for all ELMO files to include
   additional XSDs whenever the `<extension>` element was used. This limitation

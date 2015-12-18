@@ -565,6 +565,21 @@
                     <xs:restriction base="xs:token">
                         <xs:enumeration value="Diploma Supplement"></xs:enumeration>
                         <xs:enumeration value="Transcript of Records"></xs:enumeration>
+                        <xs:enumeration value="EMREX transcript">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    This is similar to a Transcript of Records, with one big difference.
+
+                                    The "EMREX Transcript" is meant to include all the records within the
+                                    transferred ELMO file (which can span over *multiple* institutions), that is, it
+                                    should be located *outside* the `report` elements.
+
+                                    In comparison, "Transcript of Records" is meant to be issued (and possibly
+                                    signed) by a single institution, and should be located inside the `report`
+                                    element.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
                         <xs:enumeration value="Letter of Nomination"></xs:enumeration>
                         <xs:enumeration value="Certificate of Training"></xs:enumeration>
                         <xs:enumeration value="Learning Agreement"></xs:enumeration>
