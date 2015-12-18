@@ -8,9 +8,9 @@ Important notes:
 2. In order for this file to pass automatic validation you need to:
 
    - Keep the proper schema.xsd in the same directory,
-   
+
    OR:
-   
+
    - Change "schema.xsd" in the "xsi:schemaLocation" below to:
      "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd"
 

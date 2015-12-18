@@ -502,7 +502,7 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other"/>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax"/>
         </xs:sequence>
         <xs:anyAttribute/>
     </xs:complexType>
