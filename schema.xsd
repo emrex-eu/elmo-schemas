@@ -790,7 +790,11 @@
             <xs:element name="iscedCode" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
-                        The ISCED code of the course or programme.
+                        The ISCED-F code of the course or programme.
+
+                        ISCED-F codes define fields of education and training at the secondary,
+                        post-secondary and tertiary levels of education. Details:
+                        http://www.uis.unesco.org/Education/Documents/isced-fields-of-education-training-2013.pdf
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
