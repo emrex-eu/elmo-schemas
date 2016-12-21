@@ -7,6 +7,23 @@ its initial `1.0.0` release.
 Please note, that all changes in the `v1` branch will be backward-compatible.
 
 
+Version 1.2.0
+-------------
+
+* Introduce optional list of `<identifier type="...">` elements in
+  `<learningOpportunityInstance>` element. Previously, identifiers were allowed
+  on the LOS level only (but not the LOI level). See [this issue]
+  (https://github.com/emrex-eu/elmo-schemas/issues/10).
+
+* Prepared the EMREX ELMO format to be embedded in other contexts. Replaced
+  references to "NCP" and "EMREX Client" with more generic terms (which would
+  properly fit in other contexts). See [this issue]
+  (https://github.com/emrex-eu/elmo-schemas/issues/13).
+
+* Some more predefined identifier types were mentioned - the ones used in the
+  EWP (Erasmus Without Paper) project.
+
+
 Version 1.1.0
 -------------
 
