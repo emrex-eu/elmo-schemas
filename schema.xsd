@@ -335,8 +335,10 @@
 
                                                                     pic - the PIC code,
                                                                     erasmus - the ERASMUS code,
-                                                                    schac - the SCHAC identifier, as described in the SCHAC documentation
-                                                                        for the "schacHomeOrganization" element (e.g. "uw.edu.pl").
+                                                                    schac - the SCHAC identifier (e.g. "uw.edu.pl"). These identifiers are used
+                                                                        in other EU projects too, in particular the EWP (Erasmus Without Paper)
+                                                                        project. See here:
+                                                                        https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
 
                                                                     You can also have any number of custom types.
                                                                 </xs:documentation>
@@ -680,7 +682,7 @@
                             <xs:attribute name="type" type="xs:token" use="required">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Currently there is only one predefined type you can have here:
+                                        Some predefined type values include:
 
                                         "local" - the local unique identifier of the node. "Unique" means that the
                                             [node type, local identifier] tuple MUST uniquely identify this node
@@ -689,6 +691,9 @@
                                             "local" identifier MUST be unique by itself. If you cannot guarantee such
                                             uniqueness then you MUST NOT provide the "local" identifier at all (you can
                                             still use other identifiers).
+
+                                        "ewp-los-id" - LOS identifier used in the Erasmus Without Paper project.
+                                            https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
 
                                         You can also have any number of custom types.
                                     </xs:documentation>
@@ -861,8 +866,12 @@
                                                     <xs:attribute name="type" type="xs:token" use="required">
                                                         <xs:annotation>
                                                             <xs:documentation>
-                                                                Currently no type values are predefined here. But you can use any
-                                                                number of custom types.
+                                                                Some predefined type values include:
+
+                                                                "ewp-loi-id" - LOI identifier used in the EWP (Erasmus Without Paper) project.
+                                                                    https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
+
+                                                                You can also have any number of custom types.
                                                             </xs:documentation>
                                                         </xs:annotation>
                                                     </xs:attribute>
