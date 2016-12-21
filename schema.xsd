@@ -849,6 +849,27 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
+                                    <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                A list of identifiers of this Learning Opportunity Instance.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:extension base="xs:token">
+                                                    <xs:attribute name="type" type="xs:token" use="required">
+                                                        <xs:annotation>
+                                                            <xs:documentation>
+                                                                Currently no type values are predefined here. But you can use any
+                                                                number of custom types.
+                                                            </xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:attribute>
+                                                </xs:extension>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
                                     <xs:element name="start" type="xs:date" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
