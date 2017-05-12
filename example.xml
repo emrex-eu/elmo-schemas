@@ -50,9 +50,9 @@ Important notes:
             <url>http://example.com/</url>
             <description xml:lang="en">This can contain a multiline description.
 
-This element is of the PlaintextMultilineStringWithOptionalLang type. All description elements are of this type. And this means that EMREX Clients are required to respect its multiline formatting.
+This element is of the PlaintextMultilineStringWithOptionalLang type. All description elements are of this type. And this means that clients are required to respect its multiline formatting.
 
-NCP implementers can add line breaks (or double line breaks) within this element, and such line breaks should be displayed properly by all the EMREX Clients. However, HTML is not allowed here.
+Server implementers can add line breaks (or double line breaks) within this element, and such line breaks should be displayed properly by all the clients. However, HTML is not allowed here.
 </description>
             <description xml:lang="pl">(more descriptions in different languages)</description>
             <description xml:lang="no">(more descriptions in different languages)</description>

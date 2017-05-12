@@ -26,8 +26,11 @@
 
     <xs:annotation>
         <xs:documentation>
-            This schema describes the XML content returned in EMREX NCP responses. For more
-            information on EMREX, please visit http://emrex.eu/.
+            This schema describes the EMREX ELMO XML format, used for formatting students'
+            Transcripts of Records.
+
+            This format was first used for formatting content returned in EMREX NCP
+            responses. For more information on EMREX, please visit http://emrex.eu/.
 
             Status of this document
             =======================
@@ -35,8 +38,8 @@
             This schema has been ACCEPTED by all the partners. It has been agreed that
             schema designers SHOULD attempt to keep all future schema releases
             backward-compatible with the 1.0.0 version. However, at the same time, it was
-            noted that some backward-incompatible changes MAY arise during EMREX field trial
-            test, and a `v2` major version of the schema MAY be released.
+            noted that some backward-incompatible changes MAY arise during EMREX field
+            trial test, and a `v2` major version of the schema MAY be released.
 
             Also see the versioning and backward-compatibility sections below.
 
@@ -45,31 +48,33 @@
             https://github.com/emrex-eu/elmo-schemas/releases
 
             Usually you should be using the latest release of the schema (for implementing
-            both - NCP and EMREX Client - applications).
+            both servers and clients).
 
 
-            Relationship with the ELMO schema
-            =================================
+            Relationship with the other schemas
+            ===================================
 
-            The format of the NCP response is loosely based on the ELMO schema used in various
-            sources under the namespace of "http://purl.org/net/elmo". However, the ELMO XSD
-            schema seems to be unsupported by its authors and it is very hard to find any
-            official version of it. You can find some (possibly obsolete) XSDs in the Git
-            history of THIS repository (https://github.com/emrex-eu/elmo-schemas/), but EMREX
-            NCP response format is NOT compatible with those XSDs and you don't need to
-            consult them.
+            The EMREX ELMO format is loosely based on the "ELMO" schema used in various
+            sources under the namespace of "http://purl.org/net/elmo". However, the
+            original ELMO XSD schema seems to be unsupported by its authors and it is very
+            hard to find any official version of it. You can find some (possibly obsolete)
+            XSDs in the Git history of THIS repository
+            (https://github.com/emrex-eu/elmo-schemas/), but EMREX ELMO format is no longer
+            compatible with those XSDs.
 
-            That said, the following terms are *equivalent* throughout the EMREX specs:
+            The following terms are *equivalent* throughout the EMREX specs:
 
+            - EMREX ELMO format (this is the "official" name of this format),
             - EMREX response file,
             - NCP response file,
             - ELMO file.
 
 
-            A general note for NCP implementers
-            ===================================
+            A general note for server implementers
+            ======================================
 
-            (NCP implementers - the developers who *generate* the EMREX NCP response file.)
+            (Server implementers are these developers who *generate* the EMREX ELMO
+            format in their code.)
 
             Before you start implementing, be sure that you are reading the most recent
             version of the schema! See status and versioning sections.
@@ -78,11 +83,12 @@
             are *strongly recommended*. Even for the vital elements, we allow them to be
             non-existent, but this is solely to support some uncommon edge cases. You
             SHOULD include as much data as you can. The less data you include, the less
-            usable your file will be (and there are many use cases for EMREX).
+            usable your file will be (although, of course, if you know exactly how it will
+            be used, you are allowed to skip unnecessary parts).
 
             Also, please note, that reading all the schema annotations is crucial in order
-            to produce a valid NCP response. Some restrictions cannot be expressed by the
-            schema language itself, some others we chose not to express in this way, to
+            to produce a valid EMREX ELMO element. Some restrictions cannot be expressed by
+            the schema language itself, some others we chose not to express in this way, to
             avoid complexity. However, the schema itself, combined with all the annotations
             included within it, should be clear enough. If it is not, then please contact
             us.
@@ -93,18 +99,26 @@
             strip the HTML markup (possibly in such a way that will still leave the content
             formatted in a way that will make it easy for a human to read its contents).
 
+            In case when EMREX ELMO elements are embedded in other XML files, you SHOULD
+            consult the XSD annotations found in those "parent" files. There might be some
+            additional requirements the server (or clients) are required to meet.
 
-            A general note for EMREX Client implementers
-            ============================================
 
-            (EMREX Client implementers - the developers who attempt to *parse* the EMREX
-            NCP response files.)
+            A general note for client implementers
+            ======================================
+
+            (Client implementers - the developers who attempt to *parse* the EMREX ELMO
+            format in their code.)
 
             You MUST expect the worse. It is possible that the file you receive will not
             contain much data. In such cases it might not fit your requirements for
             automatic processing and you would need to send it "to a human" for manual
             processing. The PDF attachments (documented below) should be of use in such
             cases.
+
+            In case when EMREX ELMO elements are embedded in other XML files, you SHOULD
+            consult the XSD annotations found in those "parent" files. There might be some
+            additional requirements the server (or clients) are required to meet.
 
 
             Backward-compatibility policy
@@ -116,7 +130,7 @@
             versions of the schema MUST be backward-compatible, so both sides MUST adhere to
             the following rules:
 
-            - EMREX Client implementers MUST ignore all unknown elements and attributes.
+            - Client implementers MUST ignore all unknown elements and attributes.
 
             - Schema designers must change the existing elements in a backward-compatible
               manner. If it it impossible to upgrade an element without breaking backward
@@ -185,7 +199,7 @@
                     <xs:annotation>
                         <xs:documentation>
                             This describes the student whose achievements we will be describing. One EMREX
-                            NCP response may contain multiple reports, but all of the reports are always
+                            ELMO element may contain multiple reports, but all of the reports are always
                             describing exactly one student.
                         </xs:documentation>
                     </xs:annotation>
@@ -197,7 +211,7 @@
                                         The ISO 3166-1-alpha-2 code of the country the student is a citizen of.
                                         E.g. "PL".
 
-                                        For NCP implementers: If this is not known then you MUST skip the element
+                                        For server implementers: If this is not known then you MUST skip the element
                                         altogether (instead of, for example, providing an empty value).
                                     </xs:documentation>
                                 </xs:annotation>
@@ -205,11 +219,11 @@
                             <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        For NCP implementers: Please read thought the list of predefined identifier
+                                        For server implementers: Please read thought the list of predefined identifier
                                         types below and try to provide all of those you can get. We are aware that
                                         some of those will be difficult to get (especially for the foreign students).
 
-                                        For EMREX Client implementers: If a given identifier is present you can use
+                                        For client implementers: If a given identifier is present you can use
                                         it for any purpose you want. However, you should expect them to be NOT present
                                         most of the times.
                                     </xs:documentation>
@@ -239,7 +253,7 @@
                             <xs:element name="givenNames" type="xs:token">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        The given names of the student. All NCPs MUST provide it (if it is impossible
+                                        The given names of the student. All servers MUST provide it (if it is impossible
                                         for some reason, please provide an empty string here).
                                     </xs:documentation>
                                 </xs:annotation>
@@ -247,7 +261,7 @@
                             <xs:element name="familyName" type="xs:token">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        The family name of the student. All NCPs MUST provide it (if it is impossible
+                                        The family name of the student. All servers MUST provide it (if it is impossible
                                         for some reason, please provide an empty string here).
                                     </xs:documentation>
                                 </xs:annotation>
@@ -255,10 +269,10 @@
                             <xs:element name="bday" type="xs:date" minOccurs="0">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        For NCP implementers: The birth date is vital to EMREX and SHOULD be provided.
+                                        For server implementers: The birth date is vital to EMREX and SHOULD be provided.
                                         If you cannot provide it, you MUST skip the bday element altogether.
 
-                                        For EMREX Client implementers:
+                                        For client implementers:
 
                                         - Remember that xs:date format allows for the value to contain a time zone.
                                           You might need to remove the time zone date before parsing it!
@@ -297,7 +311,7 @@
                                         This element identifies the host institution - the institution at which the
                                         student has studied in order to achieve the credits described in this report).
 
-                                        Note for NCP implementers: If your data comes from multiple institutions then
+                                        Note for server implementers: If your data comes from multiple institutions then
                                         you MUST put it inside separate report elements.
                                     </xs:documentation>
                                 </xs:annotation>
@@ -315,7 +329,7 @@
                                         <xs:element name="identifier" minOccurs="1" maxOccurs="unbounded">
                                             <xs:annotation>
                                                 <xs:documentation>
-                                                    For NCP implementers: You MUST be able to provide at least one identifier of
+                                                    For server implementers: You MUST be able to provide at least one identifier of
                                                     the institution. You SHOULD provide all of them, if you can.
 
                                                     Please note, that you might be able to generate SCHAC identifiers by yourself,
@@ -335,8 +349,10 @@
 
                                                                     pic - the PIC code,
                                                                     erasmus - the ERASMUS code,
-                                                                    schac - the SCHAC identifier, as described in the SCHAC documentation
-                                                                        for the "schacHomeOrganization" element (e.g. "uw.edu.pl").
+                                                                    schac - the SCHAC identifier (e.g. "uw.edu.pl"). These identifiers are used
+                                                                        in other EU projects too, in particular the EWP (Erasmus Without Paper)
+                                                                        project. See here:
+                                                                        https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
 
                                                                     You can also have any number of custom types.
                                                                 </xs:documentation>
@@ -352,7 +368,7 @@
                                                     The name of the institution. May be provided in multiple languages. At least
                                                     one name is required.
 
-                                                    For NCP implementers:
+                                                    For server implementers:
 
                                                     - This element SHOULD contain the xml:lang attribute. You may skip the xml:lang
                                                       attribute only when you really don't know the language which your will be
@@ -367,7 +383,7 @@
                                             <xs:annotation>
                                                 <xs:documentation>
                                                     The URL of the intitution's web page. It is a required element, because it
-                                                    should be easy to acquire it on NCPs part, and it might be used as a last
+                                                    should be easy to acquire it on server's side, and it might be used as a last
                                                     resort when attempting to pinpoint the issuing institution on the EMREX
                                                     Client's side.
                                                 </xs:documentation>
@@ -381,11 +397,11 @@
                                     <xs:documentation>
                                         Please consult the documentation on the LearningOpportunitySpecification type.
 
-                                        Additional note for EMREX Client implementers:
+                                        Additional note for client implementers:
 
                                         Please note that it is ALLOWED for the report to contain zero
                                         learningOpportunitySpecifications. This may happen for example when the student
-                                        has unchecked all the courses during the NCP export process. This is NOT an
+                                        has unchecked all the courses during the EMREX NCP export process. This is NOT an
                                         error, and it should NOT trigger the "manual verification" process on your
                                         part (you might want to show a warning though).
                                     </xs:documentation>
@@ -397,10 +413,10 @@
                                         The datetime when the report has been issued. It SHOULD contain the timezone
                                         suffix. Example values: "2015-08-01T12:00:00+02:00", "2015-08-01T10:00:00Z".
 
-                                        Since NCP response may contain multiple reports, the issuing dates of each of
-                                        these reports may be different. This may happen if the NCP does not posses the
+                                        Since EMREX ELMO may contain multiple reports, the issuing dates of each of
+                                        these reports may be different. This may happen if the server does not posses the
                                         most recent data from all the institutions and is responding with cached data.
-                                        For most NCP implementations though, all issueDates will be the same as the
+                                        For most server implementations though, all issueDates will be the same as the
                                         generatedDate included in the file header.
                                     </xs:documentation>
                                 </xs:annotation>
@@ -433,13 +449,12 @@
                 <xs:element ref="ds:Signature">
                     <xs:annotation>
                         <xs:documentation>
-                            Every NCP response MUST be signed with xmldsig-core2 enveloped signature. The
+                            Every EMREX ELMO element MUST be signed with xmldsig-core2 enveloped signature. The
                             ds:SignedInfo element MUST contain a single ds:Reference with an empty URI. The
-                            key used by the NCP for signing MUST match the key which has been previously
-                            published in EMREG (for this particular NCP). The ds:Signature element SHOULD
-                            contain the copy of the its certficate in the ds:KeyInfo element.
-
-                            All NCP responses which do not conform to the "MUSTs" above SHOULD be discarded.
+                            key used by the server for signing must often match some external criteria, which
+                            are NOT documented here. (E.g. If you're implementing EMREX NCP, then the certificate
+                            used must match the one previously published in EMREG for your NCP.) The ds:Signature
+                            element SHOULD contain the copy of the its certficate in the ds:KeyInfo element.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -453,7 +468,7 @@
         <xs:annotation>
             <xs:documentation>
                 A xs:token value with at optional xml:lang attribute. It is used in places
-                where NCP developers may provide the name of an entity in multiple languages.
+                where server developers may provide the name of an entity in multiple languages.
             </xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
@@ -471,7 +486,7 @@
                 us line breaks and double line breaks (for spliting paragraphs). The values
                 still must be in plain text though (no HTML is allowed).
 
-                A note for EMREX Client implementers:
+                A note for client implementers:
 
                 Whenever you want to display the values read from a field of this type, you
                 SHOULD make sure that the end user will see the line breaks in the right
@@ -491,13 +506,13 @@
         <xs:annotation>
             <xs:documentation>
                 This is the type of "extension" elements. Extension elements may contain any
-                elements, as long as they are from a different namespace. NCP implementers may
+                elements, as long as they are from a different namespace. Server implementers may
                 use them to include additional metadata in various places of the XML document.
                 The content of such extensions is not documented within this schema.
 
-                Please note that it *might* be possible to extend the "official" EMREX NCP
-                response schema. If you're an NCP implementer and you find the namespace lacking
-                some data which you think might be useful for EMREX Clients, then please try to
+                Please note that it *might* be possible to extend the "official" EMREX ELMO
+                schema format. If you're a server implementer and you find the namespace lacking
+                some data which you think might be useful for the clients, then please try to
                 contact EMREX representative and/or the current owner of the
                 https://github.com/emrex-eu/elmo-schemas/ repository.
             </xs:documentation>
@@ -511,31 +526,31 @@
     <xs:complexType name="Attachment">
         <xs:annotation>
             <xs:documentation>
-                Notes for NCP implementers:
+                Notes for server implementers:
 
                 The attachements MUST contain a human-readable version of all the crucial data
                 contained within the reports. This also includes all the data which may help to
                 prove the identity of the student (such as birth date). You MAY include all
                 this data in a single file, or you MAY split it into several ones (e.g. one PDF
-                per report) - we're leaving this decision to individual NCP implementers.
+                per report) - we're leaving this decision to individual server implementers.
 
                 The attachments SHOULD be in PDF format. All other types of attachments MAY
-                be ignored by the EMREX Clients.
+                be ignored by the clients.
 
                 If you wonder why attachements are required, then you should remember, that
-                some EMREX Clients MAY ignore all learningOpportunitySpecification elements
+                some clients MAY ignore all learningOpportunitySpecification elements
                 (even if they are 100% valid) and simply choose to forward the attached
-                transcript of records to a staff member for manual processing (this is also a
-                valid EMREX use case and all NCPs need to support it).
+                transcript of records to a staff member for manual processing (this is a
+                valid EMREX ELMO use case and all servers need to support it).
 
                 Try to order your attachments by importance (we'll leave it for the implementer
                 to decide which attachments are more important).
 
-                Also, try to keep them lightweight - some EMREX Clients will need to store your
-                NCP responses for some time. Take their storage space into account when you
+                Also, try to keep them lightweight - some clients will need to store your
+                EMREX ELMO files for some time. Take their storage space into account when you
                 think about embedding logos or fonts inside your PDFs!
 
-                Notes for EMREX Client implementers:
+                Notes for client implementers:
 
                 You will probably need these attachments in case when something goes wrong, and
                 you want this response to be imported or verified manually.
@@ -550,7 +565,7 @@
                     <xs:documentation>
                         Title of the attachment, e.g. "Transcript of records". May be provided in
                         multiple languages. This is not required, but recommended - it might be used
-                        by EMREX Clients for example when displaying a list of attachments.
+                        by the clients, for example when displaying a list of attachments.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -602,12 +617,12 @@
                         The content of the attachment encoded using a data URI scheme. E.g.
                         "data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2..."
 
-                        Notes for EMREX Client implementers:
+                        Notes for client implementers:
 
                         For security reasons, you may consider checking the content type of the file
                         before displaying it in the browser (there's a possibility of XSS attacks if
-                        NCP was compromised). It might be safer to force the browser to save all
-                        non-PDF attachments instead of displaying them.
+                        EMREX ELMO producer's server was compromised). It might be safer to force the
+                        browser to save all non-PDF attachments instead of displaying them.
 
                         If you want to allow the users to download the attachment, then you might need
                         to dynamically generate the name for the file - the extension can be determined
@@ -639,22 +654,20 @@
                 invalid to include them the other way around.
 
 
-                Notes for NCP implementers
-                ==========================
+                Notes for server implementers
+                =============================
 
-                The NCP implementations SHOULD allow the student to select a subset of degree
-                programmes or courses before generating the response. (The EMREX Clients won't
-                be able to know if the student has exported all of his courses, or only a
-                couple of them.)
-
-                The report MUST contain only the completed courses - the ones which the student
-                has passed. You MUST NOT include failed courses in the NCP response.
+                Depending on the scenario, EMREX ELMO file will contain only a subset of the
+                student's degree programmes and courses. (E.g. in case of EMREX NCP server,
+                students are allowed to select any subset of courses are to be exported, but
+                only from among the passed/completed courses. This might however be different
+                in other contexts.)
 
 
-                Notes of EMREX Client implemeneters
+                Notes of client implemeneters
                 ===================================
 
-                We cannot guarantee the *all* NCPs will follow the "max of 4 levels deep"
+                We cannot guarantee the *all* servers will follow the "max of 4 levels deep"
                 structure, nor that all of them will fill in the "type" elements for all the
                 nodes.
 
@@ -662,16 +675,15 @@
                 infinite tree" representation seems to be incompatible with your model, then
                 you will need to dynamically analyze the types of all the the nodes included in
                 the report and decide if the structure can be automatically imported.
-
-                If it cannot, then you will probably want to send it for manual processing.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
-                        For NCP implementers: You SHOULD provide at least the "local" identifier. Some
-                        EMREX Clients won't be able to import a node properly without it.
+                        For server implementers: Depending on your clients, you might be required to
+                        supply specific identifier types (because clients expect them). E.g. some EMREX
+                        clients expect the "local" identifier to be present.
                     </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
@@ -680,7 +692,7 @@
                             <xs:attribute name="type" type="xs:token" use="required">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Currently there is only one predefined type you can have here:
+                                        Some predefined type values include:
 
                                         "local" - the local unique identifier of the node. "Unique" means that the
                                             [node type, local identifier] tuple MUST uniquely identify this node
@@ -689,6 +701,9 @@
                                             "local" identifier MUST be unique by itself. If you cannot guarantee such
                                             uniqueness then you MUST NOT provide the "local" identifier at all (you can
                                             still use other identifiers).
+
+                                        "ewp-los-id" - LOS identifier used in the Erasmus Without Paper project.
+                                            https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
 
                                         You can also have any number of custom types.
                                     </xs:documentation>
@@ -704,7 +719,7 @@
                         The name(s) of the node (the title of a degree programme, or the name of a
                         course, etc.).
 
-                        Note for NCP implementers:
+                        Note for server implementers:
 
                         You MUST provide at least one name, preferrably in English. If your node does
                         not have a name (or cannot have a name), then you should attempt to generate
@@ -718,10 +733,10 @@
                     <xs:documentation>
                         The type of the node.
 
-                        Note for NCP implementers:
+                        Note for server implementers:
 
                         You SHOULD include the type of your entity if it is compatible with any of the
-                        types provided by the enumeration described below. Some EMREX Clients won't be
+                        types provided by the enumeration described below. Some clients won't be
                         able to import (or even properly display) the data if some elements are missing
                         their types.
 
@@ -733,10 +748,10 @@
                         top level (the report/LearningOpportunitySpecification element), but the type
                         of the descendant nodes is limited by the types of their ancestors.
 
-                        Note for EMREX Client implementers:
+                        Note for client implementers:
 
                         You MUST be prepared to receive an unknown type here. A new version of the
-                        schema may allow for the NCP servers to use some newer values of types which
+                        schema may allow for the servers to use some newer values of types which
                         are yet unknown to your implementation. You SHOULD handle such cases
                         gracefully (treat it the same way as you would treat the node if the type
                         was not present at all).
@@ -786,9 +801,9 @@
                                     "Class"es should have a "Course" ancestor, and - if they contain any children -
                                     then these children should not have any type.
 
-                                    If there are many "types of classes" in the NCP system, then such types MAY be
+                                    If there are many "types of classes" in the server side, then such types MAY be
                                     further described in the node title (e.g. "Lecture class" or "Laboratory
-                                    class"). The NCP response format does not currently provide any enumeration
+                                    class"). The EMREX ELMO format does not currently provide any enumeration
                                     for such subtypes though.
                                 </xs:documentation>
                             </xs:annotation>
@@ -849,13 +864,38 @@
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
+                                    <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                A list of identifiers of this Learning Opportunity Instance.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:extension base="xs:token">
+                                                    <xs:attribute name="type" type="xs:token" use="required">
+                                                        <xs:annotation>
+                                                            <xs:documentation>
+                                                                Some predefined type values include:
+
+                                                                "ewp-loi-id" - LOI identifier used in the EWP (Erasmus Without Paper) project.
+                                                                    https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
+
+                                                                You can also have any number of custom types.
+                                                            </xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:attribute>
+                                                </xs:extension>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
                                     <xs:element name="start" type="xs:date" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
                                                 The date on which the student started studying this learning opportunity
                                                 (may contain a time zone).
 
-                                                A note for NCP implementers: Usually this will match the beginning of one of
+                                                A note for server implementers: Usually this will match the beginning of one of
                                                 the academic terms.
                                             </xs:documentation>
                                         </xs:annotation>
@@ -867,7 +907,7 @@
                                                 doesn't necessarilly need to match the end of the academic term. Prefferably,
                                                 this should be the date when the student has passed his final exam.
 
-                                                A note for NCP implementers: If the exact date cannot be determined, please
+                                                A note for server implementers: If the exact date cannot be determined, please
                                                 try to include an approximate date, e.g. the last day of the academic term.
                                             </xs:documentation>
                                         </xs:annotation>
@@ -877,7 +917,7 @@
                                             <xs:documentation>
                                                 Describes the academic term in which the course took place.
 
-                                                A note for NCP implementers: You SHOULD include this element for "Course"-type
+                                                A note for server implementers: You SHOULD include this element for "Course"-type
                                                 learning opportunities (EMREX's "Course" entities *always* span over a single
                                                 academic term). You SHOULD NOT include the academicTerm element for "Degree
                                                 Programme"s, or any other learning opportunities which span over multiple
@@ -889,7 +929,7 @@
                                                 <xs:element name="title" type="TokenWithOptionalLang" maxOccurs="unbounded">
                                                     <xs:annotation>
                                                         <xs:documentation>
-                                                            The displayed name of the academic term, in multiple languages. NCPs SHOULD
+                                                            The displayed name of the academic term, in multiple languages. Servers SHOULD
                                                             provide at least the name in English.
                                                         </xs:documentation>
                                                     </xs:annotation>
@@ -915,22 +955,20 @@
                                         <xs:annotation>
                                             <xs:documentation>
                                                 The final grade awarded for the student. This SHOULD contain the same value as
-                                                the one printed in the official documents in the NCP country.
+                                                the one printed in the official documents in the server's country.
 
-                                                A note for EMREX Client implementers: You MUST be prepared for the resultLabel
-                                                to NOT be present. Some NCP servers may not actually keep the grades, so they
-                                                may not be able to include them here. Also, it is plausible that in some future
-                                                versions of EMREX a student might be permitted to completely exclude the grades
-                                                from the NCP response.
+                                                A note for client implementers: You MUST be prepared for the resultLabel
+                                                to NOT be present. Some servers may not actually keep the grades, so they
+                                                may not be able to include them here.
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
                                     <xs:element name="shortenedGrading" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                Optional. Might be provided by some NCPs.
+                                                Optional. Might be provided by some servers.
 
-                                                This element may be used by EMREX Clients as an indicator of *how well* the
+                                                This element may be used by clients as an indicator of *how well* the
                                                 student was graded when compared to other students. The three values don't
                                                 need to be very exact (one decimal place should be more than enough), but
                                                 they SHOULD sum up to 100.
@@ -969,13 +1007,13 @@
                                     <xs:element name="resultDistribution" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
-                                                Optional. Might be provided by some NCPs.
+                                                Optional. Might be provided by some servers.
 
                                                 At first, this element might seem similar to the shortenedGrading element, but
                                                 it serves a different purpose. It describes a histogram of results achieved by
                                                 all the students of this course instance. However, since the ranges of the
                                                 histogram are artificial labels only, and they may contain ranges (e.g.
-                                                "10-20"), the EMREX Client cannot easily determine in which category the result
+                                                "10-20"), the client cannot easily determine in which category the result
                                                 of the learner comes into.
 
                                                 If provided, then it should contain the distribution of results of all the
@@ -1074,7 +1112,7 @@
                                                 language which has been used as the primary language for teaching the learner
                                                 during the classes. E.g. "pl" if the course was instructed/conducted in Polish.
 
-                                                A note for NCP implementers: This MUST be a single language. If multiple
+                                                A note for server implementers: This MUST be a single language. If multiple
                                                 languages were used, attempt to select the primary one. If you cannot select a
                                                 single primary language, then you MUST NOT include this element at all.
                                             </xs:documentation>
