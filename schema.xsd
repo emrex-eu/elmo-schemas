@@ -611,11 +611,14 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="content">
+            <xs:element name="content" type="TokenWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
                         The content of the attachment encoded using a data URI scheme. E.g.
                         "data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2..."
+
+                        If you have several attachments of the same type with different languages, there
+                        is now a possibility to add more than one content.
 
                         Notes for client implementers:
 

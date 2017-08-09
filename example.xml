@@ -162,8 +162,10 @@ Server implementers can add line breaks (or double line breaks) within this elem
     </report>
     <attachment>
         <title xml:lang="en">"Global" attachment</title>
+        <title xml:lang="pl">"Globalny" załącznik</title>
         <type>EMREX transcript</type>
-        <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        <content xml:lang="pl">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
     </attachment>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
         <SignedInfo>

@@ -23,6 +23,10 @@ These changes are NOT officially released yet.
   properly fit in other contexts). See [this issue]
   (https://github.com/emrex-eu/elmo-schemas/issues/13).
 
+* The `Attachment/content` element can now occur multiple times
+  (`maxOccurs="unbounded"`), and it can take an optional `xml:lang` attribute.
+  See [this issue](https://github.com/emrex-eu/elmo-schemas/issues/31).
+
 * Some more predefined identifier types were mentioned - the ones used in the
   EWP (Erasmus Without Paper) project.
 
