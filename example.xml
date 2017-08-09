@@ -162,8 +162,10 @@ NCP implementers can add line breaks (or double line breaks) within this element
     </report>
     <attachment>
         <title xml:lang="en">"Global" attachment</title>
+        <title xml:lang="no">"Global" attachment</title>
         <type>EMREX transcript</type>
-        <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        <content xml:lang="no">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
     </attachment>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
         <SignedInfo>
