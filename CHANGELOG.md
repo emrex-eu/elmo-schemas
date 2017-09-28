@@ -7,8 +7,11 @@ its initial `1.0.0` release.
 Please note, that all changes in the `v1` branch will be backward-compatible.
 
 
-Version 1.2.0
--------------
+Next version (unreleased)
+-------------------------
+
+This is a list of changes already introduced in the `v1.2-preview` branch.
+These changes are NOT officially released yet.
 
 * Introduce optional list of `<identifier type="...">` elements in
   `<learningOpportunityInstance>` element. Previously, identifiers were allowed
