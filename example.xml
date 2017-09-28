@@ -89,6 +89,7 @@ NCP implementers can add line breaks (or double line breaks) within this element
                         <level>Bachelor</level> <!-- level is optional! -->
                         <value>6</value>
                     </credit>
+                    <qualificationLevel type="eqf">5</qualificationLevel>
                     <languageOfInstruction>pl</languageOfInstruction>
                 </learningOpportunityInstance>
             </specifies>

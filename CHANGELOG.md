@@ -6,6 +6,12 @@ its initial `1.0.0` release.
 
 Please note, that all changes in the `v1` branch will be backward-compatible.
 
+Version 1.2.0
+-------------
+
+* Added qualification level to LearningOpportunityInstance to open for adding
+  Qualification Framework levels, for instance EQF.
+
 
 Version 1.1.0
 -------------
