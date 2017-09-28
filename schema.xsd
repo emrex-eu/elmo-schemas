@@ -574,7 +574,10 @@
                     <xs:documentation>
                         Type of the attachment. SHOULD be included if any type from the enclosed
                         enumaration applies to the content of the attachment. If the none of the
-                        predefined values apply then this element SHOULD be skipped.
+                        predefined values apply then this element SHOULD either be skipped, or
+                        "Other" value should be used.
+
+                        More types MAY be added in the future. You SHOULD be prepared for that.
                     </xs:documentation>
                 </xs:annotation>
                 <xs:simpleType>
@@ -599,6 +602,14 @@
                         <xs:enumeration value="Letter of Nomination"></xs:enumeration>
                         <xs:enumeration value="Certificate of Training"></xs:enumeration>
                         <xs:enumeration value="Learning Agreement"></xs:enumeration>
+                        <xs:enumeration value="Other">
+                            <xs:annotation>
+                                <xs:documentation>
+                                    This type can be used when none of the currently type matches. Using this type
+                                    is more or less equivalent to not providing any type.
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
