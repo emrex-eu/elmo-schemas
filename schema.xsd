@@ -613,12 +613,13 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
-                        An optional detailed description of the attachment. Avoid redundancy - you
-                        SHOULD NOT include the description if its value is already included in the
-                        title element.
+                        An optional detailed description of the attachment (in multiple languages).
+
+                        Avoid redundancy - you SHOULD NOT include the description if its value is
+                        already included in the title element.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -1061,10 +1062,10 @@
                                                         </xs:attribute>
                                                     </xs:complexType>
                                                 </xs:element>
-                                                <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+                                                <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
                                                     <xs:annotation>
                                                         <xs:documentation>
-                                                            Optional additional description of the histogram.
+                                                            Optional additional description of the histogram (in multiple languages).
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
