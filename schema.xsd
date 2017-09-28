@@ -1068,25 +1068,25 @@
                                         </xs:complexType>
                                     </xs:element>
                                     <xs:element name="qualificationLevel" minOccurs="0" maxOccurs="unbounded">
-                                    <xs:annotation>
-                                        <xs:documentation>
-                                            Qualification framework level, for instance EQF
-                                        </xs:documentation>
-                                    </xs:annotation>
-                                    <xs:complexType>
-                                        <xs:simpleContent>
-                                            <xs:extension base="xs:token">
-                                                <xs:attribute name="type" type="xs:token" use="required">
-                                                    <xs:annotation>
-                                                        <xs:documentation>
-                                                            The type of qualification level.
-                                                        </xs:documentation>
-                                                    </xs:annotation>
-                                                </xs:attribute>
-                                            </xs:extension>
-                                        </xs:simpleContent>
-                                    </xs:complexType>
-                                </xs:element>
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                Qualification framework level, for instance EQF
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:extension base="xs:token">
+                                                    <xs:attribute name="type" type="xs:token" use="required">
+                                                        <xs:annotation>
+                                                            <xs:documentation>
+                                                                The type of qualification level.
+                                                            </xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:attribute>
+                                                </xs:extension>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
                                     <xs:element name="languageOfInstruction" type="xs:token" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>
