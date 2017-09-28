@@ -30,6 +30,9 @@ These changes are NOT officially released yet.
 * Some more predefined identifier types were mentioned - the ones used in the
   EWP (Erasmus Without Paper) project.
 
+* Changes in `<credit>` subelements: The `<level>` element is now DEPRECATED
+  in favor of the newly introduced `<qualificationLevel type="eqf">` element.
+
 
 Version 1.1.0
 -------------
