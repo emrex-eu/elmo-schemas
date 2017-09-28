@@ -1122,6 +1122,8 @@
                                                                     <xs:annotation>
                                                                         <xs:documentation>
                                                                             The type of qualification level identifier.
+
+                                                                            More types MAY be added in the future. You SHOULD be ready for that.
                                                                         </xs:documentation>
                                                                     </xs:annotation>
                                                                 </xs:attribute>
