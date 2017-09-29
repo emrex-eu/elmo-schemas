@@ -1102,6 +1102,15 @@
                                                     </xs:annotation>
                                                 </xs:element>
                                                 <xs:element name="level" minOccurs="0">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            DEPRECATED. Please use the `qualificationLevel` element instead!
+
+                                                            This is a non-standard identifier of the qualification level for this credit.
+                                                            The values allowed for this element were limited, so it has been replaced by
+                                                            the new `qualificationLevel` element instead.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
                                                     <xs:simpleType>
                                                         <xs:restriction base="xs:token">
                                                             <xs:enumeration value="Bachelor"/>
@@ -1109,6 +1118,40 @@
                                                             <xs:enumeration value="PhD"/>
                                                         </xs:restriction>
                                                     </xs:simpleType>
+                                                </xs:element>
+                                                <xs:element name="qualificationLevel" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Set of identifiers of the qualification level for this credit.
+
+                                                            There should be at most one `qualificationLevel` value for each type.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                        <xs:simpleContent>
+                                                            <xs:restriction base="xs:token">
+                                                                <xs:attribute name="type" type="xs:token" use="required">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>
+                                                                            The type of qualification level identifier.
+
+                                                                            More types MAY be added in the future. You SHOULD be ready for that.
+                                                                        </xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:attribute>
+                                                                <xs:enumeration value="eqf">
+                                                                    <xs:annotation>
+                                                                        <xs:documentation>
+                                                                            Standard EQF study level identifier. If this type is chosen, then the value
+                                                                            MUST be an integer in the 1-8 scale, as described here:
+
+                                                                            https://en.wikipedia.org/wiki/European_Qualifications_Framework
+                                                                        </xs:documentation>
+                                                                    </xs:annotation>
+                                                                </xs:enumeration>
+                                                            </xs:restriction>
+                                                        </xs:simpleContent>
+                                                    </xs:complexType>
                                                 </xs:element>
                                                 <xs:element name="value" type="xs:decimal" minOccurs="0">
                                                     <xs:annotation>
