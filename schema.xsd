@@ -421,6 +421,50 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
+                            <xs:element name="gradingScheme" minOccurs="0" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        These elements describe all grading schemes which were used in other sections
+                                        of the report. Elements in this set can be referenced by their identifiers.
+
+                                        Note, that this list may contain local grading schemes, which are not
+                                        standardized in any way. They have been introduced to the ELMO schema to give
+                                        server implemeneters a way of providing their clients with some details about
+                                        the grading schemes they use. However, since there exists no such thing as a
+                                        "global directory" of grading schemes, these schemes cannot be identified by
+                                        any universal unique ID, and each needs to be separately described.
+
+                                        These grading schemes are (currently) identified only by their local
+                                        identifiers, but this does not necessarilly mean that the grading scheme itself
+                                        is "local only". In particular, popular grading schemes (like ECTS) can also be
+                                        listed here, but they cannot be easily identified.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:annotation>
+                                                <xs:documentation>
+                                                    A set of descriptions (in multiple languages). It is RECOMMENDED to include a
+                                                    description, at least in English.
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="localId" use="required" type="xs:token">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                Local identifier, provided by the institution which has generated this report.
+                                                This identifier is used to reference `gradingScheme` elements from other places
+                                                in this document, and as such, is guaranteed to be valid only within this
+                                                single document. This means that it can even be dynamically generated, just for
+                                                the purpose of sticking with the format of this document. Clients SHOULD NOT
+                                                store this identifier.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element name="attachment" type="Attachment" minOccurs="0" maxOccurs="unbounded">
                                 <xs:annotation>
                                     <xs:documentation>
@@ -965,6 +1009,20 @@
                                                 </xs:element>
                                             </xs:sequence>
                                         </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="gradingSchemeLocalId" type="xs:token" minOccurs="0" maxOccurs="1">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                RECOMMENDED. Identifier of the grading scheme used in `resultLabel` and
+                                                `resultDistribution` below.
+
+                                                This identifier is provided by the institution which has generated this report,
+                                                and is only guaranteed to be valid within this single file. Clients SHOULD NOT
+                                                store this identifier. It is used here only to provide a reference to the
+                                                grading scheme descriptions in the `gradingScheme` children of the `report`
+                                                element.
+                                            </xs:documentation>
+                                        </xs:annotation>
                                     </xs:element>
                                     <xs:element name="resultLabel" type="xs:token" minOccurs="0">
                                         <xs:annotation>
