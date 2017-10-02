@@ -966,6 +966,46 @@
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
+                                    <xs:element name="status" minOccurs="0" maxOccurs="1">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                The status of this LOI. It is STRONGLY RECOMMENDED for all server implementers
+                                                to include this element explicitly (even if the server does not ever include
+                                                LOIs other than "passed" in this particular context).
+
+                                                Because of backward-compatibility, if no explicit status is present, then
+                                                clients SHOULD assume that the status is "passed".
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:token">
+                                                <xs:enumeration value="passed">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Indicates that this LOI has been passed by the student. Once the status is
+                                                            "passed", it SHOULD NOT change to any other status.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="failed">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Indicates that the student permanently failed to pass this LOI. Once the
+                                                            status is "failed", it SHOULD NOT change to any other status.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="in-progress">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Indicates that the student has started this LOI, but has not completed it yet.
+                                                            Eventually, this status SHOULD change to "passed" or "failed".
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:element>
                                     <xs:element name="resultLabel" type="xs:token" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>

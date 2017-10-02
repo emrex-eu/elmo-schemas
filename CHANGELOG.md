@@ -13,6 +13,11 @@ Next version (unreleased)
 This is a list of changes already introduced in the `v1.2-preview` branch.
 These changes are NOT officially released yet.
 
+* New LOI `status` element (in the `learningOpportunityInstance` element). All
+  server implementers are STRONGLY RECOMMENDED to explicitly include this
+  status in all their ELMO files.
+  See [this issue](https://github.com/emrex-eu/elmo-schemas/issues/22).
+
 * Introduce optional list of `<identifier type="...">` elements in
   `<learningOpportunityInstance>` element. Previously, identifiers were allowed
   on the LOS level only (but not the LOI level). See [this issue]
