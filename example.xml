@@ -65,6 +65,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                         <start>2014-10-01</start>
                         <end>2015-02-15</end>
                     </academicTerm>
+                    <status>passed</status>
                     <resultLabel>45.1</resultLabel>
                     <shortenedGrading>
                         <percentageLower>62.3</percentageLower>
@@ -101,6 +102,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     <type>Class</type>
                     <specifies>
                         <learningOpportunityInstance>
+                            <status>passed</status>
                             <engagementHours>30</engagementHours>
                         </learningOpportunityInstance>
                     </specifies>
@@ -114,6 +116,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     <type>Class</type>
                     <specifies>
                         <learningOpportunityInstance>
+                            <status>passed</status>
                             <engagementHours>30</engagementHours>
                             <extension>
                                 <!--  This may contain anything you want. But try to avoid it. -->
@@ -136,6 +139,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
             <title>The importance of &lt;b<![CDATA[r> in HTML]]></title>
             <specifies>
                 <learningOpportunityInstance>
+                    <status>passed</status>
                     <resultLabel>C</resultLabel>
                     <resultDistribution>
                         <category count="3" label="F"/>
