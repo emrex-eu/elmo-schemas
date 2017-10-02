@@ -483,7 +483,7 @@
             <xs:documentation>
                 This is very similar to TokenWithOptionalLang, but it inherits from xs:string
                 (instead of xs:token), and it MAY contain basic whitespace formatting, such
-                us line breaks and double line breaks (for spliting paragraphs). The values
+                as line breaks and double line breaks (for spliting paragraphs). The values
                 still must be in plain text though (no HTML is allowed).
 
                 A note for client implementers:
@@ -499,6 +499,53 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+
+    <xs:complexType name="SimpleHtmlStringWithOptionalLang">
+        <xs:annotation>
+            <xs:documentation>
+                "Simple" (but still dangerous) HTML string. This type is very different from
+                PlaintextMultilineStringWithOptionalLang, because it contains HTML, not
+                plain-text.
+
+
+                Notes for SERVER implementers
+                =============================
+
+                There's the word "Simple" in the name of this type. This is because servers are
+                RECOMMENDED to use only the basic HTML tags for formatting (paragraphs,
+                italics, emphasis, lists, etc.). You SHOULD avoid inserting more complex
+                content (such as tables, images or h1..h6 headers), because clients might not
+                be able to display these.
+
+                Also note, that this type is usually used in contexts where the content is also
+                provided in non-HTML form (such as the `descriptionHtml` and `description`
+                pair). Therefore, many clients will simply ignore the HTML values, and use the
+                plain-text conterparts instead.
+
+
+                Notes for CLIENT implementers
+                =============================
+
+                DO NOT TRUST THAT THIS MARKUP IS SAFE. If you decide to display this HTML
+                content, then you SHOULD sanitize it. Otherwise you will leave your system
+                vulnerable to various attacks, including XSS. If you're not sure how
+                sanitization works, then you SHOULD NOT display this content in your
+                application. Use the plaintext counterparts instead (if available).
+
+                Also note, that you SHOULD NOT apply `nl2br`-like funtions on this input (the
+                ones you do apply in the PlaintextMultilineStringWithOptionalLang format above).
+                It's up to the server to make sure that its HTML is valid (properly split into
+                paragraphs). You may however attempt to detect and fix HTML errors, if this
+                HTML seems broken.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:lang" use="optional" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
 
     <!-- Common types with complex content. -->
 
@@ -855,7 +902,38 @@
             <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
-                        An optional description of the programme/course/class.
+                        An optional plain-text description of the programme/course/class (in multiple
+                        languages).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="descriptionHtml" type="SimpleHtmlStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        An optional HTML description of the programme/course/class (in multiple
+                        languages).
+
+
+                        Notes for SERVER implementers
+                        =============================
+
+                        Remember to read the documentation on the SimpleHtmlStringWithOptionalLang
+                        format!
+
+                        Additionally:
+
+                        It is RECOMMENDED to supply this content in the plain-text (non-HTML) format
+                        too. If internally you keep these descriptions in HTML format, then you SHOULD
+                        try to convert this format to proper multiline plaintext and provide this
+                        version in the `description` element. It's okay to supply `descriptionHtml`
+                        alongside with it, but you should avoid supplying ONLY `descriptionHtml`.
+
+
+                        Notes for client implementers
+                        =============================
+
+                        Remember to read the documentation on the SimpleHtmlStringWithOptionalLang
+                        format! DO NOT JUST TRUST THAT THIS MARKUP IS SAFE.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>

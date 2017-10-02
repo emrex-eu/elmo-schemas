@@ -56,6 +56,16 @@ Server implementers can add line breaks (or double line breaks) within this elem
 </description>
             <description xml:lang="pl">(more descriptions in different languages)</description>
             <description xml:lang="no">(more descriptions in different languages)</description>
+            <descriptionHtml xml:lang="en">
+                &lt;p&gt;While the regular &lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt;
+                elements don&apos;t allow HTML, this one does.&lt;/p&gt;
+
+                &lt;p&gt;Note, that the "double-escaping" you see in the above paragraphs is
+                completely valid. Whenever you output characters such as the "less than" sign,
+                they are first HTML-escaped (because it's HTML you are providing here), and
+                later they're also XML-escaped (because you are embedding the escaped HTML
+                value in an XML element).&lt;/p&gt;
+            </descriptionHtml>
             <specifies>
                 <learningOpportunityInstance>
                     <start>2014-10-01</start>

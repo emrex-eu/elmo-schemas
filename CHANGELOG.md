@@ -35,6 +35,9 @@ These changes are NOT officially released yet.
 * Some more predefined identifier types were mentioned - the ones used in the
   EWP (Erasmus Without Paper) project.
 
+* New LOS element: `descriptionHtml`. It allows servers to add some basic
+  formatting to their descriptions.
+
 
 Version 1.1.0
 -------------
