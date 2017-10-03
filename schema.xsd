@@ -696,8 +696,14 @@
                         <xs:enumeration value="Other">
                             <xs:annotation>
                                 <xs:documentation>
-                                    This type can be used when none of the currently type matches. Using this type
-                                    is more or less equivalent to not providing any type.
+                                    This type can be used when none of the other currently defined types matches.
+                                    Using this type is more or less equivalent to not providing any type.
+
+                                    Client implementers should be reminde, that the the number of types will grow.
+                                    Therefore, if the server seems to be using "Other" in place of some other
+                                    better-fitting type X, then it's not necessarilly the fault of the server. It
+                                    also might be caused by the fact the type X was added recently, and the server
+                                    didn't discover it yet.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
