@@ -76,6 +76,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                         <end>2015-02-15</end>
                     </academicTerm>
                     <status>passed</status>
+                    <gradingSchemeLocalId>0-100</gradingSchemeLocalId>
                     <resultLabel>45.1</resultLabel>
                     <shortenedGrading>
                         <percentageLower>62.3</percentageLower>
@@ -127,6 +128,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     <specifies>
                         <learningOpportunityInstance>
                             <status>passed</status>
+                            <gradingSchemeLocalId>ZAL</gradingSchemeLocalId>
                             <engagementHours>30</engagementHours>
                             <extension>
                                 <!--  This may contain anything you want. But try to avoid it. -->
@@ -150,6 +152,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
             <specifies>
                 <learningOpportunityInstance>
                     <status>passed</status>
+                    <gradingSchemeLocalId>AM</gradingSchemeLocalId>
                     <resultLabel>C</resultLabel>
                     <resultDistribution>
                         <category count="3" label="F"/>
@@ -163,6 +166,18 @@ Server implementers can add line breaks (or double line breaks) within this elem
             </specifies>
         </learningOpportunitySpecification>
         <issueDate>2015-10-31T07:00:00+02:00</issueDate>
+        <gradingScheme localId="ZAL">
+            <description xml:lang="en">Pass/Fail (non-graded pass)</description>
+            <description xml:lang="pl">Zaliczenie</description>
+        </gradingScheme>
+        <gradingScheme localId="AM">
+            <description xml:lang="en">American grading scale</description>
+            <description xml:lang="pl">Skala ocen amerykańska</description>
+        </gradingScheme>
+        <gradingScheme localId="0-100">
+            <description xml:lang="en">A number of the scale from 0.0 to 100.0 (one digit of precision)</description>
+            <description xml:lang="pl">Liczba od 0.0 do 100.0 (z jednym miejscem po przecinku)</description>
+        </gradingScheme>
         <attachment>
             <title xml:lang="en">Transcript of records</title>
             <type>Transcript of Records</type>

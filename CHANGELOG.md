@@ -38,6 +38,11 @@ These changes are NOT officially released yet.
 * New LOS element: `descriptionHtml`. It allows servers to add some basic
   formatting to their descriptions.
 
+* Grading schemes were introduced. Now servers can attach descriptions of their
+  grading schemes (via the `report/gradingScheme` element), and refer to these
+  descriptions in specific LOIs (via the `gradingSchemeLocalId` element). See
+  [this issue](https://github.com/emrex-eu/elmo-schemas/issues/16).
+
 
 Version 1.1.0
 -------------
