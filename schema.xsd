@@ -1289,6 +1289,15 @@
                                                     </xs:annotation>
                                                 </xs:element>
                                                 <xs:element name="level" minOccurs="0">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            This one was never properly documented, and is planned to be deprecated soon.
+                                                            Servers and clients who plan to use it SHOULD first refer to these threads:
+
+                                                            https://github.com/emrex-eu/elmo-schemas/issues/26
+                                                            https://github.com/emrex-eu/elmo-schemas/issues/33
+                                                        </xs:documentation>
+                                                    </xs:annotation>
                                                     <xs:simpleType>
                                                         <xs:restriction base="xs:token">
                                                             <xs:enumeration value="Bachelor"/>
