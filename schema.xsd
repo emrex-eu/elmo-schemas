@@ -1103,6 +1103,11 @@
 
                                                 Because of backward-compatibility, if no explicit status is present, then
                                                 clients SHOULD assume that the status is "passed".
+
+                                                Clients MAY assume that this enumeration WILL NOT grow in the future. No new
+                                                status values will be added here. If schema designers ever decide that more
+                                                status values are needed, then a new element (e.g. `status2`) will be
+                                                introduced instead (while `status` will probably get deprecated).
                                             </xs:documentation>
                                         </xs:annotation>
                                         <xs:simpleType>
