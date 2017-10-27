@@ -1048,7 +1048,7 @@
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
-                                                <!-- DEPRICATED - will be removed in Version 2-->
+                                                <!-- DEPRECATED - will be removed in Version 2-->
                                                 <xs:element name="level" minOccurs="0">
                                                     <xs:simpleType>
                                                         <xs:restriction base="xs:token">
