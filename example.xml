@@ -102,6 +102,19 @@ Server implementers can add line breaks (or double line breaks) within this elem
                         <level>Bachelor</level> <!-- level is optional! -->
                         <value>6</value>
                     </credit>
+                    <!-- All consumers of ELMO should support EQF -->
+                    <level>
+                        <type>EQF</type>
+                        <description>European Qualification Framework</description>
+                        <value>5</value>
+                    </level>
+                    <!-- This level will be ignored by consumers who do not support it. It is not required to support. -->
+                    <level>
+                        <type>NQF</type>
+                        <description>Norwegian Qualification Framework</description>
+                        <value>5</value>
+                    </level>
+                    <qualificationLevel type="eqf">5</qualificationLevel>
                     <languageOfInstruction>pl</languageOfInstruction>
                 </learningOpportunityInstance>
             </specifies>

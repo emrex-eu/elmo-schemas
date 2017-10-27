@@ -1288,6 +1288,7 @@
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
+                                                <!-- DEPRECATED - will be removed in Version 2-->
                                                 <xs:element name="level" minOccurs="0">
                                                     <xs:annotation>
                                                         <xs:documentation>
@@ -1310,6 +1311,47 @@
                                                     <xs:annotation>
                                                         <xs:documentation>
                                                             The number of credits acquired.
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="level" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                This describes various levels of education.
+
+                                                Here, issuers of ELMO can describe types of education levels.
+
+                                                Consumers of ELMO should ignore any level types they do not recognize.
+                                                Suppliers of ELMO should not expect consumers to interpret the levels
+                                                that have types they do not support.
+
+                                                Supported types are described in the type section below.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="type" type="xs:token">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Currently supported types are:
+                                                            - EQF (European Qualification Framework)
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                                <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            An optional detailed description of the the type of level that is being supplied. 
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                                <xs:element name="value" type="xs:token" minOccurs="0">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            The level value.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
