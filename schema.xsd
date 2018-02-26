@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xml="http://www.w3.org/XML/1998/namespace"
-    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-    xmlns:europass="http://europass.cedefop.europa.eu/Europass/V2.0"
-    elementFormDefault="qualified"
-
-    targetNamespace="https://github.com/emrex-eu/elmo-schemas/tree/v1"
-    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
->
-    <xs:import
-        schemaLocation="http://www.w3.org/2001/03/xml.xsd"
-        namespace="http://www.w3.org/XML/1998/namespace"
-    />
-
-    <xs:import
-        schemaLocation="references/xmldsig-core-schema.xsd"
-        namespace="http://www.w3.org/2000/09/xmldsig#"
-    />
-
-    <xs:import
-        schemaLocation="references/EUROPASS_ISOCountries_V1.1.xsd"
-        namespace="http://europass.cedefop.europa.eu/Europass/V2.0"
-    />
-
+<xs:schema elementFormDefault="qualified" targetNamespace="https://github.com/emrex-eu/elmo-schemas/tree/v1" xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:europass="http://europass.cedefop.europa.eu/Europass/V2.0" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="references/xmldsig-core-schema.xsd"/>
+    <xs:import namespace="http://europass.cedefop.europa.eu/Europass/V2.0" schemaLocation="references/EUROPASS_ISOCountries_V1.1.xsd"/>
     <xs:annotation>
-        <xs:documentation>
-            This schema describes the EMREX ELMO XML format, used for formatting students'
+        <xs:documentation>This schema describes the EMREX ELMO XML format, used for formatting students'
             Transcripts of Records.
 
             This format was first used for formatting content returned in EMREX NCP
@@ -54,8 +32,8 @@
             Relationship with the other schemas
             ===================================
 
-            The EMREX ELMO format is loosely based on the "ELMO" schema used in various
-            sources under the namespace of "http://purl.org/net/elmo". However, the
+            The EMREX ELMO format is loosely based on the &quot;ELMO&quot; schema used in various
+            sources under the namespace of &quot;http://purl.org/net/elmo&quot;. However, the
             original ELMO XSD schema seems to be unsupported by its authors and it is very
             hard to find any official version of it. You can find some (possibly obsolete)
             XSDs in the Git history of THIS repository
@@ -64,7 +42,7 @@
 
             The following terms are *equivalent* throughout the EMREX specs:
 
-            - EMREX ELMO format (this is the "official" name of this format),
+            - EMREX ELMO format (this is the &quot;official&quot; name of this format),
             - EMREX response file,
             - NCP response file,
             - ELMO file.
@@ -100,7 +78,7 @@
             formatted in a way that will make it easy for a human to read its contents).
 
             In case when EMREX ELMO elements are embedded in other XML files, you SHOULD
-            consult the XSD annotations found in those "parent" files. There might be some
+            consult the XSD annotations found in those &quot;parent&quot; files. There might be some
             additional requirements the server (or clients) are required to meet.
 
 
@@ -112,12 +90,12 @@
 
             You MUST expect the worse. It is possible that the file you receive will not
             contain much data. In such cases it might not fit your requirements for
-            automatic processing and you would need to send it "to a human" for manual
+            automatic processing and you would need to send it &quot;to a human&quot; for manual
             processing. The PDF attachments (documented below) should be of use in such
             cases.
 
             In case when EMREX ELMO elements are embedded in other XML files, you SHOULD
-            consult the XSD annotations found in those "parent" files. There might be some
+            consult the XSD annotations found in those &quot;parent&quot; files. There might be some
             additional requirements the server (or clients) are required to meet.
 
 
@@ -144,7 +122,7 @@
             A general note on schema versioning
             ===================================
 
-            We follow the "Semantic Versioning Specification" in our releases:
+            We follow the &quot;Semantic Versioning Specification&quot; in our releases:
 
             http://semver.org/
 
@@ -181,45 +159,39 @@
             https://github.com/blog/1508-repository-redirects-are-here
         </xs:documentation>
     </xs:annotation>
-
     <!-- The root element -->
-
     <xs:element name="elmo">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="generatedDate" type="xs:dateTime">
                     <xs:annotation>
-                        <xs:documentation>
-                            The datetime when the file was generated. It SHOULD contain the timezone
-                            suffix. Example values: "2015-08-01T12:00:00+02:00", "2015-08-01T10:00:00Z".
+                        <xs:documentation>The datetime when the file was generated. It SHOULD contain the timezone
+                            suffix. Example values: &quot;2015-08-01T12:00:00+02:00&quot;, &quot;2015-08-01T10:00:00Z&quot;.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
                 <xs:element name="learner">
                     <xs:annotation>
-                        <xs:documentation>
-                            This describes the student whose achievements we will be describing. One EMREX
+                        <xs:documentation>This describes the student whose achievements we will be describing. One EMREX
                             ELMO element may contain multiple reports, but all of the reports are always
                             describing exactly one student.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="citizenship" type="europass:countryCode" minOccurs="0">
+                            <xs:element minOccurs="0" name="citizenship" type="europass:countryCode">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        The ISO 3166-1-alpha-2 code of the country the student is a citizen of.
-                                        E.g. "PL".
+                                    <xs:documentation>The ISO 3166-1-alpha-2 code of the country the student is a citizen of.
+                                        E.g. &quot;PL&quot;.
 
                                         For server implementers: If this is not known then you MUST skip the element
                                         altogether (instead of, for example, providing an empty value).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        For server implementers: Please read thought the list of predefined identifier
+                                    <xs:documentation>For server implementers: Please read thought the list of predefined identifier
                                         types below and try to provide all of those you can get. We are aware that
                                         some of those will be difficult to get (especially for the foreign students).
 
@@ -233,11 +205,10 @@
                                         <xs:extension base="xs:token">
                                             <xs:attribute name="type" type="xs:token" use="required">
                                                 <xs:annotation>
-                                                    <xs:documentation>
-                                                        Currently there is only one predefined type you can have here:
+                                                    <xs:documentation>Currently there is only one predefined type you can have here:
 
                                                         nationalIdentifier - if present, then the value of it should contain the
-                                                            "primary" national identifier of the student. For more information on
+                                                            &quot;primary&quot; national identifier of the student. For more information on
                                                             national identifiers used for various nationalities, see:
                                                             https://en.wikipedia.org/wiki/National_identification_number
 
@@ -252,24 +223,21 @@
                             </xs:element>
                             <xs:element name="givenNames" type="xs:token">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        The given names of the student. All servers MUST provide it (if it is impossible
+                                    <xs:documentation>The given names of the student. All servers MUST provide it (if it is impossible
                                         for some reason, please provide an empty string here).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
                             <xs:element name="familyName" type="xs:token">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        The family name of the student. All servers MUST provide it (if it is impossible
+                                    <xs:documentation>The family name of the student. All servers MUST provide it (if it is impossible
                                         for some reason, please provide an empty string here).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="bday" type="xs:date" minOccurs="0">
+                            <xs:element minOccurs="0" name="bday" type="xs:date">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        For server implementers: The birth date is vital to EMREX and SHOULD be provided.
+                                    <xs:documentation>For server implementers: The birth date is vital to EMREX and SHOULD be provided.
                                         If you cannot provide it, you MUST skip the bday element altogether.
 
                                         For client implementers:
@@ -286,10 +254,9 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="report" minOccurs="1" maxOccurs="unbounded">
+                <xs:element maxOccurs="unbounded" minOccurs="1" name="report">
                     <xs:annotation>
-                        <xs:documentation>
-                            Responses MUST contain at least one report.
+                        <xs:documentation>Responses MUST contain at least one report.
 
                             Please note, that one response may contain multiple reports, issued by
                             different institutions. All of those reports MUST be issued for the same
@@ -299,16 +266,14 @@
                     </xs:annotation>
                     <xs:complexType>
                         <xs:annotation>
-                            <xs:documentation>
-                                This describes an institution (issuer) and a *subset* of courses *completed*
+                            <xs:documentation>This describes an institution (issuer) and a *subset* of courses *completed*
                                 by the student within this institution.
                             </xs:documentation>
                         </xs:annotation>
                         <xs:sequence>
                             <xs:element name="issuer">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        This element identifies the host institution - the institution at which the
+                                    <xs:documentation>This element identifies the host institution - the institution at which the
                                         student has studied in order to achieve the credits described in this report).
 
                                         Note for server implementers: If your data comes from multiple institutions then
@@ -317,24 +282,22 @@
                                 </xs:annotation>
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="country" type="europass:countryCode" minOccurs="0">
+                                        <xs:element minOccurs="0" name="country" type="europass:countryCode">
                                             <xs:annotation>
-                                                <xs:documentation>
-                                                    An ISO 3166-1-alpha-2 code of the country in which the institution is
+                                                <xs:documentation>An ISO 3166-1-alpha-2 code of the country in which the institution is
                                                     operating. If the country is not known, or the institution is an international
                                                     one, then this element MUST NOT be present.
                                                 </xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
-                                        <xs:element name="identifier" minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element maxOccurs="unbounded" minOccurs="1" name="identifier">
                                             <xs:annotation>
-                                                <xs:documentation>
-                                                    For server implementers: You MUST be able to provide at least one identifier of
+                                                <xs:documentation>For server implementers: You MUST be able to provide at least one identifier of
                                                     the institution. You SHOULD provide all of them, if you can.
 
                                                     Please note, that you might be able to generate SCHAC identifiers by yourself,
                                                     based on the knowledge of the web domain bound to this institution. If you
-                                                    don't have any other ID, use your "best guess" for the SCHAC ID. SCHAC
+                                                    don't have any other ID, use your &quot;best guess&quot; for the SCHAC ID. SCHAC
                                                     identifiers may change in time (e.g. after institutions are merged), but you
                                                     should use your best guess nonetheless.
                                                 </xs:documentation>
@@ -344,12 +307,11 @@
                                                     <xs:extension base="xs:token">
                                                         <xs:attribute name="type" type="xs:token" use="required">
                                                             <xs:annotation>
-                                                                <xs:documentation>
-                                                                    These are the currently supported predefined types:
+                                                                <xs:documentation>These are the currently supported predefined types:
 
                                                                     pic - the PIC code,
                                                                     erasmus - the ERASMUS code,
-                                                                    schac - the SCHAC identifier (e.g. "uw.edu.pl"). These identifiers are used
+                                                                    schac - the SCHAC identifier (e.g. &quot;uw.edu.pl&quot;). These identifiers are used
                                                                         in other EU projects too, in particular the EWP (Erasmus Without Paper)
                                                                         project. See here:
                                                                         https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
@@ -362,10 +324,9 @@
                                                 </xs:simpleContent>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="title" type="TokenWithOptionalLang" minOccurs="1" maxOccurs="unbounded">
+                                        <xs:element maxOccurs="unbounded" minOccurs="1" name="title" type="TokenWithOptionalLang">
                                             <xs:annotation>
-                                                <xs:documentation>
-                                                    The name of the institution. May be provided in multiple languages. At least
+                                                <xs:documentation>The name of the institution. May be provided in multiple languages. At least
                                                     one name is required.
 
                                                     For server implementers:
@@ -381,8 +342,7 @@
                                         </xs:element>
                                         <xs:element name="url" type="xs:token">
                                             <xs:annotation>
-                                                <xs:documentation>
-                                                    The URL of the intitution's web page. It is a required element, because it
+                                                <xs:documentation>The URL of the intitution's web page. It is a required element, because it
                                                     should be easy to acquire it on server's side, and it might be used as a last
                                                     resort when attempting to pinpoint the issuing institution on the EMREX
                                                     Client's side.
@@ -392,26 +352,24 @@
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification" minOccurs="0" maxOccurs="unbounded">
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="learningOpportunitySpecification" type="LearningOpportunitySpecification">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        Please consult the documentation on the LearningOpportunitySpecification type.
+                                    <xs:documentation>Please consult the documentation on the LearningOpportunitySpecification type.
 
                                         Additional note for client implementers:
 
                                         Please note that it is ALLOWED for the report to contain zero
                                         learningOpportunitySpecifications. This may happen for example when the student
                                         has unchecked all the courses during the EMREX NCP export process. This is NOT an
-                                        error, and it should NOT trigger the "manual verification" process on your
+                                        error, and it should NOT trigger the &quot;manual verification&quot; process on your
                                         part (you might want to show a warning though).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
                             <xs:element name="issueDate" type="xs:dateTime">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        The datetime when the report has been issued. It SHOULD contain the timezone
-                                        suffix. Example values: "2015-08-01T12:00:00+02:00", "2015-08-01T10:00:00Z".
+                                    <xs:documentation>The datetime when the report has been issued. It SHOULD contain the timezone
+                                        suffix. Example values: &quot;2015-08-01T12:00:00+02:00&quot;, &quot;2015-08-01T10:00:00Z&quot;.
 
                                         Since EMREX ELMO may contain multiple reports, the issuing dates of each of
                                         these reports may be different. This may happen if the server does not posses the
@@ -421,40 +379,37 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="gradingScheme" minOccurs="0" maxOccurs="unbounded">
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="gradingScheme">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        These elements describe all grading schemes which were used in other sections
+                                    <xs:documentation>These elements describe all grading schemes which were used in other sections
                                         of the report. Elements in this set can be referenced by their identifiers.
 
                                         Note, that this list may contain local grading schemes, which are not
                                         standardized in any way. They have been introduced to the ELMO schema to give
                                         server implemeneters a way of providing their clients with some details about
                                         the grading schemes they use. However, since there exists no such thing as a
-                                        "global directory" of grading schemes, these schemes cannot be identified by
+                                        &quot;global directory&quot; of grading schemes, these schemes cannot be identified by
                                         any universal unique ID, and each needs to be separately described.
 
                                         These grading schemes are (currently) identified only by their local
                                         identifiers, but this does not necessarilly mean that the grading scheme itself
-                                        is "local only". In particular, popular grading schemes (like ECTS) can also be
+                                        is &quot;local only&quot;. In particular, popular grading schemes (like ECTS) can also be
                                         listed here, but they cannot be easily identified.
                                     </xs:documentation>
                                 </xs:annotation>
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
                                             <xs:annotation>
-                                                <xs:documentation>
-                                                    A set of descriptions (in multiple languages). It is RECOMMENDED to include a
+                                                <xs:documentation>A set of descriptions (in multiple languages). It is RECOMMENDED to include a
                                                     description, at least in English.
                                                 </xs:documentation>
                                             </xs:annotation>
                                         </xs:element>
                                     </xs:sequence>
-                                    <xs:attribute name="localId" use="required" type="xs:token">
+                                    <xs:attribute name="localId" type="xs:token" use="required">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                Local identifier, provided by the institution which has generated this report.
+                                            <xs:documentation>Local identifier, provided by the institution which has generated this report.
                                                 This identifier is used to reference `gradingScheme` elements from other places
                                                 in this document, and as such, is guaranteed to be valid only within this
                                                 single document. This means that it can even be dynamically generated, just for
@@ -465,10 +420,9 @@
                                     </xs:attribute>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="attachment" type="Attachment" minOccurs="0" maxOccurs="unbounded">
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="Attachment">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        Please note that attachments can be included in multiple places. This is the
+                                    <xs:documentation>Please note that attachments can be included in multiple places. This is the
                                         place for those attachments which are related to a *single institution*.
 
                                         Read the description of the Attachment type for further information.
@@ -478,10 +432,9 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="attachment" type="Attachment" minOccurs="0" maxOccurs="unbounded">
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="Attachment">
                     <xs:annotation>
-                        <xs:documentation>
-                            Please note that attachments can be included in multiple places. This is the
+                        <xs:documentation>Please note that attachments can be included in multiple places. This is the
                             place for those attachments which are *either unrelated to any institution, or
                             are related to multiple institutions*.
 
@@ -489,11 +442,16 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
+                <xs:element maxOccurs="1" minOccurs="0" name="groups" type="Groups">
+                    <xs:annotation>
+                        <xs:documentation>Groups...
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer"/>
                 <xs:element ref="ds:Signature">
                     <xs:annotation>
-                        <xs:documentation>
-                            Every EMREX ELMO element MUST be signed with xmldsig-core2 enveloped signature. The
+                        <xs:documentation>Every EMREX ELMO element MUST be signed with xmldsig-core2 enveloped signature. The
                             ds:SignedInfo element MUST contain a single ds:Reference with an empty URI. The
                             key used by the server for signing must often match some external criteria, which
                             are NOT documented here. (E.g. If you're implementing EMREX NCP, then the certificate
@@ -505,27 +463,22 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-
     <!-- Common types with simple content. -->
-
     <xs:complexType name="TokenWithOptionalLang">
         <xs:annotation>
-            <xs:documentation>
-                A xs:token value with at optional xml:lang attribute. It is used in places
+            <xs:documentation>A xs:token value with at optional xml:lang attribute. It is used in places
                 where server developers may provide the name of an entity in multiple languages.
             </xs:documentation>
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:token">
-                <xs:attribute ref="xml:lang" use="optional" />
+                <xs:attribute ref="xml:lang" use="optional"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-
     <xs:complexType name="PlaintextMultilineStringWithOptionalLang">
         <xs:annotation>
-            <xs:documentation>
-                This is very similar to TokenWithOptionalLang, but it inherits from xs:string
+            <xs:documentation>This is very similar to TokenWithOptionalLang, but it inherits from xs:string
                 (instead of xs:token), and it MAY contain basic whitespace formatting, such
                 as line breaks and double line breaks (for spliting paragraphs). The values
                 still must be in plain text though (no HTML is allowed).
@@ -539,15 +492,13 @@
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute ref="xml:lang" use="optional" />
+                <xs:attribute ref="xml:lang" use="optional"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-
     <xs:complexType name="SimpleHtmlStringWithOptionalLang">
         <xs:annotation>
-            <xs:documentation>
-                "Simple" (but still dangerous) HTML string. This type is very different from
+            <xs:documentation>&quot;Simple&quot; (but still dangerous) HTML string. This type is very different from
                 PlaintextMultilineStringWithOptionalLang, because it contains HTML, not
                 plain-text.
 
@@ -555,7 +506,7 @@
                 Notes for SERVER implementers
                 =============================
 
-                There's the word "Simple" in the name of this type. This is because servers are
+                There's the word &quot;Simple&quot; in the name of this type. This is because servers are
                 RECOMMENDED to use only the basic HTML tags for formatting (paragraphs,
                 italics, emphasis, lists, etc.). You SHOULD avoid inserting more complex
                 content (such as tables, images or h1..h6 headers), because clients might not
@@ -585,23 +536,19 @@
         </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
-                <xs:attribute ref="xml:lang" use="optional" />
+                <xs:attribute ref="xml:lang" use="optional"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-
-
     <!-- Common types with complex content. -->
-
     <xs:complexType name="CustomExtensionsContainer">
         <xs:annotation>
-            <xs:documentation>
-                This is the type of "extension" elements. Extension elements may contain any
+            <xs:documentation>This is the type of &quot;extension&quot; elements. Extension elements may contain any
                 elements, as long as they are from a different namespace. Server implementers may
                 use them to include additional metadata in various places of the XML document.
                 The content of such extensions is not documented within this schema.
 
-                Please note that it *might* be possible to extend the "official" EMREX ELMO
+                Please note that it *might* be possible to extend the &quot;official&quot; EMREX ELMO
                 schema format. If you're a server implementer and you find the namespace lacking
                 some data which you think might be useful for the clients, then please try to
                 contact EMREX representative and/or the current owner of the
@@ -609,15 +556,39 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax"/>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
         </xs:sequence>
         <xs:anyAttribute/>
     </xs:complexType>
-
-    <xs:complexType name="Attachment">
+    <xs:complexType name="Groups">
         <xs:annotation>
             <xs:documentation>
-                Notes for server implementers:
+                Groups is a way of organizing and sorting over groups of LOI's.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="groupType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="title" type="TokenWithOptionalLang"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="group">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="title" type="TokenWithOptionalLang"/>
+                                </xs:sequence>
+                                <xs:attribute name="id" type="xs:string" use="optional"/>
+                                <xs:attribute name="sortingKey" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="id" type="xs:string" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Attachment">
+        <xs:annotation>
+            <xs:documentation>Notes for server implementers:
 
                 The attachements MUST contain a human-readable version of all the crucial data
                 contained within the reports. This also includes all the data which may help to
@@ -646,61 +617,57 @@
                 You will probably need these attachments in case when something goes wrong, and
                 you want this response to be imported or verified manually.
 
-                You MAY also use the attachment to view a human-readable "preview" of the ELMO
+                You MAY also use the attachment to view a human-readable &quot;preview&quot; of the ELMO
                 data for the student.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="title" type="TokenWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="title" type="TokenWithOptionalLang">
                 <xs:annotation>
-                    <xs:documentation>
-                        Title of the attachment, e.g. "Transcript of records". May be provided in
+                    <xs:documentation>Title of the attachment, e.g. &quot;Transcript of records&quot;. May be provided in
                         multiple languages. This is not required, but recommended - it might be used
                         by the clients, for example when displaying a list of attachments.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="type" minOccurs="0">
+            <xs:element minOccurs="0" name="type">
                 <xs:annotation>
-                    <xs:documentation>
-                        Type of the attachment. SHOULD be included if any type from the enclosed
+                    <xs:documentation>Type of the attachment. SHOULD be included if any type from the enclosed
                         enumaration applies to the content of the attachment. If the none of the
                         predefined values apply then this element SHOULD either be skipped, or
-                        "Other" value should be used.
+                        &quot;Other&quot; value should be used.
 
                         More types MAY be added in the future. You SHOULD be prepared for that.
                     </xs:documentation>
                 </xs:annotation>
                 <xs:simpleType>
                     <xs:restriction base="xs:token">
-                        <xs:enumeration value="Diploma Supplement"></xs:enumeration>
-                        <xs:enumeration value="Transcript of Records"></xs:enumeration>
+                        <xs:enumeration value="Diploma Supplement"/>
+                        <xs:enumeration value="Transcript of Records"/>
                         <xs:enumeration value="EMREX transcript">
                             <xs:annotation>
-                                <xs:documentation>
-                                    This is similar to a Transcript of Records, with one big difference.
+                                <xs:documentation>This is similar to a Transcript of Records, with one big difference.
 
-                                    The "EMREX Transcript" is meant to include all the records within the
+                                    The &quot;EMREX Transcript&quot; is meant to include all the records within the
                                     transferred ELMO file (which can span over *multiple* institutions), that is, it
                                     should be located *outside* the `report` elements.
 
-                                    In comparison, "Transcript of Records" is meant to be issued (and possibly
+                                    In comparison, &quot;Transcript of Records&quot; is meant to be issued (and possibly
                                     signed) by a single institution, and should be located inside the `report`
                                     element.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
-                        <xs:enumeration value="Letter of Nomination"></xs:enumeration>
-                        <xs:enumeration value="Certificate of Training"></xs:enumeration>
-                        <xs:enumeration value="Learning Agreement"></xs:enumeration>
+                        <xs:enumeration value="Letter of Nomination"/>
+                        <xs:enumeration value="Certificate of Training"/>
+                        <xs:enumeration value="Learning Agreement"/>
                         <xs:enumeration value="Other">
                             <xs:annotation>
-                                <xs:documentation>
-                                    This type can be used when none of the other currently defined types matches.
+                                <xs:documentation>This type can be used when none of the other currently defined types matches.
                                     Using this type is more or less equivalent to not providing any type.
 
                                     Client implementers should be reminde, that the the number of types will grow.
-                                    Therefore, if the server seems to be using "Other" in place of some other
+                                    Therefore, if the server seems to be using &quot;Other&quot; in place of some other
                                     better-fitting type X, then it's not necessarilly the fault of the server. It
                                     also might be caused by the fact the type X was added recently, and the server
                                     didn't discover it yet.
@@ -710,21 +677,19 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
                 <xs:annotation>
-                    <xs:documentation>
-                        An optional detailed description of the attachment (in multiple languages).
+                    <xs:documentation>An optional detailed description of the attachment (in multiple languages).
 
                         Avoid redundancy - you SHOULD NOT include the description if its value is
                         already included in the title element.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="content" type="TokenWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="content" type="TokenWithOptionalLang">
                 <xs:annotation>
-                    <xs:documentation>
-                        The content of the attachment encoded using a data URI scheme. E.g.
-                        "data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2..."
+                    <xs:documentation>The content of the attachment encoded using a data URI scheme. E.g.
+                        &quot;data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...&quot;
 
                         If you have several attachments of the same type with different languages, there
                         is now a possibility to add more than one content.
@@ -742,14 +707,12 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
+            <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer"/>
         </xs:sequence>
     </xs:complexType>
-
     <xs:complexType name="LearningOpportunitySpecification">
         <xs:annotation>
-            <xs:documentation>
-                This describes a single "branch" of the "LOS tree": One "parent" node along
+            <xs:documentation>This describes a single &quot;branch&quot; of the &quot;LOS tree&quot;: One &quot;parent&quot; node along
                 with all its descendants (via the hasPart elements).
 
                 Each report element contains a set of such trees (a forest). For example, a
@@ -761,8 +724,8 @@
                 In theory the depth of such tree is unlimited, but in practice no more than
                 4 levels are usually reached. Each level has an OPTIONAL type, and these types
                 (if given) SHOULD follow a logical structure - in order of their depth, these
-                would be: "Degree programme", "Module", "Course" and "Class". That is, it is
-                valid to include a "Course" with a "Degree programme" parent, but it would be
+                would be: &quot;Degree programme&quot;, &quot;Module&quot;, &quot;Course&quot; and &quot;Class&quot;. That is, it is
+                valid to include a &quot;Course&quot; with a &quot;Degree programme&quot; parent, but it would be
                 invalid to include them the other way around.
 
 
@@ -779,23 +742,22 @@
                 Notes of client implemeneters
                 ===================================
 
-                We cannot guarantee the *all* servers will follow the "max of 4 levels deep"
-                structure, nor that all of them will fill in the "type" elements for all the
+                We cannot guarantee the *all* servers will follow the &quot;max of 4 levels deep&quot;
+                structure, nor that all of them will fill in the &quot;type&quot; elements for all the
                 nodes.
 
-                If you're trying to import the data into your system, and the "possibly
-                infinite tree" representation seems to be incompatible with your model, then
+                If you're trying to import the data into your system, and the &quot;possibly
+                infinite tree&quot; representation seems to be incompatible with your model, then
                 you will need to dynamically analyze the types of all the the nodes included in
                 the report and decide if the structure can be automatically imported.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
                 <xs:annotation>
-                    <xs:documentation>
-                        For server implementers: Depending on your clients, you might be required to
+                    <xs:documentation>For server implementers: Depending on your clients, you might be required to
                         supply specific identifier types (because clients expect them). E.g. some EMREX
-                        clients expect the "local" identifier to be present.
+                        clients expect the &quot;local&quot; identifier to be present.
                     </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
@@ -803,18 +765,17 @@
                         <xs:extension base="xs:token">
                             <xs:attribute name="type" type="xs:token" use="required">
                                 <xs:annotation>
-                                    <xs:documentation>
-                                        Some predefined type values include:
+                                    <xs:documentation>Some predefined type values include:
 
-                                        "local" - the local unique identifier of the node. "Unique" means that the
+                                        &quot;local&quot; - the local unique identifier of the node. &quot;Unique&quot; means that the
                                             [node type, local identifier] tuple MUST uniquely identify this node
                                             *within the scope of the host institution* (the one provided in the issuer
-                                            element). If you cannot provide the "type" for this node, then the provided
-                                            "local" identifier MUST be unique by itself. If you cannot guarantee such
-                                            uniqueness then you MUST NOT provide the "local" identifier at all (you can
+                                            element). If you cannot provide the &quot;type&quot; for this node, then the provided
+                                            &quot;local&quot; identifier MUST be unique by itself. If you cannot guarantee such
+                                            uniqueness then you MUST NOT provide the &quot;local&quot; identifier at all (you can
                                             still use other identifiers).
 
-                                        "ewp-los-id" - LOS identifier used in the Erasmus Without Paper project.
+                                        &quot;ewp-los-id&quot; - LOS identifier used in the Erasmus Without Paper project.
                                             https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
 
                                         You can also have any number of custom types.
@@ -825,10 +786,9 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="title" type="TokenWithOptionalLang" minOccurs="1" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="title" type="TokenWithOptionalLang">
                 <xs:annotation>
-                    <xs:documentation>
-                        The name(s) of the node (the title of a degree programme, or the name of a
+                    <xs:documentation>The name(s) of the node (the title of a degree programme, or the name of a
                         course, etc.).
 
                         Note for server implementers:
@@ -840,10 +800,9 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="type" minOccurs="0">
+            <xs:element minOccurs="0" name="type">
                 <xs:annotation>
-                    <xs:documentation>
-                        The type of the node.
+                    <xs:documentation>The type of the node.
 
                         Note for server implementers:
 
@@ -873,49 +832,45 @@
                     <xs:restriction base="xs:token">
                         <xs:enumeration value="Degree Programme">
                             <xs:annotation>
-                                <xs:documentation>
-                                    A study programme. Finalizing a study programme ends with a degree (e.g.
+                                <xs:documentation>A study programme. Finalizing a study programme ends with a degree (e.g.
                                     Bachelor degree, Master degree, etc.).
 
-                                    "Degree programme"s should not have a parent and should contain only "Module"s
-                                    or "Course"s as their descendants. (However, we have some reason to believe
+                                    &quot;Degree programme&quot;s should not have a parent and should contain only &quot;Module&quot;s
+                                    or &quot;Course&quot;s as their descendants. (However, we have some reason to believe
                                     that in some rare cases, it is possible that they MAY also contain other
-                                    "Degree programme"s.)
+                                    &quot;Degree programme&quot;s.)
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="Module">
                             <xs:annotation>
-                                <xs:documentation>
-                                    A group or collection of courses.
+                                <xs:documentation>A group or collection of courses.
 
-                                    "Module"s may have a "Degree programme" parent, and should contain "Course"s
+                                    &quot;Module&quot;s may have a &quot;Degree programme&quot; parent, and should contain &quot;Course&quot;s
                                     only.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="Course">
                             <xs:annotation>
-                                <xs:documentation>
-                                    In EMREX we define "Course" as the *smallest* entity for the students to be
+                                <xs:documentation>In EMREX we define &quot;Course&quot; as the *smallest* entity for the students to be
                                     able to gain ECTS credits from.
 
-                                    A "Course" may have a "Degree programme" or a "Module" as a parent, and should
-                                    contain "Class"es.
+                                    A &quot;Course&quot; may have a &quot;Degree programme&quot; or a &quot;Module&quot; as a parent, and should
+                                    contain &quot;Class&quot;es.
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="Class">
                             <xs:annotation>
-                                <xs:documentation>
-                                    A single education element a course consists of (like lecture, classes etc.).
+                                <xs:documentation>A single education element a course consists of (like lecture, classes etc.).
 
-                                    "Class"es should have a "Course" ancestor, and - if they contain any children -
+                                    &quot;Class&quot;es should have a &quot;Course&quot; ancestor, and - if they contain any children -
                                     then these children should not have any type.
 
-                                    If there are many "types of classes" in the server side, then such types MAY be
-                                    further described in the node title (e.g. "Lecture class" or "Laboratory
-                                    class"). The EMREX ELMO format does not currently provide any enumeration
+                                    If there are many &quot;types of classes&quot; in the server side, then such types MAY be
+                                    further described in the node title (e.g. &quot;Lecture class&quot; or &quot;Laboratory
+                                    class&quot;). The EMREX ELMO format does not currently provide any enumeration
                                     for such subtypes though.
                                 </xs:documentation>
                             </xs:annotation>
@@ -923,17 +878,15 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="subjectArea" type="xs:token" minOccurs="0">
+            <xs:element minOccurs="0" name="subjectArea" type="xs:token">
                 <xs:annotation>
-                    <xs:documentation>
-                        The Erasmus subject area code of the course.
+                    <xs:documentation>The Erasmus subject area code of the course.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="iscedCode" type="xs:token" minOccurs="0">
+            <xs:element minOccurs="0" name="iscedCode" type="xs:token">
                 <xs:annotation>
-                    <xs:documentation>
-                        The ISCED-F code of the course or programme.
+                    <xs:documentation>The ISCED-F code of the course or programme.
 
                         ISCED-F codes define fields of education and training at the secondary,
                         post-secondary and tertiary levels of education. Details:
@@ -941,26 +894,23 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="url" type="xs:token" minOccurs="0">
+            <xs:element minOccurs="0" name="url" type="xs:token">
                 <xs:annotation>
-                    <xs:documentation>
-                        The URL of the entity's web page (with the description of the course or
+                    <xs:documentation>The URL of the entity's web page (with the description of the course or
                         degree programme).
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
                 <xs:annotation>
-                    <xs:documentation>
-                        An optional plain-text description of the programme/course/class (in multiple
+                    <xs:documentation>An optional plain-text description of the programme/course/class (in multiple
                         languages).
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="descriptionHtml" type="SimpleHtmlStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="descriptionHtml" type="SimpleHtmlStringWithOptionalLang">
                 <xs:annotation>
-                    <xs:documentation>
-                        An optional HTML description of the programme/course/class (in multiple
+                    <xs:documentation>An optional HTML description of the programme/course/class (in multiple
                         languages).
 
 
@@ -989,8 +939,7 @@
             </xs:element>
             <xs:element name="specifies">
                 <xs:annotation>
-                    <xs:documentation>
-                        Just a wrapper for learningOpportunityInstance (we're trying to be
+                    <xs:documentation>Just a wrapper for learningOpportunityInstance (we're trying to be
                         ELMO-compatible).
                     </xs:documentation>
                 </xs:annotation>
@@ -998,19 +947,17 @@
                     <xs:sequence>
                         <xs:element name="learningOpportunityInstance">
                             <xs:annotation>
-                                <xs:documentation>
-                                    While the "learningOpportunitySpecification" element describes a "Degree
-                                    programme" (or a "Course", etc.) by itself, this element tells us more of the
-                                    relation between such programme (or course, etc.) and our "learner" (which
+                                <xs:documentation>While the &quot;learningOpportunitySpecification&quot; element describes a &quot;Degree
+                                    programme&quot; (or a &quot;Course&quot;, etc.) by itself, this element tells us more of the
+                                    relation between such programme (or course, etc.) and our &quot;learner&quot; (which
                                     includes student's grades, credits, and other achievements).
                                 </xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                A list of identifiers of this Learning Opportunity Instance.
+                                            <xs:documentation>A list of identifiers of this Learning Opportunity Instance.
                                             </xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
@@ -1018,10 +965,9 @@
                                                 <xs:extension base="xs:token">
                                                     <xs:attribute name="type" type="xs:token" use="required">
                                                         <xs:annotation>
-                                                            <xs:documentation>
-                                                                Some predefined type values include:
+                                                            <xs:documentation>Some predefined type values include:
 
-                                                                "ewp-loi-id" - LOI identifier used in the EWP (Erasmus Without Paper) project.
+                                                                &quot;ewp-loi-id&quot; - LOI identifier used in the EWP (Erasmus Without Paper) project.
                                                                     https://github.com/erasmus-without-paper/ewp-specs-api-courses#unique-identifiers
 
                                                                 You can also have any number of custom types.
@@ -1032,10 +978,9 @@
                                             </xs:simpleContent>
                                         </xs:complexType>
                                     </xs:element>
-                                    <xs:element name="start" type="xs:date" minOccurs="0">
+                                    <xs:element minOccurs="0" name="start" type="xs:date">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                The date on which the student started studying this learning opportunity
+                                            <xs:documentation>The date on which the student started studying this learning opportunity
                                                 (may contain a time zone).
 
                                                 A note for server implementers: Usually this will match the beginning of one of
@@ -1043,10 +988,9 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="date" type="xs:date" minOccurs="0">
+                                    <xs:element minOccurs="0" name="date" type="xs:date">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                The date on which the student finished studying (may contain a time zone). It
+                                            <xs:documentation>The date on which the student finished studying (may contain a time zone). It
                                                 doesn't necessarilly need to match the end of the academic term. Prefferably,
                                                 this should be the date when the student has passed his final exam.
 
@@ -1055,54 +999,49 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="academicTerm" minOccurs="0">
+                                    <xs:element minOccurs="0" name="academicTerm">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                Describes the academic term in which the course took place.
+                                            <xs:documentation>Describes the academic term in which the course took place.
 
-                                                A note for server implementers: You SHOULD include this element for "Course"-type
-                                                learning opportunities (EMREX's "Course" entities *always* span over a single
-                                                academic term). You SHOULD NOT include the academicTerm element for "Degree
-                                                Programme"s, or any other learning opportunities which span over multiple
+                                                A note for server implementers: You SHOULD include this element for &quot;Course&quot;-type
+                                                learning opportunities (EMREX's &quot;Course&quot; entities *always* span over a single
+                                                academic term). You SHOULD NOT include the academicTerm element for &quot;Degree
+                                                Programme&quot;s, or any other learning opportunities which span over multiple
                                                 terms.
                                             </xs:documentation>
                                         </xs:annotation>
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="title" type="TokenWithOptionalLang" maxOccurs="unbounded">
+                                                <xs:element maxOccurs="unbounded" name="title" type="TokenWithOptionalLang">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            The displayed name of the academic term, in multiple languages. Servers SHOULD
+                                                        <xs:documentation>The displayed name of the academic term, in multiple languages. Servers SHOULD
                                                             provide at least the name in English.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
                                                 <xs:element name="start" type="xs:date">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            SHOULD match the first day of the academic term (may contain a time zone).
+                                                        <xs:documentation>SHOULD match the first day of the academic term (may contain a time zone).
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
                                                 <xs:element name="end" type="xs:date">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            SHOULD match the last day of the academic term (may contain a time zone).
+                                                        <xs:documentation>SHOULD match the last day of the academic term (may contain a time zone).
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
-                                    <xs:element name="status" minOccurs="0" maxOccurs="1">
+                                    <xs:element maxOccurs="1" minOccurs="0" name="status">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                The status of this LOI. It is STRONGLY RECOMMENDED for all server implementers
+                                            <xs:documentation>The status of this LOI. It is STRONGLY RECOMMENDED for all server implementers
                                                 to include this element explicitly (even if the server does not ever include
-                                                LOIs other than "passed" in this particular context).
+                                                LOIs other than &quot;passed&quot; in this particular context).
 
                                                 Because of backward-compatibility, if no explicit status is present, then
-                                                clients SHOULD assume that the status is "passed".
+                                                clients SHOULD assume that the status is &quot;passed&quot;.
 
                                                 Clients MAY assume that this enumeration WILL NOT grow in the future. No new
                                                 status values will be added here. If schema designers ever decide that more
@@ -1114,35 +1053,31 @@
                                             <xs:restriction base="xs:token">
                                                 <xs:enumeration value="passed">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            Indicates that this LOI has been passed by the student. Once the status is
-                                                            "passed", it SHOULD NOT change to any other status.
+                                                        <xs:documentation>Indicates that this LOI has been passed by the student. Once the status is
+                                                            &quot;passed&quot;, it SHOULD NOT change to any other status.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:enumeration>
                                                 <xs:enumeration value="failed">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            Indicates that the student permanently failed to pass this LOI. Once the
-                                                            status is "failed", it SHOULD NOT change to any other status.
+                                                        <xs:documentation>Indicates that the student permanently failed to pass this LOI. Once the
+                                                            status is &quot;failed&quot;, it SHOULD NOT change to any other status.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:enumeration>
                                                 <xs:enumeration value="in-progress">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            Indicates that the student has started this LOI, but has not completed it yet.
-                                                            Eventually, this status SHOULD change to "passed" or "failed".
+                                                        <xs:documentation>Indicates that the student has started this LOI, but has not completed it yet.
+                                                            Eventually, this status SHOULD change to &quot;passed&quot; or &quot;failed&quot;.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:enumeration>
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:element>
-                                    <xs:element name="gradingSchemeLocalId" type="xs:token" minOccurs="0" maxOccurs="1">
+                                    <xs:element maxOccurs="1" minOccurs="0" name="gradingSchemeLocalId" type="xs:token">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                RECOMMENDED. Identifier of the grading scheme used in `resultLabel` and
+                                            <xs:documentation>RECOMMENDED. Identifier of the grading scheme used in `resultLabel` and
                                                 `resultDistribution` below.
 
                                                 This identifier is provided by the institution which has generated this report,
@@ -1153,10 +1088,9 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="resultLabel" type="xs:token" minOccurs="0">
+                                    <xs:element minOccurs="0" name="resultLabel" type="xs:token">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                The final grade awarded for the student. This SHOULD contain the same value as
+                                            <xs:documentation>The final grade awarded for the student. This SHOULD contain the same value as
                                                 the one printed in the official documents in the server's country.
 
                                                 A note for client implementers: You MUST be prepared for the resultLabel
@@ -1165,10 +1099,9 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="shortenedGrading" minOccurs="0">
+                                    <xs:element minOccurs="0" name="shortenedGrading">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                Optional. Might be provided by some servers.
+                                            <xs:documentation>Optional. Might be provided by some servers.
 
                                                 This element may be used by clients as an indicator of *how well* the
                                                 student was graded when compared to other students. The three values don't
@@ -1180,8 +1113,7 @@
                                             <xs:sequence>
                                                 <xs:element name="percentageLower" type="xs:decimal">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            The percentage of students of the same course who got a lower grade than
+                                                        <xs:documentation>The percentage of students of the same course who got a lower grade than
                                                             our learner (this includes the students which have failed the course).
                                                             A decimal number between 0 and 100 (though 100 is never reached).
                                                         </xs:documentation>
@@ -1189,16 +1121,14 @@
                                                 </xs:element>
                                                 <xs:element name="percentageEqual" type="xs:decimal">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            The percentage of students of the same course who got exactly the same grade as
+                                                        <xs:documentation>The percentage of students of the same course who got exactly the same grade as
                                                             our learner.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
                                                 <xs:element name="percentageHigher" type="xs:decimal">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            The percentage of students of the same course who got a higher grade than
+                                                        <xs:documentation>The percentage of students of the same course who got a higher grade than
                                                             our learner.
                                                         </xs:documentation>
                                                     </xs:annotation>
@@ -1206,16 +1136,15 @@
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
-                                    <xs:element name="resultDistribution" minOccurs="0">
+                                    <xs:element minOccurs="0" name="resultDistribution">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                Optional. Might be provided by some servers.
+                                            <xs:documentation>Optional. Might be provided by some servers.
 
                                                 At first, this element might seem similar to the shortenedGrading element, but
                                                 it serves a different purpose. It describes a histogram of results achieved by
                                                 all the students of this course instance. However, since the ranges of the
                                                 histogram are artificial labels only, and they may contain ranges (e.g.
-                                                "10-20"), the client cannot easily determine in which category the result
+                                                &quot;10-20&quot;), the client cannot easily determine in which category the result
                                                 of the learner comes into.
 
                                                 If provided, then it should contain the distribution of results of all the
@@ -1224,52 +1153,47 @@
                                         </xs:annotation>
                                         <xs:complexType>
                                             <xs:sequence>
-                                                <xs:element name="category" maxOccurs="unbounded">
+                                                <xs:element maxOccurs="unbounded" name="category">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            This describes a single range within the histogram.
+                                                        <xs:documentation>This describes a single range within the histogram.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                     <xs:complexType>
                                                         <xs:attribute name="label" type="xs:token" use="required">
                                                             <xs:annotation>
-                                                                <xs:documentation>
-                                                                    The label of the histogram range. Should correspond to the grading scheme
-                                                                    which have been used. E.g. "C", or "20-30". If possible, the label should
+                                                                <xs:documentation>The label of the histogram range. Should correspond to the grading scheme
+                                                                    which have been used. E.g. &quot;C&quot;, or &quot;20-30&quot;. If possible, the label should
                                                                     be understandable in any language. If not, you should try to use English.
                                                                 </xs:documentation>
                                                             </xs:annotation>
                                                         </xs:attribute>
                                                         <xs:attribute name="count" type="xs:nonNegativeInteger" use="required">
                                                             <xs:annotation>
-                                                                <xs:documentation>
-                                                                    The number of students whose grades fall within that category.
+                                                                <xs:documentation>The number of students whose grades fall within that category.
                                                                 </xs:documentation>
                                                             </xs:annotation>
                                                         </xs:attribute>
                                                     </xs:complexType>
                                                 </xs:element>
-                                                <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
+                                                <xs:element maxOccurs="unbounded" minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            Optional additional description of the histogram (in multiple languages).
+                                                        <xs:documentation>Optional additional description of the histogram (in multiple languages).
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
-                                    <xs:element name="credit" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element maxOccurs="unbounded" minOccurs="0" name="credit">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                This describes various credit types which student has achieved by completing
+                                            <xs:documentation>This describes various credit types which student has achieved by completing
                                                 this module/course/class.
 
                                                 At least ECTS credits SHOULD be included.
 
                                                 If this tree node contains ECTS credits earned, then all of its descendants
                                                 and ancestors MUST NOT. E.g. if the student has been given credits for
-                                                completing a course, he/she should not be given the same credits "again" for
+                                                completing a course, he/she should not be given the same credits &quot;again&quot; for
                                                 completing the degree programme which this course has been a part of.
                                             </xs:documentation>
                                         </xs:annotation>
@@ -1277,10 +1201,9 @@
                                             <xs:sequence>
                                                 <xs:element name="scheme" type="xs:token">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            Currently there is only one predefined scheme you can have here:
+                                                        <xs:documentation>Currently there is only one predefined scheme you can have here:
 
-                                                            ects - if the scheme is "ects", then the value element MUST contain the number
+                                                            ects - if the scheme is &quot;ects&quot;, then the value element MUST contain the number
                                                                 of ECTS credits awarded for our learner for completing this learning
                                                                 opportunity.
 
@@ -1289,10 +1212,9 @@
                                                     </xs:annotation>
                                                 </xs:element>
                                                 <!-- DEPRECATED - will be removed in Version 2-->
-                                                <xs:element name="level" minOccurs="0">
+                                                <xs:element minOccurs="0" name="level">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            This one was never properly documented, and is planned to be deprecated soon.
+                                                        <xs:documentation>This one was never properly documented, and is planned to be deprecated soon.
                                                             Servers and clients who plan to use it SHOULD first refer to these threads:
 
                                                             https://github.com/emrex-eu/elmo-schemas/issues/26
@@ -1307,20 +1229,18 @@
                                                         </xs:restriction>
                                                     </xs:simpleType>
                                                 </xs:element>
-                                                <xs:element name="value" type="xs:decimal" minOccurs="0">
+                                                <xs:element minOccurs="0" name="value" type="xs:decimal">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            The number of credits acquired.
+                                                        <xs:documentation>The number of credits acquired.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
-                                    <xs:element name="level" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element maxOccurs="unbounded" minOccurs="0" name="level">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                This describes various levels of education.
+                                            <xs:documentation>This describes various levels of education.
 
                                                 Here, issuers of ELMO can describe types of education levels.
 
@@ -1335,35 +1255,31 @@
                                             <xs:sequence>
                                                 <xs:element name="type" type="xs:token">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            Currently supported types are:
+                                                        <xs:documentation>Currently supported types are:
                                                             - EQF (European Qualification Framework)
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
-                                                <xs:element name="description" type="PlaintextMultilineStringWithOptionalLang" minOccurs="0">
+                                                <xs:element minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            An optional detailed description of the the type of level that is being supplied. 
+                                                        <xs:documentation>An optional detailed description of the the type of level that is being supplied. 
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
-                                                <xs:element name="value" type="xs:token" minOccurs="0">
+                                                <xs:element minOccurs="0" name="value" type="xs:token">
                                                     <xs:annotation>
-                                                        <xs:documentation>
-                                                            The level value.
+                                                        <xs:documentation>The level value.
                                                         </xs:documentation>
                                                     </xs:annotation>
                                                 </xs:element>
                                             </xs:sequence>
                                         </xs:complexType>
                                     </xs:element>
-                                    <xs:element name="languageOfInstruction" type="xs:token" minOccurs="0">
+                                    <xs:element minOccurs="0" name="languageOfInstruction" type="xs:token">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                Recommended, especially for courses and/or classes. An ISO 639-1 code of the
+                                            <xs:documentation>Recommended, especially for courses and/or classes. An ISO 639-1 code of the
                                                 language which has been used as the primary language for teaching the learner
-                                                during the classes. E.g. "pl" if the course was instructed/conducted in Polish.
+                                                during the classes. E.g. &quot;pl&quot; if the course was instructed/conducted in Polish.
 
                                                 A note for server implementers: This MUST be a single language. If multiple
                                                 languages were used, attempt to select the primary one. If you cannot select a
@@ -1371,26 +1287,44 @@
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="engagementHours" type="xs:decimal" minOccurs="0">
+                                    <xs:element minOccurs="0" name="engagementHours" type="xs:decimal">
                                         <xs:annotation>
-                                            <xs:documentation>
-                                                Recommended. For courses or classes. The number of hours the student had spent
+                                            <xs:documentation>Recommended. For courses or classes. The number of hours the student had spent
                                                 on attending the classes.
                                             </xs:documentation>
                                         </xs:annotation>
                                     </xs:element>
-                                    <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
+                                    <xs:element name="grouping">
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:extension base="xs:string">
+                                                    <xs:attribute name="typeref" type="xs:string">
+                                                        <xs:annotation>
+                                                            <xs:documentation>A reference to the groups.id
+                                                            </xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:attribute>
+                                                    <xs:attribute name="idref" type="xs:string">
+                                                        <xs:annotation>
+                                                            <xs:documentation>A reference to the groups.group.id
+                                                            </xs:documentation>
+                                                        </xs:annotation>
+                                                    </xs:attribute>
+                                                </xs:extension>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
+                                    <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer"/>
                                 </xs:sequence>
                             </xs:complexType>
                         </xs:element>
-                        <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
+                        <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="hasPart" minOccurs="0" maxOccurs="unbounded">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="hasPart">
                 <xs:annotation>
-                    <xs:documentation>
-                        Just a wrapper for learningOpportunitySpecification (we're trying to be
+                    <xs:documentation>Just a wrapper for learningOpportunitySpecification (we're trying to be
                         ELMO-compatible).
                     </xs:documentation>
                 </xs:annotation>
@@ -1398,8 +1332,7 @@
                     <xs:sequence>
                         <xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification">
                             <xs:annotation>
-                                <xs:documentation>
-                                    Each hasPart contains exactly one learningOpportunitySpecification, which
+                                <xs:documentation>Each hasPart contains exactly one learningOpportunitySpecification, which
                                     contains one child node of our tree. Every node may have an unlimited number
                                     of hasPart/learningOpportunitySpecification elements.
                                 </xs:documentation>
@@ -1408,7 +1341,7 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
+            <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

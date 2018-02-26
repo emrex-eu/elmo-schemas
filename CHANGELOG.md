@@ -6,6 +6,11 @@ its initial `1.0.0` release.
 
 Please note, that all changes in the `v1` branch will be backward-compatible.
 
+Version 1.3.0
+-------------
+
+* Added categories to LOI for grouping and sorting. See [this issue](https://github.com/emrex-eu/elmo-schemas/issues/19)
+
 Version 1.2.0
 -------------
 
