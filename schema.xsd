@@ -651,6 +651,27 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
+            <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        This identifier has been primarily established to enable internal references
+                        to attachment from LOI's.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:token">
+                            <xs:attribute name="type" type="xs:token" use="required">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Currently, the only type recognized is "internal"
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="title" type="TokenWithOptionalLang" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>
@@ -1378,6 +1399,24 @@
                                                 on attending the classes.
                                             </xs:documentation>
                                         </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="attachments" minOccurs="0" maxOccurs="1">
+                                        <xs:annotation>
+                                            <xs:documentation>
+                                                List the attachemnts connected to this specific LOI.
+                                            </xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element name="ref" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                                                    <xs:annotation>
+                                                        <xs:documentation>
+                                                            Reference to the attachment.identifier
+                                                        </xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:element>
+                                            </xs:sequence>
+                                        </xs:complexType>
                                     </xs:element>
                                     <xs:element name="extension" type="CustomExtensionsContainer" minOccurs="0"/>
                                 </xs:sequence>
