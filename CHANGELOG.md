@@ -10,6 +10,7 @@ Version 1.3.0
 -------------
 
 * Added a way to connect attachment to a LOI. See [this issue](https://github.com/emrex-eu/elmo-schemas/issues/25)
+* Added categories to LOI for grouping and sorting. See [this issue](https://github.com/emrex-eu/elmo-schemas/issues/19)
 
 Version 1.2.0
 -------------

@@ -114,8 +114,8 @@ Server implementers can add line breaks (or double line breaks) within this elem
                         <description>Norwegian Qualification Framework</description>
                         <value>5</value>
                     </level>
-                    <qualificationLevel type="eqf">5</qualificationLevel>
                     <languageOfInstruction>pl</languageOfInstruction>
+                    <grouping typeref= "2" idref="2" />
                 </learningOpportunityInstance>
             </specifies>
             <hasPart>
@@ -128,6 +128,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                         <learningOpportunityInstance>
                             <status>passed</status>
                             <engagementHours>30</engagementHours>
+                            <grouping typeref= "1" idref="1" />
                         </learningOpportunityInstance>
                     </specifies>
                 </learningOpportunitySpecification>
@@ -143,6 +144,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                             <status>passed</status>
                             <gradingSchemeLocalId>ZAL</gradingSchemeLocalId>
                             <engagementHours>30</engagementHours>
+                            <grouping typeref= "1" idref="1" />
                             <extension>
                                 <!--  This may contain anything you want. But try to avoid it. -->
                                 <element xmlns="http://example.com/schemas/my-elmo-extension">
@@ -217,6 +219,26 @@ Server implementers can add line breaks (or double line breaks) within this elem
         <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         <content xml:lang="pl">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
     </attachment>
+    <groups>
+        <groupType id="1">
+            <title xml:lang="en">By category</title>
+            <group id="1" sortingKey="1">
+                <title xml:lang="en">Mandatory subjects</title>
+            </group>
+            <group id="2" sortingKey="2">
+                <title xml:lang="en">Optional subjects</title>
+            </group>
+        </groupType>
+        <groupType id="2">
+            <title xml:lang="en">By subject level</title>
+            <group id="1" sortingKey="1">
+                <title xml:lang="en">Master courses</title>
+            </group>
+            <group id="2" sortingKey="2">
+                <title xml:lang="en">Bachelor courses</title>
+            </group>
+        </groupType>
+    </groups>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
         <SignedInfo>
             <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
