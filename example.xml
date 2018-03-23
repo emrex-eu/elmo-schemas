@@ -177,6 +177,10 @@ Server implementers can add line breaks (or double line breaks) within this elem
                         <category count="37" label="B"/>
                         <category count="7" label="A"/>
                     </resultDistribution>
+                    <attachments>
+                        <ref>12345678</ref>
+                        <ref>87654321</ref>
+                    </attachments>
                 </learningOpportunityInstance>
             </specifies>
         </learningOpportunitySpecification>
@@ -199,6 +203,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
             <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         </attachment>
         <attachment>
+            <identifier type="internal">87654321</identifier>
             <title xml:lang="en">Some other attachment</title>
             <type>Certificate of Training</type>
             <description xml:lang="en">Additional multiline description...</description>
@@ -207,6 +212,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
         </attachment>
     </report>
     <attachment>
+        <identifier type="internal">12345678</identifier>
         <title xml:lang="en">"Global" attachment</title>
         <title xml:lang="pl">"Globalny" załącznik</title>
         <type>EMREX transcript</type>
