@@ -18,13 +18,6 @@ Version 1.2.0
 * Added qualification level to LearningOpportunityInstance to open for adding
   Qualification Framework levels, for instance EQF.
 
-
-Next version (unreleased)
--------------------------
-
-This is a list of changes already introduced in the `v1.2-preview` branch.
-These changes are NOT officially released yet.
-
 * New LOI `status` element (in the `learningOpportunityInstance` element). All
   server implementers are STRONGLY RECOMMENDED to explicitly include this
   status in all their ELMO files.
