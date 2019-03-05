@@ -6,6 +6,11 @@ its initial `1.0.0` release.
 
 Please note, that all changes in the `v1` branch will be backward-compatible.
 
+Version 1.4.0
+-------------
+
+* Added support for Diploma Supplement
+
 Version 1.3.0
 -------------
 

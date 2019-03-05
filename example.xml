@@ -40,7 +40,134 @@ Important notes:
             <title xml:lang="en">University of Warsaw</title>
             <url>http://www.uw.edu.pl</url>
         </issuer>
-        <learningOpportunitySpecification>
+
+       <!-- Example of a Degree with Diploma Supplement -->
+       <learningOpportunitySpecification>
+			<identifier type="local">MNM2-BIO</identifier>
+			<identifier type="elmo">461727197642599</identifier>
+			<identifier type="nus">751909</identifier>
+			<title xml:lang="no">Master i biologi</title>
+			<title xml:lang="en">Master of Science in Biology</title>
+			<type>Degree Programme</type>
+			<iscedCode>0511</iscedCode>
+			<url>http://www.uio.no/studier/program/biologi-master/</url>
+			<specifies>
+				<learningOpportunityInstance>
+					<start>2009-01-15</start>
+					<date>2009-06-15</date>
+					<academicTerm>
+						<title xml:lang="no">2009 Vår</title>
+						<title xml:lang="nn">2009 Vår</title>
+						<title xml:lang="en">2009 Spring</title>
+						<start>2009-01-15</start>
+						<end>2009-06-15</end>
+					</academicTerm>
+					<credit>
+						<scheme>ECTS</scheme>
+						<level>Master</level>
+						<value>120</value>
+					</credit>
+
+					<diplomaSupplement xml:lang="en">
+						<version>2018</version>
+						<issueDate>2018-09-07</issueDate>
+						<introduction></introduction>
+						<section number="2">
+							<title>Information identifying the qualification</title>
+							<section number="2.3">
+								<title>Name and status of awarding institution (in original language)</title>
+								<content>Master i biologi</content>
+								<additionalInformation>Master is a protected title in Norway</additionalInformation>
+							</section>
+							<section number="2.5">
+								<title>Language(s) of instruction/examination</title>
+								<content>Mainly Swedish</content>
+							</section>
+						</section>
+						<section number="3">
+							<title>Information on the level of the qualification</title>
+							<section number="3.1">
+								<title>Level of qualification</title>
+								<content>Master's degree</content>
+								<additionalInformation>Second-cycle university degree. See 8.</additionalInformation>
+							</section>
+							<section number="3.2">
+								<title>Official length of programme</title>
+								<content>48 months / 240 ECTS credits</content>
+							</section>
+						</section>
+						<section number="4">
+							<title>Information on the content and results gained</title>
+							<section number="4.2">
+								<title>Programme requirements</title>
+								<content type="html"><![CDATA[
+									MHTML document here?
+								]]></content>
+								<attachment>
+									<content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+								</attachment>
+							</section>
+							<section number="4.3">
+								<title>Programme details</title>
+								<content><![CDATA[
+									HTML text here
+								]]></content>
+							</section>
+						</section>
+						<section number="7">
+							<title>Certification of the supplement</title>
+							<section number="7.1">
+								<title>Date</title>
+								<content>7 September 2018</content>
+							</section>
+							<section number="7.2">
+								<title>Signature</title>
+								<content>Vice Rector Ola Nordmann</content>
+							</section>
+							<section number="7.3">
+								<title>Capacity</title>
+								<content>On behalf of the Examination Board</content>
+							</section>
+						</section>
+						<section number="8">
+							<title>Description of national education system</title>
+							<content><![CDATA[
+								HTML text here
+							]]></content>
+							<attachment>
+								<content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+							</attachment>
+						</section>
+					</diplomaSupplement>
+				</learningOpportunityInstance>
+			</specifies>
+			<hasPart>
+				<learningOpportunitySpecification>
+					<identifier type="local">EKSTERN</identifier>
+					<identifier type="elmo">457188157965887</identifier>
+					<title xml:lang="no">Identifying ectomycorrhizal fungi (KÃ¸benhavns Universitet)</title>
+					<title xml:lang="en">Identifying ectomycorrhizal fungi (University of Copenhagen)</title>
+					<type>Course</type>
+					<specifies>
+						<learningOpportunityInstance>
+							<academicTerm>
+								<title xml:lang="no">2007 HÃ¸st</title>
+								<title xml:lang="nn">2007 Haust</title>
+								<title xml:lang="en">2007 Autumn</title>
+								<start>2010-01-15</start>
+								<end>2010-07-02</end>
+							</academicTerm>
+							<resultLabel>Innpasset</resultLabel>
+							<credit>
+								<scheme>ECTS</scheme>
+								<value>15</value>
+							</credit>
+						</learningOpportunityInstance>
+					</specifies>
+				</learningOpportunitySpecification>
+			</hasPart>
+		</learningOpportunitySpecification>
+       <learningOpportunitySpecification>
             <identifier type="local">1000-217bMRJ</identifier>
             <title xml:lang="pl">Budowa kompilatorów</title>
             <title xml:lang="en">Compiler construction</title>
