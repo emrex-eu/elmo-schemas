@@ -5,6 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd
     					https://github.com/ilydlci/elmo-schemas elmoPlus.xsd">
+    					
 	<generatedDate>2019-08-22T12:00:00+02:00</generatedDate>
 	<learner>
 		<citizenship>DE</citizenship>
@@ -96,7 +97,8 @@
 							<totalHours>90</totalHours>
 							<selfStudyHours>60</selfStudyHours>
 							<attendanceHours>30</attendanceHours>
-							<credits>3</credits>
+							<level>Bachelor</level>
+							<value>3</value>
 						</workload>
 						<accountable xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
 							<title>Prof.</title>
@@ -122,22 +124,28 @@
 						<learningOpportunityInstance />
 					</specifies>
 					<extension>
-						<prerequisiteParticipation xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" />
-						<prerequisiteAwardingCP xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" xml:lang="en">Students must finish both courses.</prerequisiteAwardingCP>
-						<losLevel xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">Bachelor</losLevel>
-						<losDuration xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" xml:lang="en">This module can be completed in 2 semesters.</losDuration>
-						<studyProgramme xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" po="2015"></studyProgramme>
-						<validity xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" />
-						<resultSchema xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" />
-						<losUsability xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd"
-							xml:lang="en" />
-						<reexamination xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" />
-						<workload xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" />
-						<accountable xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" />
+						<workload xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
+							<scheme>ects</scheme>
+							<totalHours>90</totalHours>
+							<selfStudyHours>60</selfStudyHours>
+							<attendanceHours>30</attendanceHours>
+							<level>Bachelor</level>
+							<value>3</value>
+						</workload>
+						<accountable xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
+							<title>Prof.</title>
+							<givenNames>G.</givenNames>
+							<familyNames>Claire</familyNames>
+							<email>claire@tu-berlin.de</email>
+						</accountable>
 					</extension>
 				</learningOpportunitySpecification>
 			</hasPart>
 			<extension>
+				<validity xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
+					<start>2017-10-01T12:00:00+02:00</start>
+					<end>2021-10-01T12:00:00+02:00</end>
+				</validity>
 				<prerequisiteParticipation xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" xml:lang="en">
 					Desirable prerequisites for participation in the courses:
 					Prerequisite for participation to courses are a mathematical
@@ -153,15 +161,9 @@
 					No information
 				</prerequisiteParticipation>
 				<prerequisiteAwardingCP xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" xml:lang="en">Students must finish both courses.</prerequisiteAwardingCP>
-				<losLevel xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">Bachelor</losLevel>
 				<losDuration xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" xml:lang="en">This module can be completed in 2 semesters.</losDuration>
-				<studyProgramme xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" po="2015"></studyProgramme>
-				<validity
-					xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
-					<start>2017-10-01T12:00:00+02:00</start>
-					<end>2021-10-01T12:00:00+02:00</end>
-				</validity>
-				<resultSchema xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
+				<studyProgramme xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" po="2015" xml:lang="en">...</studyProgramme>
+				<resultScheme xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
 					<category grade="1.0" points="85.0" />
 					<category grade="1.3" points="80.0" />
 					<category grade="1.7" points="75.0" />
@@ -172,11 +174,11 @@
 					<category grade="3.3" points="50.0" />
 					<category grade="3.7" points="45.0" />
 					<category grade="4.0" points="40.0" />
-				</resultSchema>
-				<losUsability xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" xml:lang="en">
-					<studyProgramme po="2015">Computer Engineering (Master of Science)
+				</resultScheme>
+				<losUsability xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd" >
+					<studyProgramme po="2015" xml:lang="en">Computer Engineering (Master of Science)
 					</studyProgramme>
-					<studyProgramme po="2015">Computer Science (Informatik)	(Master of Science)
+					<studyProgramme po="2015" xml:lang="en">Computer Science (Informatik) (Master of Science)
 					</studyProgramme>
 				</losUsability>
 				<reexamination xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
@@ -188,7 +190,8 @@
 					<totalHours>180</totalHours>
 					<selfStudyHours>90</selfStudyHours>
 					<attendanceHours>90</attendanceHours>
-					<credits>6</credits>
+					<level>Bachelor</level>
+					<value>6</value>
 				</workload>
 				<accountable xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
 					<title>Prof.</title>

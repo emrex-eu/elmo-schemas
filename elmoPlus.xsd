@@ -15,50 +15,6 @@
 	<xs:element name="elmoPlus">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="prerequisiteParticipation" type="TokenWithOptionalLang">
-					<xs:annotation>
-						<xs:documentation>This describes the prerequisite knowledge a
-							student needs to have to participate in this modul.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="prerequisiteAwardingCP" type="TokenWithOptionalLang">
-					<xs:annotation>
-						<xs:documentation>This describes the prerequisite for the student
-							to finalize the modul and acquire credit points.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="losLevel" type="xs:string">
-					<xs:annotation>
-						<xs:documentation>This describes the level in which the modul is
-							held.
-							This can either be Bachelor, Master or PhD.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="losDuration" type="TokenWithOptionalLang">
-					<xs:annotation>
-						<xs:documentation>This describes the duration in which a student
-							can receive all the credit points described.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="studyProgramme">
-					<xs:complexType>
-						<xs:simpleContent>
-							<xs:extension base="xs:string">
-								<xs:attribute name="po" type="xs:string">
-									<xs:annotation>
-										<xs:documentation>The corresponding examination regulations
-											year for the this study programme.
-										</xs:documentation>
-									</xs:annotation>
-								</xs:attribute>
-							</xs:extension>
-						</xs:simpleContent>
-					</xs:complexType>
-				</xs:element>
 				<xs:element name="validity">
 					<xs:annotation>
 						<xs:documentation>This describes the validity of a modul.
@@ -87,7 +43,50 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="resultSchema" minOccurs="0">
+				<xs:element name="prerequisiteParticipation" type="TokenWithOptionalLang">
+					<xs:annotation>
+						<xs:documentation>This describes the prerequisite knowledge a
+							student needs to have to participate in this modul.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="prerequisiteAwardingCP" type="TokenWithOptionalLang">
+					<xs:annotation>
+						<xs:documentation>This describes the prerequisite for the student
+							to finalize the modul and acquire credit points.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="losDuration" type="TokenWithOptionalLang">
+					<xs:annotation>
+						<xs:documentation>This describes the duration in which a student
+							can receive all the credit points described.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="studyProgramme">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="po" type="xs:string">
+									<xs:annotation>
+										<xs:documentation>The corresponding examination regulations
+											year for the this study programme.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute ref="xml:lang" use="optional">
+									<xs:annotation>
+										<xs:documentation>The corresponding examination regulations
+															language for the title of the modul.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="resultScheme" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>The resultSchema for specified modul or course.
 						</xs:documentation>
@@ -153,6 +152,13 @@
 													</xs:documentation>
 												</xs:annotation>
 											</xs:attribute>
+											<xs:attribute ref="xml:lang" use="optional">
+												<xs:annotation>
+													<xs:documentation>The corresponding examination regulations
+															language for the title of the modul.
+													</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
 										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
@@ -204,6 +210,14 @@
 
 										You can also include any number of other credits with custom
 										schemes.
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element minOccurs="0" name="level" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>This describes the level in which the modul is
+										held.
+										This can either be Bachelor, Master or PhD.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
