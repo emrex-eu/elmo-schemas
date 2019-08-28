@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <elmo xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
 	xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -127,7 +126,7 @@
 						<workload xmlns="https://github.com/ilydlci/elmo-schemas/elmoPlus.xsd">
 							<scheme>ects</scheme>
 							<totalHours>90</totalHours>
-							<selfStudyHours>60</selfStudyHours>
+							<selfStudyHours>90</selfStudyHours>
 							<attendanceHours>30</attendanceHours>
 							<level>Bachelor</level>
 							<value>3</value>
@@ -205,7 +204,7 @@
 		<attachment />
 	</report>
 	<attachment />
-	<extension />
+	<extension/>
 	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
 		<SignedInfo>
 			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
