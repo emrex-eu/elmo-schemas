@@ -11,7 +11,6 @@
 	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/references/xmldsig-core-schema.xsd" />
 	<xs:import namespace="http://europass.cedefop.europa.eu/Europass/V2.0" schemaLocation="https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/references/EUROPASS_ISOCountries_V1.1.xsd" />
 
-
 	<xs:element name="elmoPlus">
 		<xs:complexType>
 			<xs:sequence>
