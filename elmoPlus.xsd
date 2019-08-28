@@ -92,7 +92,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element maxOccurs="unbounded" name="category">
+							<xs:element minOccurs="0"  maxOccurs="unbounded" name="category">
 								<xs:annotation>
 									<xs:documentation>This describes a single range within the
 										histogram.
@@ -135,7 +135,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="studyProgramme" minOccurs="0" maxOccurs="unbounded">
+							<xs:element minOccurs="0" name="studyProgramme" minOccurs="0" maxOccurs="unbounded">
 								<xs:annotation>
 									<xs:documentation>A list of corresponding study programmes of
 										this Learning Opportunity Specification.
@@ -173,7 +173,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="followingSemester" type="xs:token">
+							<xs:element minOccurs="0" name="followingSemester" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>The element can either be true or false.
 									</xs:documentation>
