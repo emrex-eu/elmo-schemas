@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified"
-	targetNamespace="https://github.com/ilydlci/elmo-schemas/"
+	targetNamespace="https://github.com/ilydlci/elmo-schemas"
 	xmlns="https://github.com/ilydlci/elmo-schemas"
 	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
 	xmlns:europass="http://europass.cedefop.europa.eu/Europass/V2.0"
@@ -107,7 +107,7 @@
 											</xs:documentation>
 										</xs:annotation>
 									</xs:attribute>
-									<xs:attribute name="points" type="xs:nonNegativeInteger" use="required">
+									<xs:attribute name="points" type="xs:float" use="required">
 										<xs:annotation>
 											<xs:documentation>The points which the student acquired in
 												the modul.
