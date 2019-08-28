@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema elementFormDefault="qualified"
-	targetNamespace="https://github.com/emrex-eu/elmo-schemas/tree/v1"
-	xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
+	targetNamespace="https://github.com/ilydlci/elmo-schemas/"
+	xmlns="https://github.com/ilydlci/elmo-schemas"
 	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
 	xmlns:europass="http://europass.cedefop.europa.eu/Europass/V2.0"
 	xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -299,7 +299,6 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-
 	<!-- Common types with simple content. -->
 	<xs:complexType name="TokenWithOptionalLang">
 		<xs:annotation>
