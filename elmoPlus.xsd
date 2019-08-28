@@ -85,7 +85,7 @@
 						</xs:simpleContent>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="resultScheme" minOccurs="0">
+				<xs:element name="resultScheme">
 					<xs:annotation>
 						<xs:documentation>The resultSchema for specified modul or course.
 						</xs:documentation>
@@ -173,7 +173,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element minOccurs="0" name="followingSemester" type="xs:token">
+							<xs:element name="followingSemester" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>The element can either be true or false.
 									</xs:documentation>
@@ -188,7 +188,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="workload">
+				<xs:element name="workload" >
 					<xs:annotation>
 						<xs:documentation>This describes the workload a student has to put
 							in to acquire a certain amount of credits points.
@@ -196,7 +196,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element minOccurs="0" name="scheme" type="xs:token">
+							<xs:element name="scheme" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>Currently there is only one predefined scheme
 										you can have here:
@@ -212,7 +212,7 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="level" type="xs:string">
+							<xs:element name="level" type="xs:string">
 								<xs:annotation>
 									<xs:documentation>This describes the level in which the modul is
 										held.
@@ -220,28 +220,28 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="totalHours" type="xs:decimal">
+							<xs:element name="totalHours" type="xs:decimal">
 								<xs:annotation>
 									<xs:documentation>The number of total hours a student has to
 										put in as work for this modul.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="selfStudyHours" type="xs:decimal">
+							<xs:element name="selfStudyHours" type="xs:decimal">
 								<xs:annotation>
 									<xs:documentation>The number of self study hours a student has
 										to put in as work for this modul.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="attendanceHours" type="xs:decimal">
+							<xs:element name="attendanceHours" type="xs:decimal">
 								<xs:annotation>
 									<xs:documentation>The number of attendance hours a student has
 										to put in as work for this modul.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="credits" type="xs:token">
+							<xs:element name="value" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>The number of credits possible to acquire for
 										this modul.
@@ -268,7 +268,7 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="givenNames" type="xs:token">
+							<xs:element name="givenNames" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>The given names of the accountable person.
 										All servers MUST provide it (if it is impossible
@@ -276,7 +276,7 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="familyNames" type="xs:token">
+							<xs:element name="familyNames" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>The family name of the accountable person.
 										All servers MUST provide it (if it is impossible
@@ -284,7 +284,7 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element minOccurs="0" name="email" type="xs:token">
+							<xs:element name="email" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>The email address for the accountable person.
 										All servers MUST provide it (if it is impossible
