@@ -6,6 +6,11 @@ its initial `1.0.0` release.
 
 Please note, that all changes in the `v1` branch will be backward-compatible.
 
+Version 1.5.0
+-------------
+
+* Added support for additional fields on the learner (placeOfBirh, birthName, currentAddress, gender)
+
 Version 1.4.0
 -------------
 
