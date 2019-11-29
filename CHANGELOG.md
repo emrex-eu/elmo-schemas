@@ -10,6 +10,7 @@ Version 1.5.0
 -------------
 
 * Added support for additional fields on the learner (placeOfBirh, birthName, currentAddress, gender)
+* Signature on the elmo element is now optional
 
 Version 1.4.0
 -------------
