@@ -518,7 +518,7 @@
                     </xs:annotation>
                 </xs:element>
                 <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer"/>
-                <xs:element ref="ds:Signature">
+                <xs:element minOccurs="0" maxOccurs="1" ref="ds:Signature">
                     <xs:annotation>
                         <xs:documentation>Every EMREX ELMO element MUST be signed with xmldsig-core2 enveloped signature. The
                             ds:SignedInfo element MUST contain a single ds:Reference with an empty URI. The
