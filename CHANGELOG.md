@@ -10,7 +10,7 @@ Version 1.5.0
 -------------
 
 * Added support for additional fields on the learner (placeOfBirh, birthName, currentAddress, gender)
-* Signature on the elmo element is now optional
+* Signature on the elmo element is now optional See [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-imobility-tors/issues/7)
 
 Version 1.4.0
 -------------
