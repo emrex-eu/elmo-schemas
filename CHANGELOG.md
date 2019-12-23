@@ -6,6 +6,12 @@ its initial `1.0.0` release.
 
 Please note, that all changes in the `v1` branch will be backward-compatible.
 
+Version 1.5.0
+-------------
+
+* Added support for additional fields on the learner (placeOfBirh, birthName, currentAddress, gender). See [this issue](https://github.com/emrex-eu/elmo-schemas/issues/44)
+* Signature on the elmo element is now optional. See [this issue](https://github.com/erasmus-without-paper/ewp-specs-api-imobility-tors/issues/7)
+
 Version 1.4.0
 -------------
 
