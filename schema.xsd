@@ -639,11 +639,11 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" name="groupType">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="title" type="TokenWithOptionalLang"/>
+                        <xs:element name="title" maxOccurs="unbounded" type="TokenWithOptionalLang"/>
                         <xs:element maxOccurs="unbounded" minOccurs="0" name="group">
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="title" type="TokenWithOptionalLang"/>
+                                    <xs:element name="title" maxOccurs="unbounded" type="TokenWithOptionalLang"/>
                                 </xs:sequence>
                                 <xs:attribute name="id" type="xs:string" use="optional"/>
                                 <xs:attribute name="sortingKey" type="xs:string" use="optional"/>
