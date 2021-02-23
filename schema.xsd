@@ -213,12 +213,15 @@
                                         <xs:extension base="xs:token">
                                             <xs:attribute name="type" type="xs:token" use="required">
                                                 <xs:annotation>
-                                                    <xs:documentation>Currently there is only one predefined type you can have here:
+                                                    <xs:documentation>Currently there are only a few predefined types you can have here:
 
                                                         nationalIdentifier - if present, then the value of it should contain the
                                                             &quot;primary&quot; national identifier of the student. For more information on
                                                             national identifiers used for various nationalities, see:
                                                             https://en.wikipedia.org/wiki/National_identification_number
+                                                        
+                                                        esi - European Student Identifier. For more information see:
+                                                            https://wiki.geant.org/display/SM/European+Student+Identifier
 
                                                         You can also have any number of custom types. Contact us if you'd like
                                                         them added to the official specs.
@@ -732,6 +735,7 @@
                 </xs:annotation>
                 <xs:simpleType>
                     <xs:restriction base="xs:token">
+                        <xs:enumeration value="Diploma"/>
                         <xs:enumeration value="Diploma Supplement"/>
                         <xs:enumeration value="Transcript of Records"/>
                         <xs:enumeration value="EMREX transcript">
@@ -748,6 +752,7 @@
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
+                        <xs:enumeration value="Micro Credential"/>
                         <xs:enumeration value="Letter of Nomination"/>
                         <xs:enumeration value="Certificate of Training"/>
                         <xs:enumeration value="Learning Agreement"/>
