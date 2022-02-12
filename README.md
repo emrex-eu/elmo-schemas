@@ -1,5 +1,14 @@
+
+The ELMO XML format
+===================
+
+The ELMO XML format is the basis for the exchange of result information. 
+Elmo is based on the CEN standard EN 15981-2011 EuroLMAI. 
+EuroLMAI is a data model describing assessments, primarily Diplomas, 
+Diploma Supplements and Transcripts of Records for higher educations.
+
 EMREX response XML schema
-=========================
+-------------------------
 
 This schema describes the XML files returned in EMREX NCP responses.
 
