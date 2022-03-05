@@ -10,13 +10,13 @@ Diploma Supplements and Transcripts of Records for higher educations.
 EMREX response XML schema
 -------------------------
 
-This schema describes the XML files returned in EMREX NCP responses.
+This schema describes the XML files returned in EMREX EMP responses.
 
 Please note that the following terms are *equivalent* throughout the EMREX
 specs:
 
 - EMREX response file,
-- NCP response file,
+- EMP response file,
 - ELMO file.
 
 For more information on EMREX, please visit http://emrex.eu/.
