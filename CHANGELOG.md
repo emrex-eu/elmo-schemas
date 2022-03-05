@@ -40,7 +40,7 @@ Version 1.2.0
   (https://github.com/emrex-eu/elmo-schemas/issues/10).
 
 * Prepared the EMREX ELMO format to be embedded in other contexts. Replaced
-  references to "NCP" and "EMREX Client" with more generic terms (which would
+  references to "EMP" and "EMREX Client" with more generic terms (which would
   properly fit in other contexts). See [this issue]
   (https://github.com/emrex-eu/elmo-schemas/issues/13).
 

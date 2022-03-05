@@ -1,13 +1,22 @@
-EMREX response XML schema
-=========================
 
-This schema describes the XML files returned in EMREX NCP responses.
+The ELMO XML format
+===================
+
+The ELMO XML format is the basis for the exchange of result information. 
+Elmo is based on the CEN standard EN 15981-2011 EuroLMAI. 
+EuroLMAI is a data model describing assessments, primarily Diplomas, 
+Diploma Supplements and Transcripts of Records for higher educations.
+
+EMREX response XML schema
+-------------------------
+
+This schema describes the XML files returned in EMREX EMP responses.
 
 Please note that the following terms are *equivalent* throughout the EMREX
 specs:
 
 - EMREX response file,
-- NCP response file,
+- EMP response file,
 - ELMO file.
 
 For more information on EMREX, please visit http://emrex.eu/.
