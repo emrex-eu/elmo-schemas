@@ -387,6 +387,7 @@
                                                                         in other EU projects too, in particular the EWP (Erasmus Without Paper)
                                                                         project. See here:
                                                                         https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
+                                                                    address - full address of the institution (e.g. streetName 1, postNumber, city, state, country)
 
                                                                     You can also have any number of custom types.
                                                                 </xs:documentation>
