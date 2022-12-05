@@ -380,6 +380,7 @@
                                                                         in other EU projects too, in particular the EWP (Erasmus Without Paper)
                                                                         project. See here:
                                                                         https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
+                                                                    address - full address of the institution (e.g. streetName 1, postNumber, city, state, country)
 
                                                                     You can also have any number of custom types.
                                                                 </xs:documentation>
@@ -1335,8 +1336,11 @@
                                                 Consumers of ELMO should ignore any level types they do not recognize.
                                                 Suppliers of ELMO should not expect consumers to interpret the levels
                                                 that have types they do not support.
+                                                
+                                                On a national level, issuers can add level types used within a 
+                                                specific country and which have been agreed upon with national clients. 
 
-                                                Supported types are described in the type section below.
+                                                Mandatory supported types are described in the type section below.
                                             </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
