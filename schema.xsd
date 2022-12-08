@@ -266,7 +266,7 @@
               </xs:element>
               <xs:element minOccurs="0" maxOccurs="1" name="birthName" type="xs:token">
                 <xs:annotation>
-                  <xs:documentation>First name(s) and family name(s) of the student at birth, described as a single text value. 
+                  <xs:documentation>First name(s) and family name(s) of the student at birth, described as a single text value.
 
                                         For server implementers: If this is not known then you MUST skip the element
                                         altogether (instead of, for example, providing an empty value).
@@ -380,6 +380,7 @@
                                                                         in other EU projects too, in particular the EWP (Erasmus Without Paper)
                                                                         project. See here:
                                                                         https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
+                                                                    address - full address of the institution (e.g. streetName 1, postNumber, city, state, country)
 
                                                                     You can also have any number of custom types.
                                                                 </xs:documentation>
@@ -630,30 +631,30 @@
       <xs:documentation>
                 Groups is a way of organizing and sorting over groups of LOI's.
             </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="groupType">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="title" type="TokenWithOptionalLang" />
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="group">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="title" type="TokenWithOptionalLang" />
-                </xs:sequence>
-                <xs:attribute name="id" type="xs:string" use="optional" />
-                <xs:attribute name="sortingKey" type="xs:string" use="optional" />
-              </xs:complexType>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="groupType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="title" type="TokenWithOptionalLang" maxOccurs="unbounded"/>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="group">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="title" type="TokenWithOptionalLang" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                                <xs:attribute name="id" type="xs:string" use="optional"/>
+                                <xs:attribute name="sortingKey" type="xs:string" use="optional"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="id" type="xs:string" use="optional"/>
+                </xs:complexType>
             </xs:element>
-          </xs:sequence>
-          <xs:attribute name="id" type="xs:string" use="optional" />
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Attachment">
-    <xs:annotation>
-      <xs:documentation>Notes for server implementers:
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Attachment">
+        <xs:annotation>
+            <xs:documentation>Notes for server implementers:
 
                 The attachements MUST contain a human-readable version of all the crucial data
                 contained within the reports. This also includes all the data which may help to
@@ -1335,8 +1336,11 @@
                                                 Consumers of ELMO should ignore any level types they do not recognize.
                                                 Suppliers of ELMO should not expect consumers to interpret the levels
                                                 that have types they do not support.
+                                                
+                                                On a national level, issuers can add level types used within a 
+                                                specific country and which have been agreed upon with national clients. 
 
-                                                Supported types are described in the type section below.
+                                                Mandatory supported types are described in the type section below.
                                             </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -1350,7 +1354,7 @@
                         </xs:element>
                         <xs:element minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
                           <xs:annotation>
-                            <xs:documentation>An optional detailed description of the the type of level that is being supplied. 
+                            <xs:documentation>An optional detailed description of the the type of level that is being supplied.
                                                         </xs:documentation>
                           </xs:annotation>
                         </xs:element>
