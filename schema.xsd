@@ -902,7 +902,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
+      <xs:element maxOccurs="unbounded" minOccurs="1" name="identifier">
         <xs:annotation>
           <xs:documentation>
             For server implementers: Depending on your clients, you might be required to
