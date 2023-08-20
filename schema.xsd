@@ -336,87 +336,14 @@
                             </xs:documentation>
             </xs:annotation>
             <xs:sequence>
-              <xs:element name="issuer">
+              <xs:element name="issuer" type="Issuer">
                 <xs:annotation>
-                  <xs:documentation>This element identifies the host institution - the institution at which the
-                                        student has studied in order to achieve the credits described in this report).
+                  <xs:documentation>
+                    Please consult the documentation on the Issuer type.
 
-                                        Note for server implementers: If your data comes from multiple institutions then
-                                        you MUST put it inside separate report elements.
-                                    </xs:documentation>
+                    The issuer of this report
+                  </xs:documentation>
                 </xs:annotation>
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element minOccurs="0" name="country" type="europass:countryCode">
-                      <xs:annotation>
-                        <xs:documentation>An ISO 3166-1-alpha-2 code of the country in which the institution is
-                                                    operating. If the country is not known, or the institution is an international
-                                                    one, then this element MUST NOT be present.
-                                                </xs:documentation>
-                      </xs:annotation>
-                    </xs:element>
-                    <xs:element maxOccurs="unbounded" minOccurs="1" name="identifier">
-                      <xs:annotation>
-                        <xs:documentation>For server implementers: You MUST be able to provide at least one identifier of
-                                                    the institution. You SHOULD provide all of them, if you can.
-
-                                                    Please note, that you might be able to generate SCHAC identifiers by yourself,
-                                                    based on the knowledge of the web domain bound to this institution. If you
-                                                    don't have any other ID, use your &quot;best guess&quot; for the SCHAC ID. SCHAC
-                                                    identifiers may change in time (e.g. after institutions are merged), but you
-                                                    should use your best guess nonetheless.
-                                                </xs:documentation>
-                      </xs:annotation>
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:token">
-                            <xs:attribute name="type" type="xs:token" use="required">
-                              <xs:annotation>
-                                <xs:documentation>These are the currently supported predefined types:
-
-                                                                    pic - the PIC code,
-                                                                    erasmus - the ERASMUS code,
-                                                                    schac - the SCHAC identifier (e.g. &quot;uw.edu.pl&quot;). These identifiers are used
-                                                                        in other EU projects too, in particular the EWP (Erasmus Without Paper)
-                                                                        project. See here:
-                                                                        https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
-                                                                    address - full address of the institution (e.g. streetName 1, postNumber, city, state, country)
-
-                                                                    You can also have any number of custom types.
-                                                                </xs:documentation>
-                              </xs:annotation>
-                            </xs:attribute>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element maxOccurs="unbounded" minOccurs="1" name="title" type="TokenWithOptionalLang">
-                      <xs:annotation>
-                        <xs:documentation>The name of the institution. May be provided in multiple languages. At least
-                                                    one name is required.
-
-                                                    For server implementers:
-
-                                                    - This element SHOULD contain the xml:lang attribute. You may skip the xml:lang
-                                                      attribute only when you really don't know the language which your will be
-                                                      using here.
-
-                                                    - You SHOULD try to include the name of the institution both in English and
-                                                      in the original language.
-                                                </xs:documentation>
-                      </xs:annotation>
-                    </xs:element>
-                    <xs:element name="url" type="xs:token">
-                      <xs:annotation>
-                        <xs:documentation>The URL of the intitution's web page. It is a required element, because it
-                                                    should be easy to acquire it on server's side, and it might be used as a last
-                                                    resort when attempting to pinpoint the issuing institution on the EMREX
-                                                    Client's side.
-                                                </xs:documentation>
-                      </xs:annotation>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
               </xs:element>
               <xs:element maxOccurs="unbounded" minOccurs="0" name="learningOpportunitySpecification" type="LearningOpportunitySpecification">
                 <xs:annotation>
@@ -430,6 +357,15 @@
                                         error, and it should NOT trigger the &quot;manual verification&quot; process on your
                                         part (you might want to show a warning though).
                                     </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="resultOfRecognition" type="ResultOfRecognition">
+                <xs:annotation>
+                  <xs:documentation>
+                    Please consult the documentation on the ResultOfRecognition type.
+
+                    TODO: document more.
+                  </xs:documentation>
                 </xs:annotation>
               </xs:element>
               <xs:element name="issueDate" type="xs:dateTime">
@@ -798,6 +734,86 @@
       </xs:element>
       <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Issuer">
+    <xs:annotation>
+      <xs:documentation>This element identifies the host institution - the institution at which the
+        student has studied in order to achieve the credits described in this report).
+
+        Note for server implementers: If your data comes from multiple institutions then
+        you MUST put it inside separate report elements.
+      </xs:documentation>
+    </xs:annotation>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="country" type="europass:countryCode">
+          <xs:annotation>
+            <xs:documentation>An ISO 3166-1-alpha-2 code of the country in which the institution is
+              operating. If the country is not known, or the institution is an international
+              one, then this element MUST NOT be present.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" minOccurs="1" name="identifier">
+          <xs:annotation>
+            <xs:documentation>For server implementers: You MUST be able to provide at least one identifier of
+              the institution. You SHOULD provide all of them, if you can.
+
+              Please note, that you might be able to generate SCHAC identifiers by yourself,
+              based on the knowledge of the web domain bound to this institution. If you
+              don't have any other ID, use your &quot;best guess&quot; for the SCHAC ID. SCHAC
+              identifiers may change in time (e.g. after institutions are merged), but you
+              should use your best guess nonetheless.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:token">
+                <xs:attribute name="type" type="xs:token" use="required">
+                  <xs:annotation>
+                    <xs:documentation>These are the currently supported predefined types:
+
+                      pic - the PIC code,
+                      erasmus - the ERASMUS code,
+                      schac - the SCHAC identifier (e.g. &quot;uw.edu.pl&quot;). These identifiers are used
+                      in other EU projects too, in particular the EWP (Erasmus Without Paper)
+                      project. See here:
+                      https://github.com/erasmus-without-paper/ewp-specs-api-registry/#schac-identifiers
+                      address - full address of the institution (e.g. streetName 1, postNumber, city, state, country)
+
+                      You can also have any number of custom types.
+                    </xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" minOccurs="1" name="title" type="TokenWithOptionalLang">
+          <xs:annotation>
+            <xs:documentation>The name of the institution. May be provided in multiple languages. At least
+              one name is required.
+
+              For server implementers:
+
+              - This element SHOULD contain the xml:lang attribute. You may skip the xml:lang
+              attribute only when you really don't know the language which your will be
+              using here.
+
+              - You SHOULD try to include the name of the institution both in English and
+              in the original language.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="url" type="xs:token">
+          <xs:annotation>
+            <xs:documentation>The URL of the intitution's web page. It is a required element, because it
+              should be easy to acquire it on server's side, and it might be used as a last
+              resort when attempting to pinpoint the issuing institution on the EMREX
+              Client's side.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
   </xs:complexType>
   <xs:complexType name="LearningOpportunitySpecification">
     <xs:annotation>
@@ -1458,6 +1474,297 @@
         </xs:complexType>
       </xs:element>
       <xs:element minOccurs="0" name="extension" type="CustomExtensionsContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResultOfRecognition">
+    <xs:annotation>
+      <xs:documentation>
+        TODO: Documentation on how to use this bad boy.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="title" type="TokenWithOptionalLang">
+        <xs:annotation>
+          <xs:documentation>
+            TODO: document title
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="description" type="PlaintextMultilineStringWithOptionalLang">
+        <xs:annotation>
+          <xs:documentation>
+            TODO: Document descr
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="subjectArea" type="xs:token">
+        <xs:annotation>
+          <xs:documentation>
+            The Erasmus subject area code of the course.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="iscedCode" type="xs:token">
+        <xs:annotation>
+          <xs:documentation>
+            The ISCED-F code of the course or programme.
+
+            ISCED-F codes define fields of education and training at the secondary,
+            post-secondary and tertiary levels of education. Details:
+            http://www.uis.unesco.org/Education/Documents/isced-fields-of-education-training-2013.pdf
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="status">
+        <xs:annotation>
+          <xs:documentation>
+            TODO: document this controlled list
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Positive">
+              <xs:annotation>
+                <xs:documentation>
+                  TODO: document a positive result of recognition
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Negative">
+              <xs:annotation>
+                <xs:documentation>
+                  TODO: Document a negative result of recognition.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Partially Positive">
+              <xs:annotation>
+                <xs:documentation>
+                  TODO: Document a partially positive result of recognition.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="1" name="decisionDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            TODO: Document decisionDate
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="recognitionBasis">
+        <xs:annotation>
+          <xs:documentation>
+            TODO: document Recognition Basis
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="recognitionReport" type="RecognitionReport">
+              <xs:annotation>
+                <xs:documentation>
+                  TODO: Document this
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="recognitionResult">
+        <xs:annotation>
+          <xs:documentation>
+            TODO: Document Recognition Result
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification">
+              <xs:annotation>
+                <xs:documentation>
+                  TODO: Document this LOS and how it works in Recognitions
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="recognitionMapping">
+        <xs:annotation>
+          <xs:documentation>
+            TODO: Document the mapping
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="mapping">
+              <xs:annotation>
+                <xs:documentation>
+                  TODO: Document this object
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="fromMapping">
+                    <xs:annotation>
+                      <xs:documentation>
+                        List the from-mapping refering to a specific LOS in the Recognition Basis
+                      </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="ref" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Reference to a LOS id of type local
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element minOccurs="0" maxOccurs="unbounded" name="toMapping">
+                    <xs:annotation>
+                      <xs:documentation>
+                        List the to-mapping refering to a specific LOS in the Recognition Result
+                      </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="ref" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Reference to a LOS id of type local
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="attachments" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            List the attachments connected to this specific Result of Recognition.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ref" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Reference to the attachment.identifier
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RecognitionReport">
+    <xs:annotation>
+      <xs:documentation>
+        TODO: Document Recognition Report
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="issuer" type="Issuer">
+        <xs:annotation>
+          <xs:documentation>
+            Please consult the documentation on the Issuer type.
+
+            The issuer of this report
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="learningOpportunitySpecification" type="LearningOpportunitySpecification">
+        <xs:annotation>
+          <xs:documentation>Please consult the documentation on the LearningOpportunitySpecification type.
+
+            TODO: Document more.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="resultOfRecognition" type="ResultOfRecognition">
+        <xs:annotation>
+          <xs:documentation>
+            Please consult the documentation on the ResultOfRecognition type.
+
+            The basis of one recogniton can be another recognition.
+            TODO: Document more.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="issueDate" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>The datetime when the report has been issued. It SHOULD contain the timezone
+            suffix. Example values: &quot;2015-08-01T12:00:00+02:00&quot;, &quot;2015-08-01T10:00:00Z&quot;.
+
+            Since Results of Recognition may contain multiple Recognition Reports, the issuing dates of each of
+            these Recognition Reports may be different. This may happen if the server does not posses the
+            most recent data from all the institutions and is responding with cached data.
+            For most server implementations though, all issueDates will be the same as the
+            generatedDate included in the file header.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="gradingScheme">
+        <xs:annotation>
+          <xs:documentation>These elements describe all grading schemes which were used in other sections
+            of the Recognition Report. Elements in this set can be referenced by their identifiers.
+
+            Note, that this list may contain local grading schemes, which are not
+            standardized in any way. They have been introduced to the ELMO schema to give
+            server implemeneters a way of providing their clients with some details about
+            the grading schemes they use. However, since there exists no such thing as a
+            &quot;global directory&quot; of grading schemes, these schemes cannot be identified by
+            any universal unique ID, and each needs to be separately described.
+
+            These grading schemes are (currently) identified only by their local
+            identifiers, but this does not necessarilly mean that the grading scheme itself
+            is &quot;local only&quot;. In particular, popular grading schemes (like ECTS) can also be
+            listed here, but they cannot be easily identified.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
+              <xs:annotation>
+                <xs:documentation>A set of descriptions (in multiple languages). It is RECOMMENDED to include a
+                  description, at least in English.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="localId" type="xs:token" use="required">
+            <xs:annotation>
+              <xs:documentation>Local identifier, provided by the institution which has generated this report.
+                This identifier is used to reference `gradingScheme` elements from other places
+                in this document, and as such, is guaranteed to be valid only within this
+                single document. This means that it can even be dynamically generated, just for
+                the purpose of sticking with the format of this document. Clients SHOULD NOT
+                store this identifier.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="Attachment">
+        <xs:annotation>
+          <xs:documentation>Please note that attachments can be included in multiple places. This is the
+            place for those attachments which are related to a *single institution*.
+
+            Read the description of the Attachment type for further information.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
