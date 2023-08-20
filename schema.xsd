@@ -429,8 +429,8 @@
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="description" type="PlaintextMultilineStringWithOptionalLang">
                       <xs:annotation>
                         <xs:documentation>
-                          A set of descriptions (in multiple languages). It is RECOMMENDED to include a
-                                                    description, at least in English.
+                          A set of descriptions (in multiple languages). 
+                          It is RECOMMENDED to include a description, at least in English.
                         </xs:documentation>
                       </xs:annotation>
                     </xs:element>
@@ -887,7 +887,6 @@
         students are allowed to select any subset of courses are to be exported, but
         only from among the passed/completed courses. This might however be different
         in other contexts.)
-
 
         Notes of client implemeneters
         ===================================
@@ -1516,8 +1515,7 @@
       <xs:element maxOccurs="unbounded" minOccurs="0" name="hasPart">
         <xs:annotation>
           <xs:documentation>
-            Just a wrapper for learningOpportunitySpecification (we're trying to be
-            ELMO-compatible).
+            Just a wrapper for learningOpportunitySpecification (we're trying to be ELMO-compatible).
           </xs:documentation>
         </xs:annotation>
         <xs:complexType>
