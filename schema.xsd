@@ -1387,25 +1387,6 @@
                             </xs:documentation>
                           </xs:annotation>
                         </xs:element>
-                        <!-- DEPRECATED - will be removed in Version 2-->
-                        <xs:element minOccurs="0" name="level">
-                          <xs:annotation>
-                            <xs:documentation>
-                              This one was never properly documented, and is planned to be deprecated soon.
-                              Servers and clients who plan to use it SHOULD first refer to these threads:
-
-                              https://github.com/emrex-eu/elmo-schemas/issues/26
-                              https://github.com/emrex-eu/elmo-schemas/issues/33
-                            </xs:documentation>
-                          </xs:annotation>
-                          <xs:simpleType>
-                            <xs:restriction base="xs:token">
-                              <xs:enumeration value="Bachelor" />
-                              <xs:enumeration value="Master" />
-                              <xs:enumeration value="PhD" />
-                            </xs:restriction>
-                          </xs:simpleType>
-                        </xs:element>
                         <xs:element minOccurs="0" name="value" type="xs:decimal">
                           <xs:annotation>
                             <xs:documentation>The number of credits acquired.
