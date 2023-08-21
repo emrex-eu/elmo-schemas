@@ -254,6 +254,20 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:element>
+              <xs:element name="alternativeName">
+                <xs:annotation>
+                  <xs:documentation>
+                    The full name of the learner written in non latin alphabet.
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute ref="xml:lang" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element> 
               <xs:element minOccurs="0" name="dateOfBirth" type="xs:date">
                 <xs:annotation>
                   <xs:documentation>
