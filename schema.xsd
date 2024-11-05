@@ -285,6 +285,21 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:element>
+              <!-- DEPRECATED -->
+              <xs:element minOccurs="0" name="bday" type="xs:date">
+                <xs:annotation>
+                  <xs:documentation>For server implementers: The birth date is vital to EMREX and SHOULD be provided.
+                    If you cannot provide it, you MUST skip the bday element altogether.
+
+                    This data element is obselete, and has been replaces with dateOfBirth. Providers of EMPs should for some
+                    time provide both bday and dataOfBirth to support EMCs that has not upgraded to ELMO2x yet.
+                    Providers of EMCs should only use dateOfBirth after upgradering to ELMO2.x
+
+                    Temporarily making bday avalible again for version 2.1 to 2.x. This is to facilitate a more smooth
+                    transition to ELMO v.2.x for all EMCs as well as the EMPs.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
               <xs:element minOccurs="0" maxOccurs="1" name="placeOfBirth" type="xs:token">
                 <xs:annotation>
                   <xs:documentation>
