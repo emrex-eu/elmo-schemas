@@ -1210,6 +1210,47 @@
                       </xs:sequence>
                     </xs:complexType>
                   </xs:element>
+                  <xs:element name="duration" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>
+                        This describes the normal duration in time for an education.
+
+                        Here, issuers of ELMO can describe types of duration. The schema provides a predefined list of duration.
+                      </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:token">
+                        <xs:enumeration value="Day">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Duration in number of days
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="Week">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Duration in number of weeks
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="Month">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Duration in number of months
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="Year">
+                          <xs:annotation>
+                            <xs:documentation>
+                              Duration in number of years
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
                   <xs:element name="status" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                       <xs:documentation>
