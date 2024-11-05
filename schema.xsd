@@ -1567,6 +1567,38 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
+        <xs:annotation>
+          <xs:documentation>
+            For server implementers: Depending on your clients, you might be required to
+            supply specific identifier types (because clients expect them). E.g. some EMREX
+            clients expect the &quot;local&quot; identifier to be present.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:token">
+              <xs:attribute name="type" type="xs:token" use="required">
+                <xs:annotation>
+                  <xs:documentation>
+                    Some predefined type values include:
+
+                    &quot;local&quot; - the local unique identifier of the node. &quot;Unique&quot; means that the
+                    [node type, local identifier] tuple MUST uniquely identify this node
+                    *within the scope of the host institution* (the one provided in the issuer
+                    element). If you cannot provide the &quot;type&quot; for this node, then the provided
+                    &quot;local&quot; identifier MUST be unique by itself. If you cannot guarantee such
+                    uniqueness then you MUST NOT provide the &quot;local&quot; identifier at all (you can
+                    still use other identifiers).
+
+                    You can also have any number of custom types.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="title" type="TokenWithOptionalLang">
         <xs:annotation>
           <xs:documentation>
