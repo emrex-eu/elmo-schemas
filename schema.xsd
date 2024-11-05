@@ -463,6 +463,74 @@
                   </xs:attribute>
                 </xs:complexType>
               </xs:element>
+              <xs:element minOccurs="0" maxOccurs="1" name="status">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="code">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:token">
+                          <xs:enumeration value="FULL">
+                            <xs:annotation>
+                              <xs:documentation>
+                                All data is collected and delivered in this ELMO.
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:enumeration>
+                          <xs:enumeration value="SELECTION">
+                            <xs:annotation>
+                              <xs:documentation>
+                                The user selected data is collected and delivered in this ELMO.
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:enumeration>
+                          <xs:enumeration value="PARTIAL_TEMPORARY">
+                            <xs:annotation>
+                              <xs:documentation>
+                                An error has occured that causes the EMP to only be able to deliver a partial
+                                collection of the data. This error is of a temporary nature and the complete
+                                data set is expected to be delivered once the system recovers.
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:enumeration>
+                          <xs:enumeration value="PARTIAL_PERMANENT">
+                            <xs:annotation>
+                              <xs:documentation>
+                                An error has occured that causes the EMP to only be able to deliver a partial
+                                collection of the data. This error is of a permanent nature and the EMC cannot
+                                expect to collect the full data set.
+
+                                Examples of this includes, but is not limited to:
+                                 - An issuer no longer exists
+                                 - A data provider is no longer active
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:enumeration>
+                          <xs:enumeration value="ERROR_TEMPORARY">
+                            An error has occured that causes the EMP to not be able to collect and deliver
+                            any data. This error is of a temporary nature and the complete data set is
+                            expected to be delivered once the system recovers.
+                          </xs:enumeration>
+                          <xs:enumeration value="ERROR_PERMANENT">
+                            <xs:annotation>
+                              <xs:documentation>
+                                An error has occured that causes the EMP to not be able to collect and deliver
+                                any data. This error is of a permanent nature and the EMC cannot
+                                expect to collect the full data set.
+
+                                Examples of this includes, but is not limited to:
+                                - An issuer no longer exists
+                                - A data provider is no longer active
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:enumeration>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="message" type="PlaintextMultilineStringWithOptionalLang"/>
+                    <!-- A message that can be read by the EMC to give the user additional information about what happened -->
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
               <xs:element maxOccurs="unbounded" minOccurs="0" name="attachment" type="Attachment">
                 <xs:annotation>
                   <xs:documentation>
