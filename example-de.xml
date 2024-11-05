@@ -1,0 +1,288 @@
+<!--
+
+Important notes:
+
+1. You MUST NOT build your implementation based solely on the example here. You
+   MUST consult the official documentation and the schema.xsd file.
+
+2. In order for this file to pass automatic validation might need to:
+
+   - Keep the proper schema.xsd in the same directory,
+
+   OR:
+
+   - Change "schema.xsd" in the "xsi:schemaLocation" below to:
+     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd"
+
+-->
+<elmo
+  xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd"
+>
+  <generatedDate>2022-10-31T12:00:00+02:00</generatedDate>
+
+  <learner>
+    <citizenship>DE</citizenship>
+    <identifier type="nationalIdentifier">22000129</identifier>
+    <givenNames>Erika</givenNames>
+    <familyName>Mustermann</familyName>
+    <bday>1994-08-12</bday>
+  </learner>
+
+  <report>
+
+    <issuer>
+      <country>DE</country>
+      <identifier type="schac">tu.berlin</identifier>
+      <identifier type="address">Straße des 17. Juni 135, 10623 Berlin, Germany</identifier>
+      <title xml:lang="de">Technische Universität Berlini</title>
+      <title xml:lang="en">Berlin Institute of Technology</title>
+      <url>https://www.tu.berlin/</url>
+    </issuer>
+
+    <learningOpportunitySpecification>
+      <identifier type="local">1000-217bMRJ</identifier>
+      <title xml:lang="de">Compiler-Konstruktion</title>
+      <title xml:lang="en">Compiler construction</title>
+      <type>Course</type>
+      <subjectArea>11304</subjectArea>
+      <iscedCode>0612</iscedCode>
+      <url>http://example.com/</url>
+      <description xml:lang="de">Diese kann eine mehrzeilige Beschreibung enthalten.</description>
+      <description xml:lang="en">This can contain a multiline description.</description>
+      <specifies>
+        <learningOpportunityInstance>
+          <start>2021-10-01</start>
+          <date>2022-03-17</date>
+          <academicTerm>
+            <title xml:lang="en">Winter Semester of 2021</title>
+            <start>2021-10-01</start>
+            <end>2022-02-15</end>
+          </academicTerm>
+          <status>passed</status>
+          <gradingSchemeLocalId>0-100</gradingSchemeLocalId>
+          <resultLabel>45.1</resultLabel>
+          <shortenedGrading>
+            <percentageLower>62.3</percentageLower>
+            <percentageEqual>21.8</percentageEqual>
+            <percentageHigher>15.9</percentageHigher>
+          </shortenedGrading>
+          <resultDistribution>
+            <!--
+            Artificial (and exaggeratedly complex) grading scheme was used in this example
+            in order to highlight the possibility of the enormous variety of different
+            grading schemes which might be used throughout different countries and HEIs.
+            -->
+            <category count="43" label="Less than 20" />
+            <category count="193" label="20-39.9" />
+            <category count="198" label="40-59.9" />
+            <category count="35" label="60-79.9" />
+            <category count="7" label="80-100" />
+            <description xml:lang="en">Some extra information about the description, might include links etc.</description>
+          </resultDistribution>
+          <credit>
+            <scheme>ects</scheme>
+            <level>Bachelor</level> <!-- level is optional! -->
+            <value>6</value>
+          </credit>
+          <!-- All consumers of ELMO should support EQF -->
+          <level>
+            <type>EQF</type>
+            <description>European Qualification Framework</description>
+            <value>5</value>
+          </level>
+          <!-- This level will be ignored by consumers who do not support it. It is intended for German clients. -->
+          <level>
+            <type>DE.HZB</type>
+            <description>Upper secondary general education school leaving certificate</description>
+            <value>Allgemeine Hochschulreife</value>
+          </level>
+          <!-- https://github.com/emrex-eu/elmo-schemas/issues/63 -->
+          <languageOfInstruction>de</languageOfInstruction>
+          <grouping typeref="2" idref="2" />
+        </learningOpportunityInstance>
+      </specifies>
+      <hasPart>
+        <learningOpportunitySpecification>
+          <identifier type="local">44557788</identifier>
+          <title xml:lang="de">Vorlesung</title>
+          <title xml:lang="en">Lecture</title>
+          <type>Class</type>
+          <specifies>
+            <learningOpportunityInstance>
+              <status>passed</status>
+              <engagementHours>30</engagementHours>
+              <grouping typeref="1" idref="1" />
+            </learningOpportunityInstance>
+          </specifies>
+        </learningOpportunitySpecification>
+      </hasPart>
+      <hasPart>
+        <learningOpportunitySpecification>
+          <identifier type="local">11223344</identifier>
+          <title xml:lang="de">Laborklassen</title>
+          <title xml:lang="en">Lab classes</title>
+          <type>Class</type>
+          <specifies>
+            <learningOpportunityInstance>
+              <status>passed</status>
+              <engagementHours>30</engagementHours>
+              <grouping typeref="1" idref="1" />
+              <extension>
+
+                <!-- https://github.com/emrex-eu/elmo-schemas/issues/67
+                      In this example the schema is used as we could not find a filled out example
+                -->
+                <element xmlns="http://example.com/schemas/my-elmo-extension">
+                  <xsc:schueler.abiturzeugnis.0002 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://xschule.digital/def/xschule/0.3/xsd http://xschule.digital/def/xschule/0.3/xsd/xschule.xsd"
+                    xmlns:xbd="http://xbildung.de/def/xbildung/0.92/xsd"
+                    xmlns:xoev-code="http://xoev.de/schemata/code/1_0"
+                    xmlns:xoev-lc="http://xoev.de/latinchars/1_1/datatypes"
+                    xmlns:xsc="http://xschule.digital/def/xschule/0.3/xsd">
+
+                    <xsc:allgemeineAngaben>
+                      <xsc:artDesZeugnisses>
+                        <code>http://xschule.digital/def/xschule/0.3/code/zeugnisart/abschlusszeugnis</code>
+                      </xsc:artDesZeugnisses>
+
+                      <xsc:nachweisperiode>
+                        <code>http://xschule.digital/def/xschule/0.3/code/nachweisperiode/halbjahr</code>
+                      </xsc:nachweisperiode>
+
+                      <xsc:bundesland listVersionID="2010-04-01" listURI="urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:bundesland">
+                        <code>05</code>
+                        <!-- NRW -->
+                      </xsc:bundesland>
+
+                      <xsc:niveau>
+                        <code>http://data.europa.eu/snb/qdr/c_12a84182</code>
+                        <!-- DQR 4 -->
+                      </xsc:niveau>
+
+                      <xsc:artDerHZB>Allgemeine Hochschulreife</xsc:artDerHZB>
+                    </xsc:allgemeineAngaben>
+                </element>
+
+                <!-- https://github.com/emrex-eu/elmo-schemas/issues/68 
+                      In this example the schema is used as we could not find a filled out example
+                -->
+                <element xmlns="http://example.com/schemas/my-elmo-extension">
+                  <xsc:schueler.abiturzeugnis.0002 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://xschule.digital/def/xschule/0.3/xsd http://xschule.digital/def/xschule/0.3/xsd/xschule.xsd"
+                    xmlns:xbd="http://xbildung.de/def/xbildung/0.92/xsd"
+                    xmlns:xoev-code="http://xoev.de/schemata/code/1_0"
+                    xmlns:xoev-lc="http://xoev.de/latinchars/1_1/datatypes"
+                    xmlns:xsc="http://xschule.digital/def/xschule/0.3/xsd">
+                    <xsc:block-iii>
+
+                      <xsc:durchschnittsnote>
+                        <xbd:note>3.5</xbd:note>
+                        <xbd:wortbezeichnung>Drei Komma Fünf</xbd:wortbezeichnung>
+                      </xsc:durchschnittsnote>
+
+                      <xsc:gesamtpunktzahl>
+                        <xbd:bewertungsschema>
+                          <xbd:schemaURI>
+                            <code>http://www.xbildung.de/def/xbildung/0.92/code/bewertungsschema/de_kmk_abitur_000_300_900</code>
+                          </xbd:schemaURI>
+                        </xbd:bewertungsschema>
+                        <xbd:punkte>385</xbd:punkte>
+                      </xsc:gesamtpunktzahl>
+
+                      <xsc:punktsummeBlockI>
+                        <xbd:bewertungsschema>
+                          <xbd:schemaURI>
+                            <code>http://www.xbildung.de/def/xbildung/0.92/code/bewertungsschema/de_kmk_abitur_000_200_600</code>
+                          </xbd:schemaURI>
+                        </xbd:bewertungsschema>
+                        <xbd:punkte>284</xbd:punkte>
+                      </xsc:punktsummeBlockI>
+
+                      <xsc:punktsummeBlockII>
+                        <xbd:bewertungsschema>
+                          <xbd:schemaURI>
+                            <code>http://www.xbildung.de/def/xbildung/0.92/code/bewertungsschema/de_kmk_abitur_000_100_300</code>
+                          </xbd:schemaURI>
+                        </xbd:bewertungsschema>
+                        <xbd:punkte>101</xbd:punkte>
+                      </xsc:punktsummeBlockII>
+
+                    </xsc:block-iii>
+                </element>
+
+              </extension>
+            </learningOpportunityInstance>
+          </specifies>
+        </learningOpportunitySpecification>
+      </hasPart>
+    </learningOpportunitySpecification>
+
+    <issueDate>2022-10-30T07:00:00+02:00</issueDate>
+
+    <gradingScheme localId="0-100">
+      <description xml:lang="de">Eine Zahl der Skala von 0,0 bis 100,0 (eine Stelle der Genauigkeit)</description>
+      <description xml:lang="en">A number of the scale from 0.0 to 100.0 (one digit of precision)</description>
+    </gradingScheme>
+    <attachment>
+      <title xml:lang="de">Abschrift der Aufzeichnungen</title>
+      <title xml:lang="en">Transcript of records</title>
+      <type>Transcript of Records</type>
+      <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+    </attachment>
+
+  </report>
+
+  <attachment>
+    <identifier type="internal">1234567</identifier>
+    <title xml:lang="de">Globale Bindung</title>
+    <title xml:lang="en">Global attachment</title>
+    <type>EMREX transcript</type>
+    <content xml:lang="de">data:application/pdf;base64,iiNhz6ybjHLBF2...</content>
+    <content xml:lang="en">data:application/pdf;base64,iiNhz6ybjHLBF2...</content>
+  </attachment>
+
+  <groups>
+    <groupType id="1">
+      <title xml:lang="en">By category</title>
+      <group id="1" sortingKey="1">
+        <title xml:lang="en">Mandatory subjects</title>
+      </group>
+      <group id="2" sortingKey="2">
+        <title xml:lang="en">Optional subjects</title>
+      </group>
+    </groupType>
+    <groupType id="2">
+      <title xml:lang="en">By subject level</title>
+      <group id="1" sortingKey="1">
+        <title xml:lang="en">Master courses</title>
+      </group>
+      <group id="2" sortingKey="2">
+        <title xml:lang="en">Bachelor courses</title>
+      </group>
+    </groupType>
+  </groups>
+
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>vKIjYD...33qn0rrZ0+I=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>oekgEiYwLKbtEZ...eDVY=</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509SubjectName>O=TUB,L=Berlin,C=DE</X509SubjectName>
+        <X509Certificate>MIIB9TCCAV4CCQDzc...U7TWNGJeQ=</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</elmo>
