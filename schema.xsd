@@ -526,8 +526,13 @@
                         </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
-                    <xs:element minOccurs="0" maxOccurs="unbounded" name="message" type="PlaintextMultilineStringWithOptionalLang"/>
-                    <!-- A message that can be read by the EMC to give the user additional information about what happened -->
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="message" type="PlaintextMultilineStringWithOptionalLang">
+                      <xs:annotation>
+                        <xs:documentation>
+                          A message that can be read by the EMC to give the user additional information about what happened
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
