@@ -736,6 +736,7 @@
             <xs:enumeration value="Letter of Nomination" />
             <xs:enumeration value="Certificate of Training" />
             <xs:enumeration value="Learning Agreement" />
+            <xs:enumeration value="Certificate of Enrolment" />
             <xs:enumeration value="Other">
               <xs:annotation>
                 <xs:documentation>
