@@ -1210,34 +1210,12 @@
                       </xs:sequence>
                     </xs:complexType>
                   </xs:element>
-                  <xs:element name="duration" minOccurs="0" maxOccurs="1">
+                  <xs:element name="duration" minOccurs="0" maxOccurs="1" type="xs:duration">
                     <xs:annotation>
                       <xs:documentation>
                         This describes the normal duration in time for an education.
-
-                        Here, issuers of ELMO can describe types of duration. The schema provides a predefined list of
-                        measurements for duration.
                       </xs:documentation>
                     </xs:annotation>
-                    <xs:simpleType>
-                      <xs:extention base="xs:token">
-                        <xs:attribute name="type" type="xs:token" use="required">
-                        <xs:annotation>
-                          <xs:documentation>
-                            specifies what the duration is measured in.
-                          </xs:documentation>
-                        </xs:annotation>
-                          <xs:simpleType>
-                            <xs:restriction base="xs:string">
-                              <xs:enumeration value="day"/>
-                              <xs:enumeration value="week"/>
-                              <xs:enumeration value="month"/>
-                              <xs:enumeration value="year"/>
-                            </xs:restriction>
-                          </xs:simpleType>
-                        </xs:attribute>
-                      </xs:extention>
-                    </xs:simpleType>
                   </xs:element>
                   <xs:element name="status" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
