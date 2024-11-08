@@ -295,10 +295,10 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:element>
-              <xs:element minOccurs="0" maxOccurs="1" name="countryOfBirth" type="xs:token">
+              <xs:element minOccurs="0" maxOccurs="1" name="countryOfBirth" type="europass:countryCode">
                 <xs:annotation>
                   <xs:documentation>
-                    The student's country of birth.
+                    An ISO 3166-1-alpha-2 code of the country in which the student was born.
 
                     For server implementers: If this is not known then you MUST skip the element
                     altogether (instead of, for example, providing an empty value).
