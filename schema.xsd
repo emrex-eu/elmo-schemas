@@ -1563,21 +1563,21 @@
   <xs:complexType name="ResultOfRecognition">
     <xs:annotation>
       <xs:documentation>
-        TODO: Documentation on how to use this bad boy.
+        The result of a recognition process
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="title" type="TokenWithOptionalLang">
         <xs:annotation>
           <xs:documentation>
-            TODO: document title
+            The title of the recognition
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="description" type="PlaintextMultilineStringWithOptionalLang">
         <xs:annotation>
           <xs:documentation>
-            TODO: Document descr
+            The description of the recognition
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -1602,7 +1602,7 @@
       <xs:element name="status">
         <xs:annotation>
           <xs:documentation>
-            TODO: document this controlled list
+            The status of the recognition process
           </xs:documentation>
         </xs:annotation>
         <xs:simpleType>
@@ -1610,21 +1610,29 @@
             <xs:enumeration value="Positive">
               <xs:annotation>
                 <xs:documentation>
-                  TODO: document a positive result of recognition
+                  All parts of the recognition was positive meaning all degrees and/or subjects
+                  in this recognition are recognized.
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Negative">
               <xs:annotation>
                 <xs:documentation>
-                  TODO: Document a negative result of recognition.
+                  All parts of the recognition was negative meaning all degrees and/or subjects
+                  in this recognition were not recognized.
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Partially Positive">
               <xs:annotation>
                 <xs:documentation>
-                  TODO: Document a partially positive result of recognition.
+                  Some parts of the recognition was positive and some parts were negative.
+                  Combinations can be, but are not limited to:
+                  - A degree was recognized, but a second degree was not recognized.
+                  - A degree was recognized, but a single course outside of the
+                    degree was not recognized.
+                  - A single subject was recognized but a degree was not recognized.
+                  - A course subject was recognized, but a second course was not recognized.
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
@@ -1634,14 +1642,14 @@
       <xs:element minOccurs="0" maxOccurs="1" name="decisionDate" type="xs:date">
         <xs:annotation>
           <xs:documentation>
-            TODO: Document decisionDate
+            The date this recognition process was decided.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="recognitionBasis">
         <xs:annotation>
           <xs:documentation>
-            TODO: document Recognition Basis
+            The basis for this recognition
           </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1649,7 +1657,7 @@
             <xs:element name="recognitionReport" type="RecognitionReport">
               <xs:annotation>
                 <xs:documentation>
-                  TODO: Document this
+                  The report that serves as the basis of this recognition
                 </xs:documentation>
               </xs:annotation>
             </xs:element>
@@ -1659,7 +1667,7 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="recognitionResult">
         <xs:annotation>
           <xs:documentation>
-            TODO: Document Recognition Result
+            The result of this recognition
           </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1667,7 +1675,7 @@
             <xs:element name="learningOpportunitySpecification" type="LearningOpportunitySpecification">
               <xs:annotation>
                 <xs:documentation>
-                  TODO: Document this LOS and how it works in Recognitions
+                  The result of this recognition
                 </xs:documentation>
               </xs:annotation>
             </xs:element>
@@ -1677,7 +1685,8 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="recognitionMapping">
         <xs:annotation>
           <xs:documentation>
-            TODO: Document the mapping
+            Mapping what results for the recognitionBasis is recognized as what result
+            from the recognitionResult.
           </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -1685,7 +1694,14 @@
             <xs:element name="mapping">
               <xs:annotation>
                 <xs:documentation>
-                  TODO: Document this object
+                  The actual mapping of the recognition.
+                  Examples can be but are not limited to:
+                  - Course A recognized as Course X
+                  - Course A and B are recognized as Course X
+                  - Course A, B and C are recognized as Course X and Y
+                  - Degree A is recognized as Degree X
+                  - Degree A and B recognized as Degree X.
+                  - Degree A and Course B recognized as Degree X
                 </xs:documentation>
               </xs:annotation>
               <xs:complexType>
@@ -1755,7 +1771,7 @@
   <xs:complexType name="RecognitionReport">
     <xs:annotation>
       <xs:documentation>
-        TODO: Document Recognition Report
+        The recognition report
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
