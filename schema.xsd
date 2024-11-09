@@ -1610,23 +1610,23 @@
             <xs:enumeration value="Positive">
               <xs:annotation>
                 <xs:documentation>
-                  All parts of the recognition was positive meaning all degrees and/or subjects
-                  in this recognition are recognized.
+                  All parts of the recognition were positive, meaning all degrees and/or subjects
+                  in this recognition have been recognized.
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Negative">
               <xs:annotation>
                 <xs:documentation>
-                  All parts of the recognition was negative meaning all degrees and/or subjects
-                  in this recognition were not recognized.
+                  All parts of the recognition were negative meaning all degrees and/or subjects
+                  in this recognition have not been recognized.
                 </xs:documentation>
               </xs:annotation>
             </xs:enumeration>
             <xs:enumeration value="Partially Positive">
               <xs:annotation>
                 <xs:documentation>
-                  Some parts of the recognition was positive and some parts were negative.
+                  Some parts of the recognition were positive and some parts were negative.
                   Combinations can be, but are not limited to:
                   - A degree was recognized, but a second degree was not recognized.
                   - A degree was recognized, but a single course outside of the
@@ -1642,7 +1642,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="decisionDate" type="xs:date">
         <xs:annotation>
           <xs:documentation>
-            The date this recognition process was decided.
+            The date on which the recognition process was decided.
           </xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -1685,7 +1685,7 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="recognitionMapping">
         <xs:annotation>
           <xs:documentation>
-            Mapping what results for the recognitionBasis is recognized as what result
+            Mapping what results for the recognitionBasis element is recognized as what result
             from the recognitionResult.
           </xs:documentation>
         </xs:annotation>
