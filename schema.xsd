@@ -1466,6 +1466,7 @@
                             <xs:documentation>
                               Currently supported types are:
                                 - EQF (European Qualification Framework)
+                                - NQF (National Qualification Framework)
                             </xs:documentation>
                           </xs:annotation>
                         </xs:element>
