@@ -1106,7 +1106,7 @@
       </xs:element>
       <xs:element minOccurs="0" name="documentType">
         <xs:annotation>
-          <xs:documentation>Defines the type of the document which can be either Diploma or Certificate.
+          <xs:documentation>Defines the type of the document. Can be Diploma, Certificate, Enrolment or Admission.
             This element is not required. When left empty the document will be considered a Diploma.
           </xs:documentation>
         </xs:annotation>
