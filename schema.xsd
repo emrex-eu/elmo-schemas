@@ -888,14 +888,28 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="0" name="country" type="europass:countryCode">
-        <xs:annotation>
-          <xs:documentation>
-            An ISO 3166-1-alpha-2 code of the country in which the institution is
-            operating. If the country is not known, or the institution is an international
-            one, then this element MUST NOT be present.
-          </xs:documentation>
-        </xs:annotation>
+      <xs:element minOccurs="1" maxOccurs="1" name="country">
+       <xs:annotation>
+         <xs:documentation>
+           For server implementers: You MUST be able to provide an ISO 2 digit country code or http://publications.europa.eu/resource/authority/country URI
+         </xs:documentation>
+       </xs:annotation>
+       <xs:complexType>
+         <xs:simpleContent>
+           <xs:extension base="xs:token">
+             <xs:attribute name="type" type="xs:token" use="required">
+               <xs:annotation>
+                 <xs:documentation>
+                   These are the currently supported country code types:
+ 
+                   ISO – ISO-3166-alpha-2 code
+                   URI – the URI link to the EC Countries and territories schema
+                 </xs:documentation>
+               </xs:annotation>
+             </xs:attribute>
+           </xs:extension>
+         </xs:simpleContent>
+       </xs:complexType>
       </xs:element>
       <xs:element maxOccurs="unbounded" minOccurs="1" name="identifier">
         <xs:annotation>
