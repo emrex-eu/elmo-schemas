@@ -888,7 +888,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="country">
+      <xs:element minOccurs="0" maxOccurs="1" name="country">
        <xs:annotation>
          <xs:documentation>
            For server implementers: You MUST be able to provide an ISO 2 digit country code or http://publications.europa.eu/resource/authority/country URI
