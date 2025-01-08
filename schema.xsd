@@ -190,7 +190,7 @@
           </xs:annotation>
           <xs:complexType>
             <xs:sequence>
-              <xs:element minOccurs="0" name="citizenship" type="europass:countryCode">
+              <xs:element minOccurs="0" name="citizenship">
                 <xs:annotation>
                   <xs:documentation>
                     The ISO-3166-alpha-2 code or the http://publications.europa.eu/resource/authority/country URI of the 
