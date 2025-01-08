@@ -295,7 +295,7 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:element>
-              <xs:element minOccurs="0" maxOccurs="1" name="countryOfBirth" type="europass:countryCode">
+              <xs:element minOccurs="0" maxOccurs="1" name="countryOfBirth">
                 <xs:annotation>
                   <xs:documentation>
                     The ISO-3166-alpha-2 code or the http://publications.europa.eu/resource/authority/country URI of the 
