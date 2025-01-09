@@ -1252,6 +1252,72 @@
                       </xs:simpleContent>
                     </xs:complexType>
                   </xs:element>
+                  <xs:element name="enrolment" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation>
+                        For enrolment status of the LearningOpportunityInstance must be set to "in-progres".
+                        For an enrolment to be valid these fields must contain a value:
+                        - given name
+                        - family name
+                        - enrolmentDate
+                        - issuer
+                          - name
+                          - country
+                        - enrolmentInstitution
+                          - name
+                          - country
+                        - title of study programme
+                        - duration of study programme
+                          - years or months
+                        - start date of academic year
+                        - end date of academic year
+                        - if this document applies to admission or enrolment
+                      </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="enrolmentInstitution" type="issuer">
+                          <xs:annotation>
+                            <xs:documentation>
+                              the institution the student is enrolled to
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="enrolmentDate" type="xs:date">
+                          <xs:annotation>
+                            <xs:documentation>
+                              the date the student was enrolled
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:element>
+                        <xs:element name="academicYear">
+                          <xs:annotation>
+                            <xs:documentation>
+                              The academic year of this enrolment. Specified with a start and end date.
+                            </xs:documentation>
+                          </xs:annotation>
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="start" type="xs:date">
+                                <xs:annotation>
+                                  <xs:documentation>
+                                    the start date of the academic yar
+                                  </xs:documentation>
+                                </xs:annotation>
+                              </xs:element>
+                              <xs:element name="end" type="xs:date">
+                                <xs:annotation>
+                                  <xs:documentation>
+                                    the end date of the academic year
+                                  </xs:documentation>
+                                </xs:annotation>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
                   <xs:element name="start" type="xs:date" minOccurs="0">
                     <xs:annotation>
                       <xs:documentation>
