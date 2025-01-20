@@ -190,16 +190,33 @@
           </xs:annotation>
           <xs:complexType>
             <xs:sequence>
-              <xs:element minOccurs="0" name="citizenship" type="europass:countryCode">
+              <xs:element minOccurs="0" name="citizenship">
                 <xs:annotation>
                   <xs:documentation>
-                    The ISO 3166-1-alpha-2 code of the country the student is a citizen of.
-                    E.g. &quot;PL&quot;.
-
+                    The ISO-3166-alpha-2 code or the http://publications.europa.eu/resource/authority/country URI of the 
+                    country the student is a citizen of.
+                    E.g. &quot;PL&quot; or &quot;https://publications.europa.eu/resource/authority/country/POL&quot;.
+                    
                     For server implementers: If this is not known then you MUST skip the element
                     altogether (instead of, for example, providing an empty value).
                   </xs:documentation>
                 </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:token">
+                      <xs:attribute name="type" type="xs:token" use="required">
+                        <xs:annotation>
+                          <xs:documentation>
+                            These are the currently supported country code types:
+         
+                            ISO – ISO-3166-alpha-2 code
+                            URI – the URI link to the EC Countries and territories schema
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
               </xs:element>
               <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier">
                 <xs:annotation>
