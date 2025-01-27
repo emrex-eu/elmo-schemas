@@ -1335,7 +1335,7 @@
                     </xs:annotation>
                     <xs:complexType>
                       <xs:sequence>
-                        <xs:element name="enrolmentInstitution" type="issuer">
+                        <xs:element name="enrolmentInstitution" type="Issuer">
                           <xs:annotation>
                             <xs:documentation>
                               the institution the student is enrolled to
