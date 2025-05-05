@@ -12,29 +12,30 @@ Important notes:
    OR:
 
    - Change "schema.xsd" in the "xsi:schemaLocation" below to:
-     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd"
+     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v2/schema.xsd"
 
 -->
 <elmo
-  xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
+  xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v2"
   xmlns:xml="http://www.w3.org/XML/1998/namespace"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd"
+  xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v2 schema.xsd"
 >
   <generatedDate>2022-10-31T12:00:00+02:00</generatedDate>
 
   <learner>
-    <citizenship>DE</citizenship>
+    <citizenship type="ISO">DE</citizenship>
     <identifier type="nationalIdentifier">22000129</identifier>
     <givenNames>Erika</givenNames>
     <familyName>Mustermann</familyName>
-    <bday>1994-08-12</bday>
+    <alternativeName>Erika Mustermann</alternativeName>
+    <dateOfBirth>1994-08-12</dateOfBirth>
   </learner>
 
   <report>
 
     <issuer>
-      <country>DE</country>
+      <country type="ISO">DE</country>
       <identifier type="schac">tu.berlin</identifier>
       <identifier type="address">Straße des 17. Juni 135, 10623 Berlin, Germany</identifier>
       <title xml:lang="de">Technische Universität Berlini</title>
@@ -84,7 +85,6 @@ Important notes:
           </resultDistribution>
           <credit>
             <scheme>ects</scheme>
-            <level>Bachelor</level> <!-- level is optional! -->
             <value>6</value>
           </credit>
           <!-- All consumers of ELMO should support EQF -->

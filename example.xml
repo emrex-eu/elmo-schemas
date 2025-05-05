@@ -12,27 +12,28 @@ Important notes:
    OR:
 
    - Change "schema.xsd" in the "xsi:schemaLocation" below to:
-     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd"
+     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v2/schema.xsd"
 
 -->
 <elmo
-    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
+    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v2"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd"
+    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v2 schema.xsd"
 >
     <generatedDate>2015-10-31T12:00:00+02:00</generatedDate>
     <learner>
-        <citizenship>PL</citizenship>
+        <citizenship type="ISO">PL</citizenship>
         <identifier type="nationalIdentifier">83041200000</identifier>
         <identifier type="someOtherCustomIdentifierType">ABC000000</identifier>
         <givenNames>Wojciech Łukasz</givenNames>
         <familyName>Rygielski</familyName>
-        <bday>1983-04-12</bday>
+        <alternativeName>Wojciech Łukasz Rygielski</alternativeName>
+        <dateOfBirth>1983-04-12</dateOfBirth>
     </learner>
     <report>
         <issuer>
-            <country>PL</country>
+            <country type="ISO">PL</country>
             <identifier type="pic">999572294</identifier>
             <identifier type="erasmus">PL WARSZAW01</identifier>
             <identifier type="schac">uw.edu.pl</identifier>
@@ -64,14 +65,13 @@ Important notes:
 					</academicTerm>
 					<credit>
 						<scheme>ECTS</scheme>
-						<level>Master</level>
 						<value>120</value>
-					</credit>
+                    </credit>
 
 					<diplomaSupplement xml:lang="en">
 						<version>2018</version>
 						<issueDate>2018-09-07</issueDate>
-						<introduction></introduction>
+                        <introduction/>
 						<section number="2">
 							<title>Information identifying the qualification</title>
 							<section number="2.3">
@@ -226,7 +226,6 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     </resultDistribution>
                     <credit>
                         <scheme>ects</scheme>
-                        <level>Bachelor</level> <!-- level is optional! -->
                         <value>6</value>
                     </credit>
                     <!-- All consumers of ELMO should support EQF -->
