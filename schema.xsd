@@ -566,9 +566,13 @@
                             </xs:annotation>
                           </xs:enumeration>
                           <xs:enumeration value="ERROR_TEMPORARY">
-                            An error has occured that causes the EMP to not be able to collect and deliver
-                            any data. This error is of a temporary nature and the complete data set is
-                            expected to be delivered once the system recovers.
+                            <xs:annotation>
+                              <xs:documentation>
+                                An error has occured that causes the EMP to not be able to collect and deliver
+                                any data. This error is of a temporary nature and the complete data set is
+                                expected to be delivered once the system recovers.
+                              </xs:documentation>
+                            </xs:annotation>
                           </xs:enumeration>
                           <xs:enumeration value="ERROR_PERMANENT">
                             <xs:annotation>
