@@ -1334,6 +1334,15 @@
                       </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
+                      <xs:attribute name="modeOfStudy" use="optional">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="full-time"/>
+                            <xs:enumeration value="part-time"/>
+                            <xs:enumeration value="other"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
                       <xs:sequence>
                         <xs:element name="enrolmentInstitution" type="Issuer">
                           <xs:annotation>
