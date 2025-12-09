@@ -946,13 +946,15 @@
        <xs:complexType>
          <xs:simpleContent>
            <xs:extension base="xs:token">
-             <xs:attribute name="type" type="xs:token" use="required">
+             <xs:attribute name="type" type="xs:token">
                <xs:annotation>
                  <xs:documentation>
                    These are the currently supported country code types:
  
                    ISO – ISO-3166-alpha-2 code
                    URI – the URI link to the EC Countries and territories schema
+
+                   If the 'type' attribute is not present, the default interpretation is ISO-3166-alpha-2.
                  </xs:documentation>
                </xs:annotation>
              </xs:attribute>
