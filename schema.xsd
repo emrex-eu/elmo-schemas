@@ -1340,6 +1340,20 @@
                       </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
+                      <xs:attribute name="modeOfStudy" use="optional">
+                        <xs:annotation>
+                          <xs:documentation>
+                            specifies if the the student is enrolled to a full time study, part time study or a study of another type.
+                          </xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:enumeration value="full-time"/>
+                            <xs:enumeration value="part-time"/>
+                            <xs:enumeration value="other"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:attribute>
                       <xs:sequence>
                         <xs:element name="enrolmentInstitution" type="Issuer">
                           <xs:annotation>
