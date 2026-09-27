@@ -12,27 +12,48 @@ Important notes:
    OR:
 
    - Change "schema.xsd" in the "xsi:schemaLocation" below to:
-     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v1/schema.xsd"
+     "https://raw.githubusercontent.com/emrex-eu/elmo-schemas/v2/schema.xsd"
 
 -->
 <elmo
-    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1"
+    xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v2"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v1 schema.xsd"
+    xsi:schemaLocation="https://github.com/emrex-eu/elmo-schemas/tree/v2 schema.xsd"
 >
     <generatedDate>2015-10-31T12:00:00+02:00</generatedDate>
     <learner>
-        <citizenship>PL</citizenship>
+        <citizenship type="ISO">PL</citizenship>
         <identifier type="nationalIdentifier">83041200000</identifier>
         <identifier type="someOtherCustomIdentifierType">ABC000000</identifier>
         <givenNames>Wojciech Łukasz</givenNames>
         <familyName>Rygielski</familyName>
+        <alternativeName xml:lang="uk">Войцех Лукаш Ригельський</alternativeName>
+        <dateOfBirth>1983-04-12</dateOfBirth>
+        <!-- DEPRECATED, provided alongside dateOfBirth for EMCs which have not upgraded to ELMO 2.x yet -->
         <bday>1983-04-12</bday>
+        <placeOfBirth>Warszawa</placeOfBirth>
+        <countryOfBirth type="ISO">PL</countryOfBirth>
+        <birthName>Wojciech Łukasz Rygielski</birthName>
+        <currentAddress xmlns:addr="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/stable-v1">
+            <addr:recipientName>Wojciech Łukasz Rygielski</addr:recipientName>
+            <addr:buildingNumber>26/28</addr:buildingNumber>
+            <addr:buildingName>Pałac Kazimierzowski</addr:buildingName>
+            <addr:streetName>Krakowskie Przedmieście</addr:streetName>
+            <addr:unit>12</addr:unit>
+            <addr:floor>2</addr:floor>
+            <addr:postOfficeBox>PO Box 123</addr:postOfficeBox>
+            <addr:deliveryPointCode>Skr. 45</addr:deliveryPointCode>
+            <addr:postalCode>00-927</addr:postalCode>
+            <addr:locality>Warszawa</addr:locality>
+            <addr:region>Mazowieckie</addr:region>
+            <addr:country>PL</addr:country>
+        </currentAddress>
+        <gender>1</gender>
     </learner>
     <report>
         <issuer>
-            <country>PL</country>
+            <country type="ISO">PL</country>
             <identifier type="pic">999572294</identifier>
             <identifier type="erasmus">PL WARSZAW01</identifier>
             <identifier type="schac">uw.edu.pl</identifier>
@@ -62,9 +83,9 @@ Important notes:
 						<start>2009-01-15</start>
 						<end>2009-06-15</end>
 					</academicTerm>
+					<status>passed</status>
 					<credit>
-						<scheme>ECTS</scheme>
-						<level>Master</level>
+						<scheme>ects</scheme>
 						<value>120</value>
 					</credit>
 
@@ -104,7 +125,14 @@ Important notes:
 									MHTML document here?
 								]]></content>
 								<attachment>
+									<identifier type="internal">DS-4.2-001</identifier>
+									<title xml:lang="en">Programme requirements</title>
+									<type>Diploma Supplement</type>
+									<description xml:lang="en">Full programme requirements as a PDF document.</description>
 									<content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+									<extension>
+										<element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+									</extension>
 								</attachment>
 							</section>
 							<section number="4.3">
@@ -138,6 +166,40 @@ Important notes:
 								<content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
 							</attachment>
 						</section>
+					<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+						<SignedInfo>
+							<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+							<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+							<Reference URI="">
+								<Transforms>
+									<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+								</Transforms>
+								<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+								<DigestValue>vKIjYDBEhQxFnLC233qn0rrZ0+I=</DigestValue>
+							</Reference>
+						</SignedInfo>
+						<SignatureValue>
+							oekgEiYwLKbtEZri6zo5CKgmK/umAS2aNfUsyPQspkGBdP9H0XE+ITOrD7PKVBgZQ5Y56KghaziF
+							48a27hHFcPrvHizPXINlVXo6hwgje1SPM9QzjmdyQrhftUWJvpgaGmC4/r8o1yaPGqnkNoylEVUo
+							wJTWJHaSPcYjNB7eDVY=
+						</SignatureValue>
+						<KeyInfo>
+							<X509Data>
+								<X509SubjectName>O=UiO,L=Oslo,ST=Some-State,C=NO</X509SubjectName>
+								<X509Certificate>
+									MIIB9TCCAV4CCQDzcL/uks2ttjANBgkqhkiG9w0BAQUFADA/MQswCQYDVQQGEwJOTzETMBEGA1UE
+									CAwKU29tZS1TdGF0ZTENMAsGA1UEBwwET3NsbzEMMAoGA1UECgwDVWlPMB4XDTE1MDIwNTEzNDE1
+									MloXDTE4MDUyMDEzNDE1MlowPzELMAkGA1UEBhMCTk8xEzARBgNVBAgMClNvbWUtU3RhdGUxDTAL
+									BgNVBAcMBE9zbG8xDDAKBgNVBAoMA1VpTzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAsnI3
+									V1JKOl6Ghgzu5AOSsUFcJfefKP3y4lkVzW18T8AXkLKjNWQxJpW7h7kqeEYpcijAIV/xRMu8vEeb
+									roadh9joOOD+ePL95VnAxcMxy3SdrGxRJ5RZwNf1l5UBxm416acIR78frlFX2kKz8kz0gmOmqFFe
+									y3zZm7ZdiKw9fTsCAwEAATANBgkqhkiG9w0BAQUFAAOBgQBn6MlnleclAG/BVF4irljHag7OOopx
+									TlQzb1V/mR0kYtsr6PZzCTJdwwU5YYWPG2hdqYRzyydlEGid5OPeCVtNQNQG8yKDCYeCS571jSbQ
+									7Q0n0IR4mv7SeLq537mVBaaftV3HdnyoSLcXQpDep/akUOa8TpPwVg/+2U7TWNGJeQ==
+								</X509Certificate>
+							</X509Data>
+						</KeyInfo>
+					</Signature>
 					</diplomaSupplement>
 				</learningOpportunityInstance>
 			</specifies>
@@ -157,9 +219,10 @@ Important notes:
 								<start>2010-01-15</start>
 								<end>2010-07-02</end>
 							</academicTerm>
+							<status>passed</status>
 							<resultLabel>Innpasset</resultLabel>
 							<credit>
-								<scheme>ECTS</scheme>
+								<scheme>ects</scheme>
 								<value>15</value>
 							</credit>
 						</learningOpportunityInstance>
@@ -195,6 +258,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
             </descriptionHtml>
             <specifies>
                 <learningOpportunityInstance>
+                    <identifier type="local">1000-217bMRJ-2014Z</identifier>
                     <start>2014-10-01</start>
                     <date>2015-03-17</date>
                     <academicTerm>
@@ -204,6 +268,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     </academicTerm>
                     <status>passed</status>
                     <gradingSchemeLocalId>0-100</gradingSchemeLocalId>
+                    <gradingSchemeExternalId>ECTS-grading-table</gradingSchemeExternalId>
                     <resultLabel>45.1</resultLabel>
                     <shortenedGrading>
                         <percentageLower>62.3</percentageLower>
@@ -226,24 +291,26 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     </resultDistribution>
                     <credit>
                         <scheme>ects</scheme>
-                        <level>Bachelor</level> <!-- level is optional! -->
                         <value>6</value>
                     </credit>
                     <!-- All consumers of ELMO should support EQF -->
                     <level>
                         <type>EQF</type>
-                        <description>European Qualification Framework</description>
+                        <description xml:lang="en">European Qualification Framework</description>
                         <value>5</value>
                     </level>
                     <!-- This level will be ignored by consumers who do not support it. It is not required to support. -->
                     <level>
                         <type>NQF</type>
-                        <description>Norwegian Qualification Framework</description>
+                        <description xml:lang="en">Norwegian Qualification Framework</description>
                         <value>5</value>
                     </level>
                     <languageOfInstruction>pl</languageOfInstruction>
                     <grouping typeref= "2" idref="2" />
                 </learningOpportunityInstance>
+                <extension>
+                    <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+                </extension>
             </specifies>
             <hasPart>
                 <learningOpportunitySpecification>
@@ -282,8 +349,12 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     </specifies>
                 </learningOpportunitySpecification>
             </hasPart>
+            <extension>
+                <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+            </extension>
         </learningOpportunitySpecification>
         <learningOpportunitySpecification>
+            <identifier type="local">1000-HTMLBR</identifier>
             <!--
             An example of queer (but perfectly valid) XML markup that clients
             should be able to parse. Such title MUST be displayed properly (as
@@ -311,6 +382,124 @@ Server implementers can add line breaks (or double line breaks) within this elem
                 </learningOpportunityInstance>
             </specifies>
         </learningOpportunitySpecification>
+        <!-- Example of an Enrolment -->
+        <learningOpportunitySpecification>
+            <identifier type="local">MSC-INF</identifier>
+            <title xml:lang="pl">Informatyka (studia II stopnia)</title>
+            <title xml:lang="en">Computer Science (Master)</title>
+            <type>Degree Programme</type>
+            <iscedCode>0613</iscedCode>
+            <documentType>Enrolment</documentType>
+            <specifies>
+                <learningOpportunityInstance>
+                    <enrolment>
+                        <enrolmentInstitution>
+                            <country type="ISO">PL</country>
+                            <identifier type="schac">uw.edu.pl</identifier>
+                            <title xml:lang="pl">Uniwersytet Warszawski</title>
+                            <title xml:lang="en">University of Warsaw</title>
+                            <url>http://www.uw.edu.pl</url>
+                        </enrolmentInstitution>
+                        <enrolmentDate>2015-09-20</enrolmentDate>
+                        <academicYear>
+                            <start>2015-10-01</start>
+                            <end>2016-09-30</end>
+                        </academicYear>
+                    </enrolment>
+                    <start>2015-10-01</start>
+                    <duration>P2Y</duration>
+                    <status>in-progress</status>
+                </learningOpportunityInstance>
+            </specifies>
+        </learningOpportunitySpecification>
+        <!-- Example of a Result of Recognition: a course completed at the University of Oslo, recognised as a University of Warsaw course -->
+        <resultOfRecognition>
+            <identifier type="local">REC-2015-001</identifier>
+            <title xml:lang="pl">Uznanie przedmiotu zaliczonego na Uniwersytecie w Oslo</title>
+            <title xml:lang="en">Recognition of a course completed at the University of Oslo</title>
+            <description xml:lang="pl">Przedmiot BIO4110 zaliczony na Uniwersytecie w Oslo zostaje uznany jako przedmiot 1000-BIOEWO na Uniwersytecie Warszawskim.</description>
+            <description xml:lang="en">The course BIO4110 completed at the University of Oslo is recognised as the course 1000-BIOEWO at the University of Warsaw.</description>
+            <subjectArea>13.1</subjectArea>
+            <iscedCode>0511</iscedCode>
+            <status>Positive</status>
+            <decisionDate>2015-09-15</decisionDate>
+            <recognitionBasis>
+                <recognitionReport>
+                    <issuer>
+                        <country type="ISO">NO</country>
+                        <identifier type="schac">uio.no</identifier>
+                        <title xml:lang="no">Universitetet i Oslo</title>
+                        <title xml:lang="en">University of Oslo</title>
+                        <url>http://www.uio.no/</url>
+                    </issuer>
+                    <learningOpportunitySpecification>
+                        <identifier type="local">BIO4110</identifier>
+                        <title xml:lang="no">Evolusjonsbiologi</title>
+                        <title xml:lang="en">Evolutionary biology</title>
+                        <type>Course</type>
+                        <specifies>
+                            <learningOpportunityInstance>
+                                <start>2015-01-15</start>
+                                <date>2015-06-15</date>
+                                <status>passed</status>
+                                <gradingSchemeLocalId>A-F</gradingSchemeLocalId>
+                                <resultLabel>B</resultLabel>
+                                <credit>
+                                    <scheme>ects</scheme>
+                                    <value>10</value>
+                                </credit>
+                            </learningOpportunityInstance>
+                        </specifies>
+                    </learningOpportunitySpecification>
+                    <!-- The basis of one recognition can be another recognition. -->
+                    <resultOfRecognition>
+                        <title xml:lang="en">Earlier recognition of a course at the University of Oslo</title>
+                        <status>Positive</status>
+                    </resultOfRecognition>
+                    <issueDate>2015-06-30T12:00:00+02:00</issueDate>
+                    <gradingScheme localId="A-F">
+                        <description xml:lang="no">Bokstavkarakterer fra A (best) til F (ikke bestått)</description>
+                        <description xml:lang="en">Letter grades from A (best) to F (fail)</description>
+                    </gradingScheme>
+                    <attachment>
+                        <identifier type="internal">UIO-TOR-1</identifier>
+                        <title xml:lang="en">Transcript of records from the University of Oslo</title>
+                        <type>Transcript of Records</type>
+                        <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+                    </attachment>
+                </recognitionReport>
+            </recognitionBasis>
+            <recognitionResult>
+                <learningOpportunitySpecification>
+                    <identifier type="local">1000-BIOEWO</identifier>
+                    <title xml:lang="pl">Biologia ewolucyjna</title>
+                    <title xml:lang="en">Evolutionary biology</title>
+                    <type>Course</type>
+                    <specifies>
+                        <learningOpportunityInstance>
+                            <status>passed</status>
+                            <credit>
+                                <scheme>ects</scheme>
+                                <value>10</value>
+                            </credit>
+                        </learningOpportunityInstance>
+                    </specifies>
+                </learningOpportunitySpecification>
+            </recognitionResult>
+            <recognitionMapping>
+                <mapping>
+                    <fromMapping>
+                        <ref>BIO4110</ref>
+                    </fromMapping>
+                    <toMapping>
+                        <ref>1000-BIOEWO</ref>
+                    </toMapping>
+                </mapping>
+            </recognitionMapping>
+            <attachments>
+                <ref>12345678</ref>
+            </attachments>
+        </resultOfRecognition>
         <issueDate>2015-10-31T07:00:00+02:00</issueDate>
         <gradingScheme localId="ZAL">
             <description xml:lang="en">Pass/Fail (non-graded pass)</description>
@@ -324,10 +513,15 @@ Server implementers can add line breaks (or double line breaks) within this elem
             <description xml:lang="en">A number of the scale from 0.0 to 100.0 (one digit of precision)</description>
             <description xml:lang="pl">Liczba od 0.0 do 100.0 (z jednym miejscem po przecinku)</description>
         </gradingScheme>
+        <status>
+            <code>FULL</code>
+            <message xml:lang="pl">Wszystkie dane zostały zebrane i dostarczone.</message>
+            <message xml:lang="en">All data has been collected and delivered.</message>
+        </status>
         <attachment>
             <title xml:lang="en">Transcript of records</title>
             <type>Transcript of Records</type>
-            <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+            <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         </attachment>
         <attachment>
             <identifier type="internal">87654321</identifier>
@@ -336,6 +530,9 @@ Server implementers can add line breaks (or double line breaks) within this elem
             <description xml:lang="en">Additional multiline description...</description>
             <description xml:lang="pl">Po polsku...</description>
             <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+            <extension>
+                <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+            </extension>
         </attachment>
     </report>
     <attachment>
@@ -343,8 +540,12 @@ Server implementers can add line breaks (or double line breaks) within this elem
         <title xml:lang="en">"Global" attachment</title>
         <title xml:lang="pl">"Globalny" załącznik</title>
         <type>EMREX transcript</type>
+        <description xml:lang="en">A PDF version of the whole EMREX transcript.</description>
         <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         <content xml:lang="pl">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        <extension>
+            <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+        </extension>
     </attachment>
     <groups>
         <groupType id="1">
@@ -366,6 +567,10 @@ Server implementers can add line breaks (or double line breaks) within this elem
             </group>
         </groupType>
     </groups>
+    <extension>
+        <!-- This may contain anything you want. But try to avoid it. -->
+        <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+    </extension>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
         <SignedInfo>
             <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
