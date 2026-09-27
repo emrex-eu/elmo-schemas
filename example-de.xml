@@ -29,6 +29,23 @@ Important notes:
     <givenNames>Erika</givenNames>
     <familyName>Mustermann</familyName>
     <bday>1994-08-12</bday>
+    <placeOfBirth>Köln</placeOfBirth>
+    <birthName>Erika Gabler</birthName>
+    <currentAddress xmlns:addr="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/stable-v1">
+      <addr:recipientName>Erika Mustermann</addr:recipientName>
+      <addr:buildingNumber>17</addr:buildingNumber>
+      <addr:buildingName>Haus B</addr:buildingName>
+      <addr:streetName>Heidestraße</addr:streetName>
+      <addr:unit>5</addr:unit>
+      <addr:floor>2</addr:floor>
+      <addr:postOfficeBox>Postfach 10 01 23</addr:postOfficeBox>
+      <addr:deliveryPointCode>Packstation 123</addr:deliveryPointCode>
+      <addr:postalCode>51147</addr:postalCode>
+      <addr:locality>Köln</addr:locality>
+      <addr:region>Nordrhein-Westfalen</addr:region>
+      <addr:country>DE</addr:country>
+    </currentAddress>
+    <gender>2</gender>
   </learner>
 
   <report>
@@ -52,8 +69,17 @@ Important notes:
       <url>http://example.com/</url>
       <description xml:lang="de">Diese kann eine mehrzeilige Beschreibung enthalten.</description>
       <description xml:lang="en">This can contain a multiline description.</description>
+      <descriptionHtml xml:lang="de">
+        &lt;p&gt;Im Gegensatz zu den regulären &lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt;-Elementen
+        ist hier HTML erlaubt.&lt;/p&gt;
+      </descriptionHtml>
+      <descriptionHtml xml:lang="en">
+        &lt;p&gt;While the regular &lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt;
+        elements don&apos;t allow HTML, this one does.&lt;/p&gt;
+      </descriptionHtml>
       <specifies>
         <learningOpportunityInstance>
+          <identifier type="local">1000-217bMRJ-2021W</identifier>
           <start>2021-10-01</start>
           <date>2022-03-17</date>
           <academicTerm>
@@ -90,19 +116,25 @@ Important notes:
           <!-- All consumers of ELMO should support EQF -->
           <level>
             <type>EQF</type>
-            <description>European Qualification Framework</description>
+            <description xml:lang="en">European Qualification Framework</description>
             <value>5</value>
           </level>
           <!-- This level will be ignored by consumers who do not support it. It is intended for German clients. -->
           <level>
             <type>DE.HZB</type>
-            <description>Upper secondary general education school leaving certificate</description>
+            <description xml:lang="en">Upper secondary general education school leaving certificate</description>
             <value>Allgemeine Hochschulreife</value>
           </level>
           <!-- https://github.com/emrex-eu/elmo-schemas/issues/63 -->
           <languageOfInstruction>de</languageOfInstruction>
+          <attachments>
+            <ref>1234567</ref>
+          </attachments>
           <grouping typeref="2" idref="2" />
         </learningOpportunityInstance>
+        <extension>
+          <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+        </extension>
       </specifies>
       <hasPart>
         <learningOpportunitySpecification>
@@ -164,6 +196,7 @@ Important notes:
 
                       <xsc:artDerHZB>Allgemeine Hochschulreife</xsc:artDerHZB>
                     </xsc:allgemeineAngaben>
+                  </xsc:schueler.abiturzeugnis.0002>
                 </element>
 
                 <!-- https://github.com/emrex-eu/elmo-schemas/issues/68 
@@ -211,6 +244,7 @@ Important notes:
                       </xsc:punktsummeBlockII>
 
                     </xsc:block-iii>
+                  </xsc:schueler.abiturzeugnis.0002>
                 </element>
 
               </extension>
@@ -218,6 +252,122 @@ Important notes:
           </specifies>
         </learningOpportunitySpecification>
       </hasPart>
+      <extension>
+        <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+      </extension>
+    </learningOpportunitySpecification>
+
+    <!-- Example of a Degree with Diploma Supplement -->
+    <learningOpportunitySpecification>
+      <identifier type="local">BSC-INF</identifier>
+      <title xml:lang="de">Informatik (Bachelor of Science)</title>
+      <title xml:lang="en">Computer Science (Bachelor of Science)</title>
+      <type>Degree Programme</type>
+      <iscedCode>0613</iscedCode>
+      <url>http://example.com/</url>
+      <specifies>
+        <learningOpportunityInstance>
+          <start>2018-10-01</start>
+          <date>2022-09-30</date>
+          <status>passed</status>
+          <credit>
+            <scheme>ects</scheme>
+            <level>Bachelor</level>
+            <value>180</value>
+          </credit>
+          <diplomaSupplement xml:lang="de">
+            <version>2018</version>
+            <issueDate>2022-10-30</issueDate>
+            <introduction>Diese Diploma Supplement-Vorlage wurde von der Europäischen Kommission, dem Europarat und UNESCO/CEPES entwickelt.</introduction>
+            <section number="1">
+              <title>Angaben zum Inhaber/zur Inhaberin der Qualifikation</title>
+              <section number="1.1">
+                <title>Familienname(n)</title>
+                <content>Mustermann</content>
+              </section>
+              <section number="1.2">
+                <title>Vorname(n)</title>
+                <content>Erika</content>
+              </section>
+              <section number="1.3">
+                <title>Geburtsdatum</title>
+                <content>12.08.1994</content>
+              </section>
+            </section>
+            <section number="2">
+              <title>Angaben zur Qualifikation</title>
+              <section number="2.1">
+                <title>Bezeichnung der Qualifikation</title>
+                <content>Bachelor of Science (B.Sc.)</content>
+                <additionalInformation>Bachelor of Science ist ein geschützter akademischer Grad in Deutschland</additionalInformation>
+              </section>
+              <section number="2.5">
+                <title>Unterrichts-/Prüfungssprache(n)</title>
+                <content type="text/plain">Deutsch</content>
+              </section>
+            </section>
+            <section number="4">
+              <title>Angaben zum Inhalt und zu den erzielten Ergebnissen</title>
+              <section number="4.2">
+                <title>Anforderungen des Studiengangs</title>
+                <content type="text/html"><![CDATA[
+                  <p>HTML-Text hier</p>
+                ]]></content>
+                <attachment>
+                  <identifier type="internal">DS-4.2-001</identifier>
+                  <title xml:lang="de">Studienanforderungen</title>
+                  <title xml:lang="en">Programme requirements</title>
+                  <type>Diploma Supplement</type>
+                  <description xml:lang="de">Vollständige Studienanforderungen als PDF-Dokument.</description>
+                  <description xml:lang="en">Full programme requirements as a PDF document.</description>
+                  <content xml:lang="de">data:application/pdf;base64,iiNhz6ybjHLBF2...</content>
+                  <extension>
+                    <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+                  </extension>
+                </attachment>
+              </section>
+            </section>
+            <section number="8">
+              <title>Angaben zum nationalen Hochschulsystem</title>
+              <content>Siehe Abschnitt 8 des Diploma Supplements der Hochschulrektorenkonferenz (HRK).</content>
+            </section>
+            <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+              <SignedInfo>
+                <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+                <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+                <Reference URI="">
+                  <Transforms>
+                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                  </Transforms>
+                  <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                  <DigestValue>vKIjYDBEhQxFnLC233qn0rrZ0+I=</DigestValue>
+                </Reference>
+              </SignedInfo>
+              <SignatureValue>
+                oekgEiYwLKbtEZri6zo5CKgmK/umAS2aNfUsyPQspkGBdP9H0XE+ITOrD7PKVBgZQ5Y56KghaziF
+                48a27hHFcPrvHizPXINlVXo6hwgje1SPM9QzjmdyQrhftUWJvpgaGmC4/r8o1yaPGqnkNoylEVUo
+                wJTWJHaSPcYjNB7eDVY=
+              </SignatureValue>
+              <KeyInfo>
+                <X509Data>
+                  <X509SubjectName>O=TUB,L=Berlin,C=DE</X509SubjectName>
+                  <X509Certificate>
+                    MIIB9TCCAV4CCQDzcL/uks2ttjANBgkqhkiG9w0BAQUFADA/MQswCQYDVQQGEwJOTzETMBEGA1UE
+                    CAwKU29tZS1TdGF0ZTENMAsGA1UEBwwET3NsbzEMMAoGA1UECgwDVWlPMB4XDTE1MDIwNTEzNDE1
+                    MloXDTE4MDUyMDEzNDE1MlowPzELMAkGA1UEBhMCTk8xEzARBgNVBAgMClNvbWUtU3RhdGUxDTAL
+                    BgNVBAcMBE9zbG8xDDAKBgNVBAoMA1VpTzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAsnI3
+                    V1JKOl6Ghgzu5AOSsUFcJfefKP3y4lkVzW18T8AXkLKjNWQxJpW7h7kqeEYpcijAIV/xRMu8vEeb
+                    roadh9joOOD+ePL95VnAxcMxy3SdrGxRJ5RZwNf1l5UBxm416acIR78frlFX2kKz8kz0gmOmqFFe
+                    y3zZm7ZdiKw9fTsCAwEAATANBgkqhkiG9w0BAQUFAAOBgQBn6MlnleclAG/BVF4irljHag7OOopx
+                    TlQzb1V/mR0kYtsr6PZzCTJdwwU5YYWPG2hdqYRzyydlEGid5OPeCVtNQNQG8yKDCYeCS571jSbQ
+                    7Q0n0IR4mv7SeLq537mVBaaftV3HdnyoSLcXQpDep/akUOa8TpPwVg/+2U7TWNGJeQ==
+                  </X509Certificate>
+                </X509Data>
+              </KeyInfo>
+            </Signature>
+          </diplomaSupplement>
+        </learningOpportunityInstance>
+      </specifies>
     </learningOpportunitySpecification>
 
     <issueDate>2022-10-30T07:00:00+02:00</issueDate>
@@ -230,7 +380,12 @@ Important notes:
       <title xml:lang="de">Abschrift der Aufzeichnungen</title>
       <title xml:lang="en">Transcript of records</title>
       <type>Transcript of Records</type>
-      <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+      <description xml:lang="de">Eine PDF-Version der Abschrift der Aufzeichnungen.</description>
+      <description xml:lang="en">A PDF version of the transcript of records.</description>
+      <content xml:lang="de">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+      <extension>
+        <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+      </extension>
     </attachment>
 
   </report>
@@ -240,8 +395,13 @@ Important notes:
     <title xml:lang="de">Globale Bindung</title>
     <title xml:lang="en">Global attachment</title>
     <type>EMREX transcript</type>
+    <description xml:lang="de">Eine PDF-Version der gesamten EMREX-Abschrift.</description>
+    <description xml:lang="en">A PDF version of the whole EMREX transcript.</description>
     <content xml:lang="de">data:application/pdf;base64,iiNhz6ybjHLBF2...</content>
     <content xml:lang="en">data:application/pdf;base64,iiNhz6ybjHLBF2...</content>
+    <extension>
+      <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+    </extension>
   </attachment>
 
   <groups>
@@ -265,6 +425,11 @@ Important notes:
     </groupType>
   </groups>
 
+  <extension>
+    <!-- This may contain anything you want. But try to avoid it. -->
+    <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+  </extension>
+
   <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
     <SignedInfo>
       <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
@@ -274,14 +439,28 @@ Important notes:
           <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
         </Transforms>
         <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <DigestValue>vKIjYD...33qn0rrZ0+I=</DigestValue>
+        <DigestValue>vKIjYDBEhQxFnLC233qn0rrZ0+I=</DigestValue>
       </Reference>
     </SignedInfo>
-    <SignatureValue>oekgEiYwLKbtEZ...eDVY=</SignatureValue>
+    <SignatureValue>
+      oekgEiYwLKbtEZri6zo5CKgmK/umAS2aNfUsyPQspkGBdP9H0XE+ITOrD7PKVBgZQ5Y56KghaziF
+      48a27hHFcPrvHizPXINlVXo6hwgje1SPM9QzjmdyQrhftUWJvpgaGmC4/r8o1yaPGqnkNoylEVUo
+      wJTWJHaSPcYjNB7eDVY=
+    </SignatureValue>
     <KeyInfo>
       <X509Data>
         <X509SubjectName>O=TUB,L=Berlin,C=DE</X509SubjectName>
-        <X509Certificate>MIIB9TCCAV4CCQDzc...U7TWNGJeQ=</X509Certificate>
+        <X509Certificate>
+          MIIB9TCCAV4CCQDzcL/uks2ttjANBgkqhkiG9w0BAQUFADA/MQswCQYDVQQGEwJOTzETMBEGA1UE
+          CAwKU29tZS1TdGF0ZTENMAsGA1UEBwwET3NsbzEMMAoGA1UECgwDVWlPMB4XDTE1MDIwNTEzNDE1
+          MloXDTE4MDUyMDEzNDE1MlowPzELMAkGA1UEBhMCTk8xEzARBgNVBAgMClNvbWUtU3RhdGUxDTAL
+          BgNVBAcMBE9zbG8xDDAKBgNVBAoMA1VpTzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAsnI3
+          V1JKOl6Ghgzu5AOSsUFcJfefKP3y4lkVzW18T8AXkLKjNWQxJpW7h7kqeEYpcijAIV/xRMu8vEeb
+          roadh9joOOD+ePL95VnAxcMxy3SdrGxRJ5RZwNf1l5UBxm416acIR78frlFX2kKz8kz0gmOmqFFe
+          y3zZm7ZdiKw9fTsCAwEAATANBgkqhkiG9w0BAQUFAAOBgQBn6MlnleclAG/BVF4irljHag7OOopx
+          TlQzb1V/mR0kYtsr6PZzCTJdwwU5YYWPG2hdqYRzyydlEGid5OPeCVtNQNQG8yKDCYeCS571jSbQ
+          7Q0n0IR4mv7SeLq537mVBaaftV3HdnyoSLcXQpDep/akUOa8TpPwVg/+2U7TWNGJeQ==
+        </X509Certificate>
       </X509Data>
     </KeyInfo>
   </Signature>

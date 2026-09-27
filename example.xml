@@ -29,6 +29,23 @@ Important notes:
         <givenNames>Wojciech Łukasz</givenNames>
         <familyName>Rygielski</familyName>
         <bday>1983-04-12</bday>
+        <placeOfBirth>Warszawa</placeOfBirth>
+        <birthName>Wojciech Łukasz Rygielski</birthName>
+        <currentAddress xmlns:addr="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/stable-v1">
+            <addr:recipientName>Wojciech Łukasz Rygielski</addr:recipientName>
+            <addr:buildingNumber>26/28</addr:buildingNumber>
+            <addr:buildingName>Pałac Kazimierzowski</addr:buildingName>
+            <addr:streetName>Krakowskie Przedmieście</addr:streetName>
+            <addr:unit>12</addr:unit>
+            <addr:floor>2</addr:floor>
+            <addr:postOfficeBox>PO Box 123</addr:postOfficeBox>
+            <addr:deliveryPointCode>Skr. 45</addr:deliveryPointCode>
+            <addr:postalCode>00-927</addr:postalCode>
+            <addr:locality>Warszawa</addr:locality>
+            <addr:region>Mazowieckie</addr:region>
+            <addr:country>PL</addr:country>
+        </currentAddress>
+        <gender>1</gender>
     </learner>
     <report>
         <issuer>
@@ -62,8 +79,9 @@ Important notes:
 						<start>2009-01-15</start>
 						<end>2009-06-15</end>
 					</academicTerm>
+					<status>passed</status>
 					<credit>
-						<scheme>ECTS</scheme>
+						<scheme>ects</scheme>
 						<level>Master</level>
 						<value>120</value>
 					</credit>
@@ -104,7 +122,14 @@ Important notes:
 									MHTML document here?
 								]]></content>
 								<attachment>
+									<identifier type="internal">DS-4.2-001</identifier>
+									<title xml:lang="en">Programme requirements</title>
+									<type>Diploma Supplement</type>
+									<description xml:lang="en">Full programme requirements as a PDF document.</description>
 									<content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+									<extension>
+										<element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+									</extension>
 								</attachment>
 							</section>
 							<section number="4.3">
@@ -138,6 +163,40 @@ Important notes:
 								<content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
 							</attachment>
 						</section>
+					<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+						<SignedInfo>
+							<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+							<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+							<Reference URI="">
+								<Transforms>
+									<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+								</Transforms>
+								<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+								<DigestValue>vKIjYDBEhQxFnLC233qn0rrZ0+I=</DigestValue>
+							</Reference>
+						</SignedInfo>
+						<SignatureValue>
+							oekgEiYwLKbtEZri6zo5CKgmK/umAS2aNfUsyPQspkGBdP9H0XE+ITOrD7PKVBgZQ5Y56KghaziF
+							48a27hHFcPrvHizPXINlVXo6hwgje1SPM9QzjmdyQrhftUWJvpgaGmC4/r8o1yaPGqnkNoylEVUo
+							wJTWJHaSPcYjNB7eDVY=
+						</SignatureValue>
+						<KeyInfo>
+							<X509Data>
+								<X509SubjectName>O=UiO,L=Oslo,ST=Some-State,C=NO</X509SubjectName>
+								<X509Certificate>
+									MIIB9TCCAV4CCQDzcL/uks2ttjANBgkqhkiG9w0BAQUFADA/MQswCQYDVQQGEwJOTzETMBEGA1UE
+									CAwKU29tZS1TdGF0ZTENMAsGA1UEBwwET3NsbzEMMAoGA1UECgwDVWlPMB4XDTE1MDIwNTEzNDE1
+									MloXDTE4MDUyMDEzNDE1MlowPzELMAkGA1UEBhMCTk8xEzARBgNVBAgMClNvbWUtU3RhdGUxDTAL
+									BgNVBAcMBE9zbG8xDDAKBgNVBAoMA1VpTzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAsnI3
+									V1JKOl6Ghgzu5AOSsUFcJfefKP3y4lkVzW18T8AXkLKjNWQxJpW7h7kqeEYpcijAIV/xRMu8vEeb
+									roadh9joOOD+ePL95VnAxcMxy3SdrGxRJ5RZwNf1l5UBxm416acIR78frlFX2kKz8kz0gmOmqFFe
+									y3zZm7ZdiKw9fTsCAwEAATANBgkqhkiG9w0BAQUFAAOBgQBn6MlnleclAG/BVF4irljHag7OOopx
+									TlQzb1V/mR0kYtsr6PZzCTJdwwU5YYWPG2hdqYRzyydlEGid5OPeCVtNQNQG8yKDCYeCS571jSbQ
+									7Q0n0IR4mv7SeLq537mVBaaftV3HdnyoSLcXQpDep/akUOa8TpPwVg/+2U7TWNGJeQ==
+								</X509Certificate>
+							</X509Data>
+						</KeyInfo>
+					</Signature>
 					</diplomaSupplement>
 				</learningOpportunityInstance>
 			</specifies>
@@ -157,9 +216,10 @@ Important notes:
 								<start>2010-01-15</start>
 								<end>2010-07-02</end>
 							</academicTerm>
+							<status>passed</status>
 							<resultLabel>Innpasset</resultLabel>
 							<credit>
-								<scheme>ECTS</scheme>
+								<scheme>ects</scheme>
 								<value>15</value>
 							</credit>
 						</learningOpportunityInstance>
@@ -195,6 +255,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
             </descriptionHtml>
             <specifies>
                 <learningOpportunityInstance>
+                    <identifier type="local">1000-217bMRJ-2014Z</identifier>
                     <start>2014-10-01</start>
                     <date>2015-03-17</date>
                     <academicTerm>
@@ -232,18 +293,21 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     <!-- All consumers of ELMO should support EQF -->
                     <level>
                         <type>EQF</type>
-                        <description>European Qualification Framework</description>
+                        <description xml:lang="en">European Qualification Framework</description>
                         <value>5</value>
                     </level>
                     <!-- This level will be ignored by consumers who do not support it. It is not required to support. -->
                     <level>
                         <type>NQF</type>
-                        <description>Norwegian Qualification Framework</description>
+                        <description xml:lang="en">Norwegian Qualification Framework</description>
                         <value>5</value>
                     </level>
                     <languageOfInstruction>pl</languageOfInstruction>
                     <grouping typeref= "2" idref="2" />
                 </learningOpportunityInstance>
+                <extension>
+                    <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+                </extension>
             </specifies>
             <hasPart>
                 <learningOpportunitySpecification>
@@ -282,6 +346,9 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     </specifies>
                 </learningOpportunitySpecification>
             </hasPart>
+            <extension>
+                <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+            </extension>
         </learningOpportunitySpecification>
         <learningOpportunitySpecification>
             <!--
@@ -327,7 +394,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
         <attachment>
             <title xml:lang="en">Transcript of records</title>
             <type>Transcript of Records</type>
-            <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+            <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         </attachment>
         <attachment>
             <identifier type="internal">87654321</identifier>
@@ -336,6 +403,9 @@ Server implementers can add line breaks (or double line breaks) within this elem
             <description xml:lang="en">Additional multiline description...</description>
             <description xml:lang="pl">Po polsku...</description>
             <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+            <extension>
+                <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+            </extension>
         </attachment>
     </report>
     <attachment>
@@ -343,8 +413,12 @@ Server implementers can add line breaks (or double line breaks) within this elem
         <title xml:lang="en">"Global" attachment</title>
         <title xml:lang="pl">"Globalny" załącznik</title>
         <type>EMREX transcript</type>
+        <description xml:lang="en">A PDF version of the whole EMREX transcript.</description>
         <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         <content xml:lang="pl">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        <extension>
+            <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+        </extension>
     </attachment>
     <groups>
         <groupType id="1">
@@ -366,6 +440,10 @@ Server implementers can add line breaks (or double line breaks) within this elem
             </group>
         </groupType>
     </groups>
+    <extension>
+        <!-- This may contain anything you want. But try to avoid it. -->
+        <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+    </extension>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
         <SignedInfo>
             <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
