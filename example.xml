@@ -68,6 +68,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
             </descriptionHtml>
             <specifies>
                 <learningOpportunityInstance>
+                    <identifier type="local">1000-217bMRJ-2014Z</identifier>
                     <start>2014-10-01</start>
                     <date>2015-03-17</date>
                     <academicTerm>
@@ -117,6 +118,9 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     <languageOfInstruction>pl</languageOfInstruction>
                     <grouping typeref= "2" idref="2" />
                 </learningOpportunityInstance>
+                <extension>
+                    <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+                </extension>
             </specifies>
             <hasPart>
                 <learningOpportunitySpecification>
@@ -155,6 +159,9 @@ Server implementers can add line breaks (or double line breaks) within this elem
                     </specifies>
                 </learningOpportunitySpecification>
             </hasPart>
+            <extension>
+                <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+            </extension>
         </learningOpportunitySpecification>
         <learningOpportunitySpecification>
             <!--
@@ -181,6 +188,7 @@ Server implementers can add line breaks (or double line breaks) within this elem
                         <ref>12345678</ref>
                         <ref>87654321</ref>
                     </attachments>
+                    <grouping typeref= "1" idref="1" />
                 </learningOpportunityInstance>
             </specifies>
         </learningOpportunitySpecification>
@@ -209,6 +217,9 @@ Server implementers can add line breaks (or double line breaks) within this elem
             <description xml:lang="en">Additional multiline description...</description>
             <description xml:lang="pl">Po polsku...</description>
             <content>data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+            <extension>
+                <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+            </extension>
         </attachment>
     </report>
     <attachment>
@@ -218,6 +229,9 @@ Server implementers can add line breaks (or double line breaks) within this elem
         <type>EMREX transcript</type>
         <content xml:lang="en">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
         <content xml:lang="pl">data:application/pdf;base64,iiNhz6QfDnnDybjHLBF2...</content>
+        <extension>
+            <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+        </extension>
     </attachment>
     <groups>
         <groupType id="1">
@@ -239,6 +253,10 @@ Server implementers can add line breaks (or double line breaks) within this elem
             </group>
         </groupType>
     </groups>
+    <extension>
+        <!-- This may contain anything you want. But try to avoid it. -->
+        <element xmlns="http://example.com/schemas/my-elmo-extension">...</element>
+    </extension>
     <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
         <SignedInfo>
             <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
